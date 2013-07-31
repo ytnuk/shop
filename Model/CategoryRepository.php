@@ -33,7 +33,7 @@ class CategoryRepository extends Repository {
      * @return Table\ActiveRow
      */
     public function getCategory($id) {
-        return $this->table()->where('id', $id)->fetch();
+        return $this->table()->get($id);
     }
 
     /**
