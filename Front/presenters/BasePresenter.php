@@ -8,7 +8,7 @@ abstract class BasePresenter extends Presenter {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\CategoryRepository
+     * @var CMS\Shop\Model\CategoryRepository
      */
     public $categoryRepository;
 

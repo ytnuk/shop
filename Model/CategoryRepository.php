@@ -9,7 +9,7 @@ use Nette\Utils\Strings;
 use CMS\Menu\Component\MenuFactory;
 use CMS\Menu\Component\MenuControl;
 
-class CategoryRepository extends Repository {
+final class CategoryRepository extends Repository {
 
     /**
      *
