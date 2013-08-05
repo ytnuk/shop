@@ -12,8 +12,7 @@ use CMS\Menu\Component\MenuControl;
 final class CategoryRepository extends Repository {
 
     /**
-     *
-     * @var MenuControl
+     * @var MenuControl 
      */
     private $menu;
 

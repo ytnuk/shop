@@ -2,17 +2,3 @@ parameters:
 services:
     categoryRepository: CMS\Shop\Model\CategoryRepository
 factories:
-nette:
-    routing:
-        routes:
-            '<id .*>-category':
-                module: 'Shop'
-                presenter: 'Category'
-                action: 'view'
-                id:
-                    filterIn:
-                        - @categoryRepository
-                        - filterIn
-                    filterOut:
-                        - @categoryRepository
-                        - filterOut
