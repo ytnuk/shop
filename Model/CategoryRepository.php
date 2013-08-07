@@ -6,8 +6,8 @@ use CMS\Model\BaseRepository as Repository;
 use Nette\Database\SelectionFactory;
 use Nette\Database\Table;
 use Nette\Utils\Strings;
-use CMS\Menu\Component\MenuFactory;
-use CMS\Menu\Component\MenuControl;
+use CMS\Menu\Component\Menu\MenuFactory;
+use CMS\Menu\Component\Menu\MenuControl;
 
 final class CategoryRepository extends Repository {
 
