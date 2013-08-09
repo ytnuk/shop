@@ -3,28 +3,16 @@
 namespace CMS\Shop\Model;
 
 use CMS\Model\BaseRepository as Repository;
-use Nette\Database\SelectionFactory;
 use Nette\Database\Table;
 use Nette\Utils\Strings;
-use CMS\Menu\Component\Menu\MenuFactory;
-use CMS\Menu\Component\Menu\MenuControl;
 
 final class CategoryRepository extends Repository {
 
     /**
-     * @var MenuControl 
+     * @inject
+     * @var CMS\Menu\Component\Menu\MenuControl 
      */
-    private $menu;
-
-    /**
-     * 
-     * @param Database $db
-     * @param NodeRepository $menu
-     */
-    public function __construct(SelectionFactory $db, MenuFactory $menu) {
-        parent::__construct($db);
-        $this->menu = $menu->create();
-    }
+    public $menu;
 
     /**
      * 
