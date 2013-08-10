@@ -8,8 +8,12 @@ abstract class BasePresenter extends Presenter {
 
     /**
      * @inject
-     * @var CMS\Shop\Model\CategoryRepository
+     * @var CMS\Shop\Component\Products\ProductsControl
      */
-    public $categoryRepository;
+    public $products;
+
+    public function createComponentProducts() {
+        return $this->products;
+    }
 
 }

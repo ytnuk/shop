@@ -5,6 +5,12 @@ namespace CMS\Shop;
 final class CategoryPresenter extends BasePresenter {
 
     /**
+     * @inject
+     * @var \CMS\Shop\Model\CategoryRepository
+     */
+    public $categoryRepository;
+
+    /**
      * @var Nette\Database\Table\ActiveRow
      */
     private $category;

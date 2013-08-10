@@ -23,6 +23,14 @@ final class CategoryRepository extends Repository {
         return $this->table()->get($id);
     }
 
+    public function getCategoriesIds() {
+        return array_keys($this->table()->fetchPairs('id'));
+    }
+
+    public function getCategoriesInNodes($nodes) {
+        return array_keys($this->table()->where('node_id', $nodes)->fetchPairs('id'));
+    }
+
     /**
      * 
      * @param string $title

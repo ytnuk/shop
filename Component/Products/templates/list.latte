@@ -1,0 +1,21 @@
+{if count($products)}
+    <ul class="large-block-grid-3 small-block-grid-2" n:inner-foreach="$products as $product">
+        <li>
+            <a href="{plink Product:view, id=>$product->id}">
+                <ul class="pricing-table th">
+                    <li class="title">{$product->title}</li>
+                    <li class="description">
+                        <img src="http://placehold.it/200x200" alt="">
+                        <hr>
+                        <p>{$product->description|truncate:100}</p>
+                    </li>
+                    <li class="price">{$product->price|number} Kč</li>
+                </ul>
+            </a>
+        </li>
+    </ul>
+{else}
+    <div class="secondary alert-box">
+        There's no product in this category.
+    </div>
+{/if}
