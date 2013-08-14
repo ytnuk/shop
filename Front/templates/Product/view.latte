@@ -1,58 +1,75 @@
 {block content}
-<h2>{$product->title}</h2>
-<hr>
+<div class="page-header">
+    <h2>{$product->title}</h2>
+</div>
 <div class="row">
-    <div class="large-6 columns text-center">
-        <img src="http://vitkutny.php5.cz/eshop/www/upload/photo/cache/42_3" alt="">
+    <div class="col-sm-6 text-center">
+        <a href="#" class="thumbnail img-thumbnail">
+            <img class="img-rounded img-responsive" src="http://placehold.it/500x500" alt="">
+        </a>
     </div>
-    <div class="large-6 columns">
-        <p><small>{$product->description}</small></p>
+    <div class="col-sm-6">
+        <h3>Description</h3>
+        <p>{$product->description}</p>
+        <hr>
         <h3>{$product->price|number} Kč</h3>
     </div>
 </div>
 <hr>
-<div class="section-container auto" data-section data-options="deep_linking: true">
-    <section class="active">
-        <p class="title" data-section-title="">
-            <a href="#description">
-                Description
-            </a>
-        </p>
-        <div class="content" data-slug="description" data-section-content="">
-            {$product->content|noescape}
+<ul class="nav nav-tabs nav-justified">
+    <li class="active">
+        <a href="#description" data-toggle="tab">Description</a>
+    </li>
+    <li>
+        <a href="#photo" data-toggle="tab">Photo <span class="badge">4</span></a>
+    </li>
+    <li>
+        <a href="#video" data-toggle="tab">Video <span class="badge">4</span></a>
+    </li>
+    <li>
+        <a href="#reviews" data-toggle="tab">Reviews <span class="badge">4</span></a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="description">
+        {$product->content|noescape}
+    </div>
+    <div class="tab-pane" id="photo">
+        photo
+    </div>
+    <div class="tab-pane" id="video">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ratio ratio-16-9">
+                    <iframe src="http://www.youtube.com/embed/aSdXzWs3gkI"></iframe>
+                </div>
+                <hr class="visible-xs">
+            </div>
+            <div class="col-sm-6">
+                <div class="ratio ratio-16-9">
+                    <iframe src="http://www.youtube.com/embed/mSTpVmlbu2Q"></iframe>
+                </div>
+                <hr class="visible-xs">
+            </div>
         </div>
-    </section>
-    <section>
-        <p class="title" data-section-title="">
-            <a href="#photo">
-                Photo
-                <span class="label">4</span>
-            </a>
-        </p>
-        <div data-slug="photo" class="content" data-section-content="">
-            photo
+        <hr class="hidden-xs">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ratio ratio-16-9">
+                    <iframe src="http://www.youtube.com/embed/TKzwmB6uzAY"></iframe>
+                </div>
+                <hr class="visible-xs">
+            </div>
+            <div class="col-sm-6">
+                <div class="ratio ratio-16-9">
+                    <iframe src="http://www.youtube.com/embed/P4DvPpW0PRk"></iframe>
+                </div>
+                <hr class="visible-xs">
+            </div>
         </div>
-    </section>
-    <section>
-        <p class="title" data-section-title="">
-            <a href="#video">
-                Video
-                <span class="label">4</span>
-            </a>
-        </p>
-        <div data-slug="video" class="content" data-section-content="">
-            video
-        </div>
-    </section>
-    <section>
-        <p class="title" data-section-title="">
-            <a href="#reviews">
-                Reviews
-                <span class="label alert">0</span>
-            </a>
-        </p>
-        <div data-slug="reviews" class="content" data-section-content="">
-            reviews
-        </div>
-    </section>
+    </div>
+    <div class="tab-pane" id="reviews">
+        reviews
+    </div>
 </div>

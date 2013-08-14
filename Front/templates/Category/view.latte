@@ -1,2 +1,5 @@
 {block content}
-{control products:list $category}
+<div class="page-header">
+    <h2>{$category->node->title}</h2>
+</div>
+{control products:category $category}

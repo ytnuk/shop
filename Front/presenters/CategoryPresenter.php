@@ -23,7 +23,7 @@ final class CategoryPresenter extends BasePresenter {
         if (!$this->category) {
             $this->error();
         }
-        $this->menu->setCurrent($this->category->node);
+        $this->menu->setActive($this->category->node);
     }
 
     public function renderView() {

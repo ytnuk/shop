@@ -12,7 +12,7 @@ abstract class BasePresenter extends Presenter {
      */
     public $products;
 
-    public function createComponentProducts() {
+    protected function createComponentProducts() {
         return $this->products;
     }
 
