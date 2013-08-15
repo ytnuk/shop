@@ -10,7 +10,7 @@ final class CategoryRepository extends Repository {
 
     /**
      * @inject
-     * @var CMS\Menu\Component\Menu\MenuControl 
+     * @var \CMS\Component\Menu\MenuControl 
      */
     public $menu;
 

@@ -1,6 +1,6 @@
 parameters:
 services:
-    categoryRepository: CMS\Shop\Model\CategoryRepository
-    productRepository: CMS\Shop\Model\ProductRepository
-    productsControl: CMS\Shop\Component\Products\ProductsControl
+    cms.shop.model.categoryrepository: CMS\Shop\Model\CategoryRepository
+    cms.shop.model.productrepository: CMS\Shop\Model\ProductRepository
+    cms.shop.component.productscontrol: CMS\Shop\Component\Products\ProductsControl
 factories:

@@ -20,7 +20,7 @@ final class ProductsControl extends BaseControl {
 
     /**
      * @inject
-     * @var \CMS\Menu\Model\NodeRepository
+     * @var \CMS\Model\NodeRepository
      */
     public $nodeRepository;
 
