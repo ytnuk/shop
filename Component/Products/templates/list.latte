@@ -1,7 +1,7 @@
-{if count($products)}
+{if $products->count()}
     <div n:inner-foreach="$products as $product" class="row">
         <div class="col-sm-4">
-            <div class="panel text-center">
+            <div class="panel panel-primary text-center">
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <a href="{plink Product:view, id=>$product->id}">
