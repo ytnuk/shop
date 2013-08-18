@@ -1,4 +1,13 @@
 parameters:
+    modules:
+        shop:
+            directory: %modules.directory%/cms-shop
+    components:
+        products:
+            directory: %modules.shop.directory%/Component/Products
+    styles:
+        files:
+            - %components.products.directory%/styles/list.css
 services:
     cms.shop.model.categoryrepository: CMS\Shop\Model\CategoryRepository
     cms.shop.model.productrepository: CMS\Shop\Model\ProductRepository

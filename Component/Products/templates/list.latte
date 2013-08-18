@@ -1,33 +1,37 @@
-{if $products->count()}
-    <div n:inner-foreach="$products as $product" class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-primary text-center">
-                <div class="panel-heading">
-                    <h3 class="panel-title">
-                        <a href="{plink Product:view, id=>$product->id}">
-                            {$product->title}
-                        </a>
-                    </h3>
-                </div>
-                <div class="panel-body">
-                    <a href="{plink Product:view, id=>$product->id}" class="thumbnail img-thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/250x250" alt="">
-                    </a>
-                    <hr>
-                    <p>
-                        <small>
-                            {$product->description|truncate:100}
-                        </small>
-                    </p>
-                </div>
-                <div class="panel-footer">
-                    <span class="panel-title">{$product->price|number} Kč</span>
-                </div>
-            </div>
+<div class="component-products-list">
+    {if $products->count()}
+        <div class="row">
+            <ul n:inner-foreach="$products as $product" class="col-block-xs-2 col-block-sm-3">
+                <li>
+                    <div class="panel panel-primary text-center">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <a href="{plink Product:view, id=>$product->id}">
+                                    {$product->title}
+                                </a>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <a href="{plink Product:view, id=>$product->id}" class="thumbnail img-thumbnail">
+                                <img class="img-rounded img-responsive" src="http://placehold.it/250x250" alt="">
+                            </a>
+                            <hr>
+                            <p>
+                                <small>
+                                    {$product->description|truncate:100}
+                                </small>
+                            </p>
+                        </div>
+                        <div class="panel-footer">
+                            <span class="panel-title">{$product->price|number} Kč</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </div>
-    </div>
-{else}
-    <div class="alert alert-info">
-        There's no product in this category.
-    </div>
-{/if}
+    {else}
+        <div class="alert alert-info">
+            There's no product in this category.
+        </div>
+    {/if}
+</div>
