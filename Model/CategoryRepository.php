@@ -2,11 +2,11 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseRepository as Repository;
+use CMS\Model\BaseRepository;
 use Nette\Database\Table;
 use Nette\Utils\Strings;
 
-final class CategoryRepository extends Repository {
+final class CategoryRepository extends BaseRepository {
 
     /**
      * @inject

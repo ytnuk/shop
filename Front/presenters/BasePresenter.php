@@ -8,7 +8,7 @@ abstract class BasePresenter extends Presenter {
 
     /**
      * @inject
-     * @var CMS\Shop\Component\Products\ProductsControl
+     * @var \CMS\Shop\Component\Products\ProductsControl
      */
     public $products;
 

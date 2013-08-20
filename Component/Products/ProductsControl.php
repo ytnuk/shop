@@ -3,26 +3,32 @@
 namespace CMS\Shop\Component\Products;
 
 use CMS\Component\BaseControl;
+use CMS\Shop\Model\CategoryRepository;
+use CMS\Shop\Model\ProductRepository;
+use CMS\Model\NodeRepository;
 
 final class ProductsControl extends BaseControl {
 
     /**
-     * @inject
-     * @var \CMS\Shop\Model\CategoryRepository
+     * @var CategoryRepository
      */
     public $categoryRepository;
 
     /**
-     * @inject
-     * @var \CMS\Shop\Model\ProductRepository
+     * @var ProductRepository
      */
     public $productRepository;
 
     /**
-     * @inject
-     * @var \CMS\Model\NodeRepository
+     * @var NodeRepository
      */
     public $nodeRepository;
+
+    public function __construct(CategoryRepository $categoryRepository, ProductRepository $productRepository, NodeRepository $nodeRepository) {
+        $this->categoryRepository = $categoryRepository;
+        $this->productRepository = $productRepository;
+        $this->nodeRepository = $nodeRepository;
+    }
 
     public function renderFeatured() {
         $categories = $this->categoryRepository->getCategoriesIds();
