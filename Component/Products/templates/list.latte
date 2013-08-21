@@ -1,5 +1,5 @@
 <div class="component-products-list">
-    {if $products->count()}
+    {if count($products)}
         <div class="row">
             <ul n:inner-foreach="$products as $product" class="col-block-xs-2 col-block-sm-3">
                 <li>

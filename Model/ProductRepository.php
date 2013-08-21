@@ -2,25 +2,17 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseRepository;
-use Nette\Database\Table;
+use CMS\Model\BaseRepositoryLM;
 
-final class ProductRepository extends BaseRepository {
+final class ProductRepository extends BaseRepositoryLM {
 
-    /**
-     * @param int $id
-     * @return Table\ActiveRow
-     */
     public function getProduct($id) {
-        return $this->table()->get($id);
+        return $this->find($id);
     }
 
-    /**
-     * @param int[] $categories
-     * @return Table\Selection
-     */
     public function getProductsInCategories($categories) {
-        return $this->table()->where('category_id', $categories);
+        $row = $this->connection->select('*')->from($this->getTable())->where('category_id IN (%i)', $categories)->fetchAll();
+        return $this->createEntities($row);
     }
 
 }
