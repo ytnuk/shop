@@ -2,10 +2,9 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseRepositoryLM;
-use Nette\Utils\Strings;
+use CMS\Model\BaseRepository;
 
-final class CategoryRepository extends BaseRepositoryLM {
+final class CategoryRepository extends BaseRepository {
 
     /**
      * @inject
@@ -21,8 +20,9 @@ final class CategoryRepository extends BaseRepositoryLM {
      * @return int[]
      */
     public function getCategoriesIds() {
-        $selection = $this->connection->select('id')->from($this->getTable())->fetchAssoc('id');
-        return array_keys($selection);
+        $rows = $this->connection->select('id')->from($this->getTable())->fetchAssoc('id');
+
+        return array_keys($rows);
     }
 
     /**

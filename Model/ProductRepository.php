@@ -2,9 +2,9 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseRepositoryLM;
+use CMS\Model\BaseRepository;
 
-final class ProductRepository extends BaseRepositoryLM {
+final class ProductRepository extends BaseRepository {
 
     public function getProduct($id) {
         return $this->find($id);
