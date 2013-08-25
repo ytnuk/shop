@@ -40,7 +40,7 @@ final class ProductsControl extends BaseControl {
 
     public function renderCategory($category) {
         $nodes = $this->nodeRepository->getIdsOfChildNodes($category->node);
-        $nodes[] = $category->node->id;
+        $nodes[] = $category->node_id;
         $categories = $this->categoryRepository->getIdsOfCategoriesInNodes($nodes);
         $template = $this->template;
         $template->products = $this->productRepository->getProductsInCategories($categories);
