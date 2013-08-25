@@ -12,6 +12,7 @@ final class CategoryRepository extends BaseRepository {
      * @var MenuControl 
      */
     private $menu;
+    protected $name = 'shop_category';
 
     public function __construct(SelectionFactory $db, MenuControl $menu) {
         parent::__construct($db);
@@ -25,17 +26,8 @@ final class CategoryRepository extends BaseRepository {
     /**
      * @return int[]
      */
-    public function getCategoriesIds() {
-        $selection = $this->table()->fetchAll();
-        return array_keys($selection);
-    }
-
-    /**
-     * @param int[] $nodes
-     * @return int[]
-     */
-    public function getIdsOfCategoriesInNodes($nodes) {
-        $selection = $this->table()->where('node_id', $nodes)->fetchAll();
+    public function getIdsOfParentNodes() {
+        $selection = $this->table()->fetchPairs('node_id');
         return array_keys($selection);
     }
 

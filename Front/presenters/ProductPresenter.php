@@ -23,7 +23,7 @@ final class ProductPresenter extends BasePresenter {
         if (!$this->product) {
             $this->error();
         }
-        $this->menu->setActive($this->product->category->node);
+        $this->menu->setActive($this->product->node);
     }
 
     public function renderView() {

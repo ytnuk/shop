@@ -6,12 +6,14 @@ use CMS\Model\BaseRepository;
 
 final class ProductRepository extends BaseRepository {
 
+    protected $name = "shop_product";
+
     public function getProduct($id) {
         return $this->table()->get($id);
     }
 
-    public function getProductsInCategories($categories) {
-        return $this->table()->where('category_id', $categories)->fetchAll();
+    public function getProductsInNodes($nodes) {
+        return $this->table()->where('node_id', $nodes)->fetchAll();
     }
 
 }

@@ -31,9 +31,9 @@ final class ProductsControl extends BaseControl {
     }
 
     public function renderFeatured() {
-        $categories = $this->categoryRepository->getCategoriesIds();
+        $nodes = $this->categoryRepository->getIdsOfParentNodes();
         $template = $this->template;
-        $template->products = $this->productRepository->getProductsInCategories($categories);
+        $template->products = $this->productRepository->getProductsInNodes($nodes);
         $template->setFile(__DIR__ . "/templates/list.latte");
         $template->render();
     }
@@ -41,9 +41,8 @@ final class ProductsControl extends BaseControl {
     public function renderCategory($category) {
         $nodes = $this->nodeRepository->getIdsOfChildNodes($category->node);
         $nodes[] = $category->node_id;
-        $categories = $this->categoryRepository->getIdsOfCategoriesInNodes($nodes);
         $template = $this->template;
-        $template->products = $this->productRepository->getProductsInCategories($categories);
+        $template->products = $this->productRepository->getProductsInNodes($nodes);
         $template->setFile(__DIR__ . "/templates/list.latte");
         $template->render();
     }
