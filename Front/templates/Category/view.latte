@@ -3,3 +3,9 @@
     <h2>{$category->node->title}</h2>
 </div>
 {control products:category $category}
+{ifset $category->description}
+    <div class="page-header">
+        <h3>Category description <small>{$category->node->title}</small></h3>
+    </div>
+    {$category->description|noescape}
+{/ifset}
