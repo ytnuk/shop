@@ -20,13 +20,19 @@
         <a href="#description" data-toggle="tab">Description</a>
     </li>
     <li>
-        <a href="#photo" data-toggle="tab">Photo <span class="badge">4</span></a>
+        <a href="#parameters" data-toggle="tab">Parameters</a>
     </li>
     <li>
-        <a href="#video" data-toggle="tab">Video <span class="badge">4</span></a>
+        <a href="#photos" data-toggle="tab">Photos <span class="badge">4</span></a>
+    </li>
+    <li>
+        <a href="#videos" data-toggle="tab">Videos <span class="badge">4</span></a>
     </li>
     <li>
         <a href="#reviews" data-toggle="tab">Reviews <span class="badge">4</span></a>
+    </li>
+    <li>
+        <a href="#comments" data-toggle="tab">Comments <span class="badge">4</span></a>
     </li>
 </ul>
 
@@ -34,7 +40,10 @@
     <div class="tab-pane active" id="description">
         {$product->content|noescape}
     </div>
-    <div class="tab-pane" id="photo">
+    <div class="tab-pane" id="parameters">
+        parameters
+    </div>
+    <div class="tab-pane" id="photos">
         <div class="row">
             <ul class="col-block-xs-2 col-block-md-3">
                 <li>
@@ -80,7 +89,7 @@
             </ul>
         </div>
     </div>
-    <div class="tab-pane" id="video">
+    <div class="tab-pane" id="videos">
         <div class="row">
             <ul class="col-block-xs-1 col-block-sm-2">
                 <li>
@@ -196,4 +205,8 @@
         </div>
 
     </div>
+    <div class="tab-pane" id="comments">
+        <p>comments</p>
+    </div>
+
 </div>
