@@ -14,6 +14,7 @@ final class ProductPresenter extends BasePresenter {
      * @var Nette\Database\Table\ActiveRow
      */
     private $product;
+    private $productTemplate;
 
     /**
      * @param int $id
@@ -23,12 +24,15 @@ final class ProductPresenter extends BasePresenter {
         if (!$this->product) {
             $this->error();
         }
+        $this->productTemplate = $this->createTemplate('Nette\Templating\Template');
+        $this->productTemplate->setSource($this->product->content);
         $this->menu->setActive($this->product->node);
     }
 
     public function renderView() {
         $this->menu->breadcrumbAdd($this->product->title);
         $this->template->product = $this->product;
+        $this->template->productTemplate = $this->productTemplate;
     }
 
 }
