@@ -31,4 +31,16 @@ final class CategoryRepository extends BaseRepository {
         return array_keys($selection);
     }
 
+    public function insertCategory(array $data) {
+        return $this->table()->insert($data);
+    }
+
+    public function updateCategory($category, array $data) {
+        return $category->update($data);
+    }
+
+    public function removeCategory($page) {
+        return $page->delete();
+    }
+
 }
