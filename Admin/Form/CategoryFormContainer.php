@@ -11,7 +11,7 @@ class CategoryFormContainer extends Container {
      * @param ActiveRow|NULL $category
      */
     public function __construct($category = NULL) {
-        $this->addTextArea('description', 'Description')->setRequired();
+        $this->addTextArea('description', 'Description');
         if ($category) {
             $this->setDefaults($category);
         }
