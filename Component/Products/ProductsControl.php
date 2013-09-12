@@ -3,46 +3,46 @@
 namespace CMS\Shop\Component\Products;
 
 use CMS\Component\BaseControl;
-use CMS\Shop\Model\CategoryRepository;
-use CMS\Shop\Model\ProductRepository;
-use CMS\Model\NodeRepository;
+use CMS\Shop\Model\CategoryFacade;
+use CMS\Shop\Model\ProductFacade;
+use CMS\Model\NodeFacade;
 
 final class ProductsControl extends BaseControl {
 
     /**
-     * @var CategoryRepository
+     * @var CategoryFacade
      */
-    public $categoryRepository;
+    public $categoryFacade;
 
     /**
-     * @var ProductRepository
+     * @var ProductFacade
      */
-    public $productRepository;
+    public $productFacade;
 
     /**
-     * @var NodeRepository
+     * @var NodeFacade
      */
-    public $nodeRepository;
+    public $nodeFacade;
 
-    public function __construct(CategoryRepository $categoryRepository, ProductRepository $productRepository, NodeRepository $nodeRepository) {
-        $this->categoryRepository = $categoryRepository;
-        $this->productRepository = $productRepository;
-        $this->nodeRepository = $nodeRepository;
+    public function __construct(CategoryFacade $categoryFacade, ProductFacade $productFacade, NodeFacade $nodeFacade) {
+        $this->categoryFacade = $categoryFacade;
+        $this->productFacade = $productFacade;
+        $this->nodeFacade = $nodeFacade;
     }
 
     public function renderFeatured() {
-        $nodes = $this->categoryRepository->getIdsOfParentNodes();
+        $nodes = $this->categoryFacade->repository->getIdsOfParentNodes();
         $template = $this->template;
-        $template->products = $this->productRepository->getProductsInNodes($nodes);
+        $template->products = $this->productFacade->repository->getProductsInNodes($nodes);
         $template->setFile(__DIR__ . "/templates/list.latte");
         $template->render();
     }
 
     public function renderCategory($category) {
-        $nodes = $this->nodeRepository->getIdsOfChildNodes($category->node);
+        $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
         $nodes[] = $category->node_id;
         $template = $this->template;
-        $template->products = $this->productRepository->getProductsInNodes($nodes);
+        $template->products = $this->productFacade->repository->getProductsInNodes($nodes);
         $template->setFile(__DIR__ . "/templates/list.latte");
         $template->render();
     }

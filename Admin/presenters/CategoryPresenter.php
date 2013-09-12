@@ -6,6 +6,11 @@ use Nette\Application\BadRequestException;
 
 final class CategoryPresenter extends BasePresenter {
 
+    /**
+     * @inject
+     * @var \CMS\Shop\Model\CategoryFacade
+     */
+    public $categoryFacade;
     private $category;
 
     /**
@@ -19,7 +24,7 @@ final class CategoryPresenter extends BasePresenter {
     }
 
     public function actionEdit($id) {
-        $this->category = $this->categoryRepository->getCategory($id);
+        $this->category = $this->categoryFacade->repository->getCategory($id);
         if (!$this->category) {
             throw new BadRequestException;
         }

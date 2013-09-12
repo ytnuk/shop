@@ -6,9 +6,9 @@ final class CategoryPresenter extends BasePresenter {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\CategoryRepository
+     * @var \CMS\Shop\Model\CategoryFacade
      */
-    public $categoryRepository;
+    public $categoryFacade;
 
     /**
      * @var Nette\Database\Table\ActiveRow
@@ -19,7 +19,7 @@ final class CategoryPresenter extends BasePresenter {
      * @param int $id
      */
     public function actionView($id) {
-        $this->category = $this->categoryRepository->getCategory($id);
+        $this->category = $this->categoryFacade->repository->getCategory($id);
         if (!$this->category) {
             $this->error();
         }

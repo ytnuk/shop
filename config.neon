@@ -9,6 +9,7 @@ services:
     CMS\Shop\Model\CategoryFacade: self
     CMS\Shop\Model\CategoryRepository: self
     CMS\Admin\Shop\Form\CategoryFormFactory: self
+    CMS\Shop\Model\ProductFacade: self
     CMS\Shop\Model\ProductRepository: self
     CMS\Shop\Component\Products\ProductsControl: self
 factories:

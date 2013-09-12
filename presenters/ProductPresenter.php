@@ -6,9 +6,9 @@ final class ProductPresenter extends BasePresenter {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\ProductRepository
+     * @var \CMS\Shop\Model\ProductFacade
      */
-    public $productRepository;
+    public $productFacade;
 
     /**
      * @var Nette\Database\Table\ActiveRow
@@ -20,7 +20,7 @@ final class ProductPresenter extends BasePresenter {
      * @param int $id
      */
     public function actionView($id) {
-        $this->product = $this->productRepository->getProduct($id);
+        $this->product = $this->productFacade->repository->getProduct($id);
         if (!$this->product) {
             $this->error();
         }
