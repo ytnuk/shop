@@ -16,4 +16,8 @@ final class ProductRepository extends BaseRepository {
         return $this->table()->where('node_id', $nodes)->fetchAll();
     }
 
+    public function countProductsInNodes($nodes) {
+        return $this->table()->where('node_id', $nodes)->count();
+    }
+
 }

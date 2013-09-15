@@ -1,3 +1,20 @@
 {layout $adminLayout}
 {#module}
+<ul class="nav nav-tabs">
+    <li n:class="$presenter->isLinkCurrent('Home:view')?active">
+        <a n:href="Home:view">
+            Overview
+        </a>
+    </li>
+    <li class="$presenter->isLinkCurrent('Product:*')?active">
+        <a href="#Product:list">
+            Products
+        </a>
+    </li>
+    <li n:class="$presenter->isLinkCurrent('Category:*')?active">
+        <a n:href="Category:list">
+            Categories
+        </a>
+    </li>
+</ul>
 {include #content}

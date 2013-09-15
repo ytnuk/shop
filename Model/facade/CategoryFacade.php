@@ -6,15 +6,18 @@ use CMS\Model\BaseFacade;
 use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryRepository;
 use CMS\Model\NodeFacade;
+use CMS\Shop\Model\ProductFacade;
 
 class CategoryFacade extends BaseFacade {
 
     public $repository;
     private $nodeFacade;
+    private $productFacade;
 
-    public function __construct(CategoryRepository $repository, NodeFacade $nodeFacade) {
+    public function __construct(CategoryRepository $repository, NodeFacade $nodeFacade, ProductFacade $productFacade) {
         $this->repository = $repository;
         $this->nodeFacade = $nodeFacade;
+        $this->productFacade = $productFacade;
     }
 
     public function addCategory(array $data) {
@@ -33,8 +36,9 @@ class CategoryFacade extends BaseFacade {
     }
 
     public function deleteCategory($category) {
-        if (TRUE) {
-            //TODO... productFacade count products in nodes (menuFacade getIdsOfChildNodes($category->node)  )
+        $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
+        $nodes[] = $category->node_id;
+        if ($this->productFacade->repository->countProductsInNodes($nodes)) {
             throw new CategoryNotEmptyException('Category is not empty.');
         } else {
             if ($this->nodeFacade->deleteNode($category->node)) {

@@ -19,6 +19,11 @@ final class CategoryPresenter extends BasePresenter {
      */
     public $categoryFormFactory;
 
+    protected function beforeRender() {
+        parent::beforeRender();
+        $this->menu->breadcrumbAdd('Categories', 'Category:list');
+    }
+
     public function renderAdd() {
         $this->menu->breadcrumbAdd('Add new category');
     }
@@ -32,6 +37,10 @@ final class CategoryPresenter extends BasePresenter {
 
     public function renderEdit() {
         $this->menu->breadcrumbAdd('Edit category: ' . $this->category->node->title);
+    }
+
+    public function renderList() {
+        
     }
 
     protected function createComponentCategoryFormAdd() {
