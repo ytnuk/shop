@@ -5,7 +5,7 @@ namespace CMS\Shop\Component\Products;
 use CMS\Component\BaseControl;
 use CMS\Shop\Model\CategoryFacade;
 use CMS\Shop\Model\ProductFacade;
-use CMS\Model\NodeFacade;
+use CMS\Menu\Model\NodeFacade;
 
 final class ProductsControl extends BaseControl {
 

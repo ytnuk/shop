@@ -2,9 +2,9 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseRepository;
+use CMS\Model\Repository;
 
-final class ProductRepository extends BaseRepository {
+final class ProductRepository extends Repository {
 
     protected $name = "shop_product";
 

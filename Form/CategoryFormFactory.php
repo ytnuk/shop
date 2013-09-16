@@ -1,14 +1,14 @@
 <?php
 
-namespace CMS\Admin\Shop\Form;
+namespace CMS\Shop\Form;
 
-use CMS\Form\FormFactory;
 use Nette\Application\UI\Form;
-use CMS\Model\NodeFacade;
+use CMS\Form\FormFactory;
+use CMS\Menu\Model\NodeFacade;
 use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryFacade;
-use CMS\Admin\Menu\Form\NodeFormContainer;
-use CMS\Admin\Shop\Form\CategoryFormContainer;
+use CMS\Menu\Form\NodeFormContainer;
+use CMS\Shop\Form\CategoryFormContainer;
 
 final class CategoryFormFactory extends FormFactory {
 

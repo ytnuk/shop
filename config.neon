@@ -1,15 +1,14 @@
 parameters:
     modules:
         shop:
-            directory: %modules.directory%/cms-shop
+            directory: %modules.directory%/Shop
     components:
         products:
             directory: %modules.shop.directory%/Component/Products
 services:
     CMS\Shop\Model\CategoryFacade: self
     CMS\Shop\Model\CategoryRepository: self
-    CMS\Admin\Shop\Form\CategoryFormFactory: self
+    CMS\Shop\Form\CategoryFormFactory: self
     CMS\Shop\Model\ProductFacade: self
     CMS\Shop\Model\ProductRepository: self
     CMS\Shop\Component\Products\ProductsControl: self
-factories:

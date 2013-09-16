@@ -2,6 +2,8 @@
 
 namespace CMS\Shop\Model;
 
-class CategoryNotEmptyException extends \Exception {
+use CMS\Model\BaseException;
+
+class CategoryNotEmptyException extends BaseException {
     
 }

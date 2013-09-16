@@ -15,7 +15,7 @@ final class CategoryPresenter extends BasePresenter {
 
     /**
      * @inject
-     * @var \CMS\Admin\Shop\Form\CategoryFormFactory
+     * @var \CMS\Shop\Form\CategoryFormFactory
      */
     public $categoryFormFactory;
 

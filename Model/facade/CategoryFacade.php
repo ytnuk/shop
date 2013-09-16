@@ -2,13 +2,13 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseFacade;
+use CMS\Model\Facade;
 use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryRepository;
-use CMS\Model\NodeFacade;
+use CMS\Menu\Model\NodeFacade;
 use CMS\Shop\Model\ProductFacade;
 
-class CategoryFacade extends BaseFacade {
+class CategoryFacade extends Facade {
 
     public $repository;
     private $nodeFacade;

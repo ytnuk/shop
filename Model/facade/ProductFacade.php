@@ -2,11 +2,11 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\BaseFacade;
+use CMS\Model\Facade;
 use CMS\Shop\Model\ProductRepository;
-use CMS\Model\NodeFacade;
+use CMS\Menu\Model\NodeFacade;
 
-class ProductFacade extends BaseFacade {
+class ProductFacade extends Facade {
 
     public $repository;
     private $nodeFacade;

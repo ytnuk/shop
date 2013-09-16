@@ -1,6 +1,6 @@
 <?php
 
-namespace CMS\Admin\Shop\Form;
+namespace CMS\Shop\Form;
 
 use Nette\Forms\Container;
 use Nette\Database\Table\ActiveRow;
