@@ -28,8 +28,8 @@ final class CategoryRepository extends Repository {
         return $category->update($data);
     }
 
-    public function removeCategory($page) {
-        return $page->delete();
+    public function removeCategory($category) {
+        return $category->delete();
     }
 
 }

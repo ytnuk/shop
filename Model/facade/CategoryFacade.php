@@ -7,6 +7,7 @@ use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryRepository;
 use CMS\Menu\Model\NodeFacade;
 use CMS\Shop\Model\ProductFacade;
+use CMS\Shop\Form\CategoryFormContainer;
 
 class CategoryFacade extends Facade {
 
@@ -18,6 +19,10 @@ class CategoryFacade extends Facade {
         $this->repository = $repository;
         $this->nodeFacade = $nodeFacade;
         $this->productFacade = $productFacade;
+    }
+
+    public function getFormContainer($category = NULL) {
+        return new CategoryFormContainer($category);
     }
 
     public function addCategory(array $data) {

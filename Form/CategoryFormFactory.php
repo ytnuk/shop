@@ -2,13 +2,10 @@
 
 namespace CMS\Shop\Form;
 
-use Nette\Application\UI\Form;
 use CMS\Form\FormFactory;
 use CMS\Menu\Model\NodeFacade;
 use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryFacade;
-use CMS\Menu\Form\NodeFormContainer;
-use CMS\Shop\Form\CategoryFormContainer;
 
 final class CategoryFormFactory extends FormFactory {
 
@@ -21,42 +18,36 @@ final class CategoryFormFactory extends FormFactory {
     }
 
     protected function addForm() {
-        $form = parent::addForm();
-        $data = $this->nodeFacade->getParentNodeSelectData('shop_category');
-        $form['node'] = new NodeFormContainer($data);
-        $form['category'] = new CategoryFormContainer();
-        $form->addSubmit('add', 'Add category');
-        return $form;
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
+        $this->form->addComponent($this->categoryFacade->getFormContainer(), 'category');
+        $this->form->addSubmit('add', 'Add category');
     }
 
     protected function editForm($category) {
-        $form = parent::editForm($category);
-        $data = $this->nodeFacade->getParentNodeSelectData($category->node->tree, $category->node);
-        $form['node'] = new NodeFormContainer($data, $category->node);
-        $form['category'] = new CategoryFormContainer($category);
-        $form->addSubmit('edit', 'Edit category');
+        $this->form->addComponent($this->nodeFacade->getFormContainer($category->node->tree, $category->node), 'node');
+        $this->form->addComponent($this->categoryFacade->getFormContainer($category), 'category');
+        $this->form->addSubmit('edit', 'Edit category');
         if ($category->node->node_id) {
-            $form->addSubmit('delete', 'Delete category')->setAttribute('class', 'btn-danger');
+            $this->form->addSubmit('delete', 'Delete category')->setAttribute('class', 'btn-danger');
         }
-        return $form;
     }
 
-    public function addFormSuccess(Form $form) {
-        $category = $this->categoryFacade->addCategory($form->getValues(TRUE));
+    protected function add($data) {
+        $category = $this->categoryFacade->addCategory($data);
         $this->presenter->redirect($category->node->link_admin, array('id' => $category->node->link_id));
     }
 
-    public function editFormSuccess(Form $form, $category) {
-        if ($form->isSubmitted()->getHtmlName() == 'delete') {
-            try {
-                $this->categoryFacade->deleteCategory($category);
-                $this->presenter->redirect('Home:view');
-            } catch (CategoryNotEmptyException $e) {
-                $this->presenter->flashMessage($e->getMessage(), 'warning');
-                $this->presenter->redirect('this');
-            }
-        } else {
-            $this->categoryFacade->editCategory($category, $form->getValues(TRUE));
+    protected function edit($category, $data) {
+        $this->categoryFacade->editCategory($category, $data);
+        $this->presenter->redirect('this');
+    }
+
+    protected function delete($category) {
+        try {
+            $this->categoryFacade->deleteCategory($category);
+            $this->presenter->redirect('Category:list');
+        } catch (CategoryNotEmptyException $e) {
+            $this->presenter->flashMessage($e->getMessage(), 'warning');
             $this->presenter->redirect('this');
         }
     }

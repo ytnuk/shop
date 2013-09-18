@@ -4,51 +4,51 @@ namespace CMS\Admin\Shop;
 
 use Nette\Application\BadRequestException;
 
-final class CategoryPresenter extends BasePresenter {
+final class ProductPresenter extends BasePresenter {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\CategoryFacade
+     * @var \CMS\Shop\Model\ProductFacade
      */
-    public $categoryFacade;
-    private $category;
+    public $productFacade;
+    private $product;
 
     /**
      * @inject
-     * @var \CMS\Shop\Form\CategoryFormFactory
+     * @var \CMS\Shop\Form\ProductFormFactory
      */
-    public $categoryFormFactory;
+    public $productFormFactory;
 
     protected function beforeRender() {
         parent::beforeRender();
-        $this->menu->breadcrumbAdd('Categories', 'Category:list');
+        $this->menu->breadcrumbAdd('Product list', 'Product:list');
     }
 
     public function renderAdd() {
-        $this->menu->breadcrumbAdd('Add new category');
+        $this->menu->breadcrumbAdd('Add new product');
     }
 
     public function actionEdit($id) {
-        $this->category = $this->categoryFacade->repository->getCategory($id);
-        if (!$this->category) {
+        $this->product = $this->productFacade->repository->getProduct($id);
+        if (!$this->product) {
             throw new BadRequestException;
         }
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumbAdd('Edit category: ' . $this->category->node->title);
+        $this->menu->breadcrumbAdd('Edit product: ' . $this->product->title);
     }
 
     public function renderList() {
         
     }
 
-    protected function createComponentCategoryFormAdd() {
-        return $this->categoryFormFactory->create();
+    protected function createComponentProductFormAdd() {
+        return $this->productFormFactory->create();
     }
 
-    protected function createComponentCategoryFormEdit() {
-        return $this->categoryFormFactory->create($this->category);
+    protected function createComponentProductFormEdit() {
+        return $this->productFormFactory->create($this->product);
     }
 
 }

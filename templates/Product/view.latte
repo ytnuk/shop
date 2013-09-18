@@ -10,7 +10,13 @@
     </div>
     <div class="col-sm-6">
         <h3>Description</h3>
-        <p>{$product->description}</p>
+        <p>
+            {if $product->description}
+                {$product->description}
+            {else}
+                There's no description available.
+            {/if}
+        </p>
         <hr>
         <h3>{$product->price|number} Kč</h3>
     </div>
@@ -38,7 +44,11 @@
 
 <div class="tab-content">
     <div class="tab-pane active" id="description">
-        {include $productTemplate}
+        {if $product->content}
+            {include $productTemplate}
+        {else}
+            <p>There's no product description.</p>
+        {/if}
     </div>
     <div class="tab-pane" id="parameters">
         parameters

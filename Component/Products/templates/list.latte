@@ -15,7 +15,7 @@
                             <a href="{plink Product:view, id=>$product->id}" class="thumbnail">
                                 <img class="img-rounded img-responsive" src="http://placehold.it/250x250" alt="">
                             </a>
-                            <p>
+                            <p n:if="$product->description">
                                 <small>
                                     {$product->description|truncate:100}
                                 </small>

@@ -11,4 +11,5 @@ services:
     CMS\Shop\Form\CategoryFormFactory: self
     CMS\Shop\Model\ProductFacade: self
     CMS\Shop\Model\ProductRepository: self
+    CMS\Shop\Form\ProductFormFactory: self
     CMS\Shop\Component\Products\ProductsControl: self

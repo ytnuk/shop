@@ -20,4 +20,16 @@ final class ProductRepository extends Repository {
         return $this->table()->where('node_id', $nodes)->count();
     }
 
+    public function insertProduct($data) {
+        return $this->table()->insert($data);
+    }
+
+    public function updateProduct($product, array $data) {
+        return $product->update($data);
+    }
+
+    public function removeProduct($product) {
+        return $product->delete();
+    }
+
 }
