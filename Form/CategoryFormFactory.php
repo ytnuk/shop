@@ -20,15 +20,15 @@ final class CategoryFormFactory extends FormFactory {
     protected function addForm() {
         $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
         $this->form->addComponent($this->categoryFacade->getFormContainer(), 'category');
-        $this->form->addSubmit('add', 'Add category');
+        parent::addForm();
     }
 
     protected function editForm($category) {
         $this->form->addComponent($this->nodeFacade->getFormContainer($category->node->tree, $category->node), 'node');
         $this->form->addComponent($this->categoryFacade->getFormContainer($category), 'category');
-        $this->form->addSubmit('edit', 'Edit category');
+        parent::editForm($category);
         if ($category->node->node_id) {
-            $this->form->addSubmit('delete', 'Delete category')->setAttribute('class', 'btn-danger');
+            $this->deleteForm($category);
         }
     }
 

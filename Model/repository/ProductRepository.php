@@ -2,9 +2,9 @@
 
 namespace CMS\Shop\Model;
 
-use CMS\Model\Repository;
+use CMS\Model\DatabaseRepository;
 
-final class ProductRepository extends Repository {
+final class ProductRepository extends DatabaseRepository {
 
     protected $name = "shop_product";
 
@@ -18,18 +18,6 @@ final class ProductRepository extends Repository {
 
     public function countProductsInNodes($nodes) {
         return $this->table()->where('node_id', $nodes)->count();
-    }
-
-    public function insertProduct($data) {
-        return $this->table()->insert($data);
-    }
-
-    public function updateProduct($product, array $data) {
-        return $product->update($data);
-    }
-
-    public function removeProduct($product) {
-        return $product->delete();
     }
 
 }

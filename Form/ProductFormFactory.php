@@ -17,17 +17,17 @@ final class ProductFormFactory extends FormFactory {
     }
 
     protected function addForm() {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category', NULL, FALSE), 'node');
         $this->form->addComponent($this->productFacade->getFormContainer(), 'product');
-        $this->form->addSubmit('add', 'Add product');
+        parent::addForm();
     }
 
     protected function editForm($product) {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category', NULL, FALSE), 'node');
         $this->form['node']->setDefaults($product);
         $this->form->addComponent($this->productFacade->getFormContainer($product), 'product');
-        $this->form->addSubmit('edit', 'Edit product');
-        $this->form->addSubmit('delete', 'Delete product')->setAttribute('class', 'btn-danger');
+        parent::editForm($product);
+        $this->deleteForm($product);
     }
 
     protected function add($data) {
