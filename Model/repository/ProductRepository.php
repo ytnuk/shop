@@ -9,15 +9,11 @@ final class ProductRepository extends DatabaseRepository {
     protected $name = "shop_product";
 
     public function getProduct($id) {
-        return $this->table()->get($id);
+        return $this->getOne($id);
     }
 
     public function getProductsInNodes($nodes) {
-        return $this->table()->where('node_id', $nodes)->fetchAll();
-    }
-
-    public function countProductsInNodes($nodes) {
-        return $this->table()->where('node_id', $nodes)->count();
+        return $this->getAll(array('node_id' => $nodes));
     }
 
 }

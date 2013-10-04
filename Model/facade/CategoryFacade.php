@@ -28,7 +28,7 @@ class CategoryFacade extends Facade {
     public function addCategory(array $data) {
         $data['node']['link'] = ':Shop:Category:view';
         $data['node']['link_admin'] = ':Admin:Shop:Category:edit';
-        $node = $this->nodeFacade->addNode($data['node']);
+        $node = $this->nodeFacade->addNode($data['node'], 'shop_category');
         $data['category']['node_id'] = $node->id;
         $category = $this->repository->insert($data['category']);
         $this->nodeFacade->editNode($node, array('link_id' => $category->id));
@@ -43,7 +43,7 @@ class CategoryFacade extends Facade {
     public function deleteCategory($category) {
         $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
         $nodes[] = $category->node_id;
-        if ($this->productFacade->repository->countProductsInNodes($nodes)) {
+        if (count($this->productFacade->repository->getProductsInNodes($nodes))) {
             throw new CategoryNotEmptyException('Category is not empty.');
         } else {
             if ($this->nodeFacade->deleteNode($category->node)) {
