@@ -1,6 +1,5 @@
 {layout $adminLayout}
-{#module}
-<ul class="nav nav-tabs">
+<ul class="nav nav-tabs" n:block="header-navigation">
     <li n:class="$presenter->isLinkCurrent('Home:view')?active">
         <a n:href="Home:view">
             Overview
@@ -17,4 +16,5 @@
         </a>
     </li>
 </ul>
+{#module}
 {include #content}

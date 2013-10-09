@@ -12,6 +12,7 @@ final class CategoryPresenter extends BasePresenter {
      */
     public $categoryFacade;
     private $category;
+    private $categories;
 
     /**
      * @inject
@@ -36,11 +37,16 @@ final class CategoryPresenter extends BasePresenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumbAdd('Edit category: ' . $this->category->node->title);
+        $this->menu->breadcrumbAdd('Edit category');
+        $this->template->category = $this->category;
+    }
+
+    public function actionList() {
+        $this->categories = $this->categoryFacade->repository->getAllCategories();
     }
 
     public function renderList() {
-        
+        $this->template->categories = $this->categories;
     }
 
     protected function createComponentCategoryFormAdd() {

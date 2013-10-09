@@ -2,9 +2,9 @@
 
 namespace CMS\Shop\Form;
 
-use Nette\Forms\Container;
+use CMS\Form\FormContainer;
 
-class CategoryFormContainer extends Container {
+class CategoryFormContainer extends FormContainer {
 
     public function __construct($category = NULL) {
         $this->addTextArea('description', 'Description');

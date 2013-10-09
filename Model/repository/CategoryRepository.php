@@ -12,6 +12,10 @@ final class CategoryRepository extends DatabaseRepository {
         return $this->getOne($id);
     }
 
+    public function getAllCategories($where = NULL, $order = NULL) {
+        return $this->getAll($where, $order);
+    }
+
     /**
      * @return int[]
      */

@@ -1,3 +1,20 @@
-{block content}
-<a n:href="Category:add">Create new category</a>
-<p>category list</p>
+<a class="btn btn-primary" n:href="Category:add" n:block="header-inside">
+    Add category
+</a>
+{#content}
+<table class="table table-bordered table-condensed table-striped table-hover table-responsive">
+    <thead>
+    <th>Title</th>
+    <th>Action</th>
+</thead>
+<tbody n:inner-foreach="$categories as $category">
+    <tr>
+        <td>
+            {$category->node->title}
+        </td>
+        <td>
+            <a class="btn btn-warning" n:href="Category:edit,id=>$category->id">Edit</a>
+        </td>
+    </tr>
+</tbody>
+</table>
