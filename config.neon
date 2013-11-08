@@ -1,7 +1,7 @@
 parameters:
     modules:
         shop:
-            directory: %modules.directory%/Shop
+            directory: %modules.directory%/cms-shop
             styles:
                 directory: %modules.shop.directory%/styles
     components:
