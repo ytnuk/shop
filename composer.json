@@ -2,7 +2,7 @@
 	"name": "vitkutny/cms-shop",
 	"type":"cms-module",
 	"require":{
-		"composer/installers":"dev-master"
+		"composer/installers":"v1.0.*"
 	},
 	"extra":{
 		"installer-name":"Shop"
