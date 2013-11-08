@@ -1,10 +1,14 @@
 {layout $frontLayout}
+{#menu-breadcrumb}{/#}
 {#module}
 <div class="row">
     <div class="col-sm-3">
         {control menu:sidebar shop_category}
     </div>
     <div class="col-sm-9">
-        {include #content}
+        {control menu:breadcrumb}
+        <div class="content">
+            {include #content}
+        </div>
     </div>
 </div>

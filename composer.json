@@ -1,0 +1,10 @@
+{
+	"name": "vitkutny/cms-shop",
+	"type":"cms-module",
+	"require":{
+		"composer/installers":"dev-master"
+	},
+	"extra":{
+		"installer-name":"Shop"
+	}
+}

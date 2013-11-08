@@ -2,9 +2,13 @@ parameters:
     modules:
         shop:
             directory: %modules.directory%/Shop
+            styles:
+                directory: %modules.shop.directory%/styles
     components:
         products:
             directory: %modules.shop.directory%/Component/Products
+    styles:
+        - %modules.shop.styles.directory%/shop-product.css
 services:
     CMS\Shop\Model\CategoryFacade: self
     CMS\Shop\Model\CategoryRepository: self
