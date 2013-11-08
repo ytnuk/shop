@@ -1,10 +1,7 @@
 {
 	"name": "vitkutny/cms-shop",
 	"type":"cms-module",
-	"require":{
-		"composer/installers": "~1.0"
-	},
-	"extra":{
-		"installer-name":"Shop"
+	"autoload":{
+		"classmap":""
 	}
 }
