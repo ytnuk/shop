@@ -1,0 +1,16 @@
+currency: 
+    unit: USD
+    value: 1
+    symbol: $
+    price: $%price%
+category:
+    description: Category description
+    no_product: "There's no product in this category."
+product:
+    description: Description
+    no_description: "There's no description available."
+    parameters: Parameters
+    photos: Photos
+    videos: Videos
+    reviews: Reviews
+    comments: Comments

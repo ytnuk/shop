@@ -1,7 +1,7 @@
 {
-	"name": "vitkutny/cms-shop",
-	"type":"cms-module",
-	"autoload":{
-		"classmap": ["presenters/","Model/","Form/","Component/","Admin/presenters/"]
-	}
+    "name": "vitkutny/cms-shop",
+    "type": "cms-module",
+    "autoload": {
+        "classmap": ["presenters/", "Model/", "Form/", "Component/", "Admin/presenters/"]
+    }
 }

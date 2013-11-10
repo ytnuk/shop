@@ -7,214 +7,217 @@
         <img class="img-thumbnail img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
     </div>
     <div class="col-sm-6">
-        <h3>Description</h3>
+        <h3>{_shop.product.description}</h3>
         <p>
             {if $product->description}
                 {$product->description}
             {else}
-                There's no description available.
-            {/if}
-        </p>
-        <hr>
-        <h3>{$product->price|number} Kč</h3>
-    </div>
-</div>
-<ul class="nav nav-tabs nav-justified">
-    <li class="active">
-        <a href="#description" data-toggle="tab">Description</a>
-    </li>
-    <li>
-        <a href="#parameters" data-toggle="tab">Parameters</a>
-    </li>
-    <li>
-        <a href="#photos" data-toggle="tab">Photos <span class="badge">4</span></a>
-    </li>
-    <li>
-        <a href="#videos" data-toggle="tab">Videos <span class="badge">4</span></a>
-    </li>
-    <li>
-        <a href="#reviews" data-toggle="tab">Reviews <span class="badge">4</span></a>
-    </li>
-    <li>
-        <a href="#comments" data-toggle="tab">Comments <span class="badge">4</span></a>
-    </li>
-</ul>
-
-<div class="tab-content">
-    <div class="tab-pane active" id="description">
-        {if $product->content}
-            {include $productTemplate}
-        {else}
-            <p>There's no product description.</p>
-        {/if}
-    </div>
-    <div class="tab-pane" id="parameters">
-        parameters
-    </div>
-    <div class="tab-pane" id="photos">
-        <div class="row">
-            <ul class="col-block-xs-2 col-block-md-2">
-                <li>
-                    <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://i.alz.cz/ImgW.ashx?fd=f3&cd=NT358f2g" alt="">
-                    </a>
-                </li>
-                <li class="text-center">
-                    <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="thumbnail img-thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="thumbnail img-thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="tab-pane" id="videos">
-        <div class="row">
-            <ul class="col-block-xs-1 col-block-sm-2">
-                <li>
-                    <div class="thumbnail">
-                        <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/aSdXzWs3gkI"></iframe>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail">
-                        <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/mSTpVmlbu2Q"></iframe>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail">
-                        <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/TKzwmB6uzAY"></iframe>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="thumbnail">
-                        <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/P4DvPpW0PRk"></iframe>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="tab-pane" id="reviews">
-
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-                <span class="panel-title">
-                    <i class="icon-user"></i> Zákazník, Plzeň
-                </span>
-                <span class="text-warning">
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star-half-empty"></span>
-                    <span class="icon-star-empty"></span>
-                </span>
-                <span class="pull-right">
-                    <i class="icon-calendar"></i> <small>28.7.2013</small>
-                </span>
-            </div>
-            <div class="panel-body">
-                <p>
-                    bezva dobré ale trochu se mi seká ale to se vypiluje
-                </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled icons-ul text-success">
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> kvalita</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> cena</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> provedení</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výkon</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výdrž baterie</li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled icons-ul text-danger">
-                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> Windows 8 - uvítal bych zde spíš Windows 7</li>
-                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> disk jen 5400 otáček, i když v popisu bylo 7200 ot.</li>
-                        </ul>
+                {_shop.product.no_description}
+                    {/if}
+                    </p>
+                    <hr>
+                    <h3>
+                        {var price = $product->price*$template->translate('shop.currency.value')}
+                        {_shop.currency.price, [price => $template->number($price)]}
+                        </h3>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
-                <span class="panel-title">
-                    <i class="icon-user"></i> Zákazník, Plzeň
-                </span>
-                <span class="text-warning">
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star"></span>
-                    <span class="icon-star-half-empty"></span>
-                    <span class="icon-star-empty"></span>
-                </span>
-                <span class="pull-right">
-                    <i class="icon-calendar"></i> <small>28.7.2013</small>
-                </span>
-            </div>
-            <div class="panel-body">
-                <p>
-                    bezva dobré ale trochu se mi seká ale to se vypiluje
-                </p>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled icons-ul text-success">
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> kvalita</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> cena</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> provedení</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výkon</li>
-                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výdrž baterie</li>
-                        </ul>
+                <ul class="nav nav-tabs nav-justified">
+                    <li class="active">
+                        <a href="#description" data-toggle="tab">{_shop.product.description}</a>
+                    </li>
+                    <li>
+                        <a href="#parameters" data-toggle="tab">{_shop.product.parameters}</a>
+                    </li>
+                    <li>
+                        <a href="#photos" data-toggle="tab">{_shop.product.photos} <span class="badge">4</span></a>
+                    </li>
+                    <li>
+                        <a href="#videos" data-toggle="tab">{_shop.product.videos} <span class="badge">4</span></a>
+                    </li>
+                    <li>
+                        <a href="#reviews" data-toggle="tab">{_shop.product.reviews} <span class="badge">4</span></a>
+                    </li>
+                    <li>
+                        <a href="#comments" data-toggle="tab">{_shop.product.comments} <span class="badge">4</span></a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="description">
+                        {if $product->content}
+                            {include $productTemplate}
+                        {else}
+                            <p>{_shop.product.description_not_available}</p>
+                        {/if}
                     </div>
-                    <div class="col-sm-6">
-                        <ul class="list-unstyled icons-ul text-danger">
-                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> Windows 8 - uvítal bych zde spíš Windows 7</li>
-                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> disk jen 5400 otáček, i když v popisu bylo 7200 ot.</li>
-                        </ul>
+                    <div class="tab-pane" id="parameters">
+                        parameters
                     </div>
+                    <div class="tab-pane" id="photos">
+                        <div class="row">
+                            <ul class="col-block-xs-2 col-block-md-2">
+                                <li>
+                                    <a href="#" class="thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://i.alz.cz/ImgW.ashx?fd=f3&cd=NT358f2g" alt="">
+                                    </a>
+                                </li>
+                                <li class="text-center">
+                                    <a href="#" class="thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="thumbnail img-thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="thumbnail img-thumbnail">
+                                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="videos">
+                        <div class="row">
+                            <ul class="col-block-xs-1 col-block-sm-2">
+                                <li>
+                                    <div class="thumbnail">
+                                        <div class="ratio-16-9">
+                                            <iframe src="http://www.youtube.com/embed/aSdXzWs3gkI"></iframe>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumbnail">
+                                        <div class="ratio-16-9">
+                                            <iframe src="http://www.youtube.com/embed/mSTpVmlbu2Q"></iframe>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumbnail">
+                                        <div class="ratio-16-9">
+                                            <iframe src="http://www.youtube.com/embed/TKzwmB6uzAY"></iframe>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="thumbnail">
+                                        <div class="ratio-16-9">
+                                            <iframe src="http://www.youtube.com/embed/P4DvPpW0PRk"></iframe>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="reviews">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <span class="panel-title">
+                                    <i class="icon-user"></i> Zákazník, Plze�?
+                                </span>
+                                <span class="text-warning">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star-half-empty"></span>
+                                    <span class="icon-star-empty"></span>
+                                </span>
+                                <span class="pull-right">
+                                    <i class="icon-calendar"></i> <small>28.7.2013</small>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    bezva dobré ale trochu se mi seká ale to se vypiluje
+                                </p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled icons-ul text-success">
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> kvalita</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> cena</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> provedení</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výkon</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výdrž baterie</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled icons-ul text-danger">
+                                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> Windows 8 - uvítal bych zde spíš Windows 7</li>
+                                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> disk jen 5400 otáček, i když v popisu bylo 7200 ot.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading clearfix">
+                                <span class="panel-title">
+                                    <i class="icon-user"></i> Zákazník, Plze�?
+                                </span>
+                                <span class="text-warning">
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star"></span>
+                                    <span class="icon-star-half-empty"></span>
+                                    <span class="icon-star-empty"></span>
+                                </span>
+                                <span class="pull-right">
+                                    <i class="icon-calendar"></i> <small>28.7.2013</small>
+                                </span>
+                            </div>
+                            <div class="panel-body">
+                                <p>
+                                    bezva dobré ale trochu se mi seká ale to se vypiluje
+                                </p>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled icons-ul text-success">
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> kvalita</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> cena</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> provedení</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výkon</li>
+                                            <li><i class="icon-li icon-large icon-plus-sign-alt"></i> výdrž baterie</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <ul class="list-unstyled icons-ul text-danger">
+                                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> Windows 8 - uvítal bych zde spíš Windows 7</li>
+                                            <li><i class="icon-li icon-large icon-minus-sign-alt"></i> disk jen 5400 otáček, i když v popisu bylo 7200 ot.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane" id="comments">
+                        <p>comments</p>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="tab-pane" id="comments">
-        <p>comments</p>
-    </div>
-
-</div>

@@ -7,6 +7,8 @@ parameters:
     components:
         products:
             directory: %modules.shop.directory%/Component/Products
+    locale:
+        - %modules.shop.directory%/locale
     styles:
         - %modules.shop.styles.directory%/shop-product.css
 services:
