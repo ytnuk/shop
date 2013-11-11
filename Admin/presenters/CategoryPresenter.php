@@ -20,13 +20,9 @@ final class CategoryPresenter extends BasePresenter {
      */
     public $categoryFormFactory;
 
-    protected function beforeRender() {
-        parent::beforeRender();
-        $this->menu->breadcrumbAdd('Category list', 'Category:list');
-    }
-
     public function renderAdd() {
-        $this->menu->breadcrumbAdd('Add new category');
+        $this->menu->breadcrumbAdd(
+                $this->translator->translate('shop.admin.category_add'), 'Category:add');
     }
 
     public function actionEdit($id) {
@@ -37,7 +33,8 @@ final class CategoryPresenter extends BasePresenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumbAdd('Edit category');
+        $this->menu->breadcrumbAdd(
+                $this->translator->translate('shop.admin.category_edit', NULL, ['category' => $this->category->node->title]), 'Category:edit', $this->category->id);
         $this->template->category = $this->category;
     }
 

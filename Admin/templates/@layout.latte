@@ -1,20 +1,3 @@
 {layout $adminLayout}
-<ul class="nav nav-tabs" n:block="header-prepend">
-    <li n:class="$presenter->isLinkCurrent('Home:view')?active">
-        <a n:href="Home:view">
-            Overview
-        </a>
-    </li>
-    <li n:class="$presenter->isLinkCurrent('Product:*')?active">
-        <a n:href="Product:list">
-            Products
-        </a>
-    </li>
-    <li n:class="$presenter->isLinkCurrent('Category:*')?active">
-        <a n:href="Category:list">
-            Categories
-        </a>
-    </li>
-</ul>
 {#module}
 {include #content}

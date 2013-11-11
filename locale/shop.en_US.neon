@@ -1,16 +1,25 @@
 currency: 
-    unit: USD
-    value: 1
-    symbol: $
     price: $%price%
 category:
     description: Category description
     no_product: "There's no product in this category."
 product:
-    description: Description
+    description: Product description
     no_description: "There's no description available."
     parameters: Parameters
     photos: Photos
     videos: Videos
     reviews: Reviews
     comments: Comments
+admin:
+    overview: Overview
+    products: Products
+    categories: Categories
+    category_add: Add new category
+    category_edit: 'Edit category: %category%'
+    product_add: Add new product
+    product_edit: 'Edit product: %product%'
+form:
+    description: Description
+    content: Content
+    price: Price

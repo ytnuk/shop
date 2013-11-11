@@ -17,14 +17,16 @@
                     </p>
                     <hr>
                     <h3>
-                        {var price = $product->price*$template->translate('shop.currency.value')}
-                        {_shop.currency.price, [price => $template->number($price)]}
+                        {_shop.currency.price, [price => $template->number($product->price)]}
                         </h3>
                     </div>
                 </div>
                 <ul class="nav nav-tabs nav-justified">
                     <li class="active">
-                        <a href="#description" data-toggle="tab">{_shop.product.description}</a>
+                        <a href="#description" data-toggle="tab">
+                            <i class="icon-home icon-large"></i>
+                            <span class="visible-xs">{_shop.product.description}</span>
+                        </a>
                     </li>
                     <li>
                         <a href="#parameters" data-toggle="tab">{_shop.product.parameters}</a>

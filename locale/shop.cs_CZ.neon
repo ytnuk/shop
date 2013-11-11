@@ -1,16 +1,25 @@
-currency: 
-    unit: CZK
-    value: 20.2028365
-    symbol: Kč
+currency:
     price: %price% Kč
 category:
     description: Popis kategorie
-    no_product: "V této kategorii se nenachází žádný produkt."
+    no_product: V této kategorii se nenachází žádný produkt.
 product:
-    description: Popis
-    no_description: "Popis produktu není k dispozici."
+    description: Popis produktu
+    no_description: Popis produktu není k dispozici.
     parameters: Parametry
-    photos: Fotky
-    videos: Videa
+    photos: Foto
+    videos: Video
     reviews: Hodnocení
     comments: Komentáře
+admin:
+    overview: Přehled
+    products: Produkty
+    categories: Kategorie
+    category_add: Přidat kategorii
+    category_edit: 'Upravit kategorii: %category%'
+    product_add: Přidat produkt
+    product_edit: 'Upravit produkt: %product%'
+form:
+    description: Krátký popis
+    content: Popis
+    price: Cena

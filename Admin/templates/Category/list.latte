@@ -1,7 +1,5 @@
-<a class="btn btn-primary" n:href="Category:add" n:block="header-inside">
-    Add category
-</a>
 {#content}
+<a class="btn btn-primary" n:href="Category:add">{_shop.admin.category_add}</a>
 <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
     <thead>
     <th>Title</th>
@@ -13,7 +11,7 @@
             {$category->node->title}
         </td>
         <td>
-            <a class="btn btn-warning" n:href="Category:edit,id=>$category->id">Edit</a>
+            <a class="btn btn-warning" n:href="Category:edit,id=>$category->id">{_form.edit}</a>
         </td>
     </tr>
 </tbody>

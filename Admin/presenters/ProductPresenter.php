@@ -19,13 +19,9 @@ final class ProductPresenter extends BasePresenter {
      */
     public $productFormFactory;
 
-    protected function beforeRender() {
-        parent::beforeRender();
-        $this->menu->breadcrumbAdd('Product list', 'Product:list');
-    }
-
     public function renderAdd() {
-        $this->menu->breadcrumbAdd('Add new product');
+        $this->menu->breadcrumbAdd(
+                $this->translator->translate('shop.admin.product_add'), 'Product:add');
     }
 
     public function actionEdit($id) {
@@ -36,11 +32,8 @@ final class ProductPresenter extends BasePresenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumbAdd('Edit product: ' . $this->product->title);
-    }
-
-    public function renderList() {
-        
+        $this->menu->breadcrumbAdd(
+                $this->translator->translate('shop.admin.product_edit', NULL, ['product' => $this->product->title]), 'Product:edit', $this->product->id);
     }
 
     protected function createComponentProductFormAdd() {
