@@ -12,10 +12,10 @@ parameters:
     styles:
         - %modules.shop.styles.directory%/shop-product.css
 services:
-    CMS\Shop\Model\CategoryFacade: self
-    CMS\Shop\Model\CategoryRepository: self
-    CMS\Shop\Form\CategoryFormFactory: self
-    CMS\Shop\Model\ProductFacade: self
-    CMS\Shop\Model\ProductRepository: self
-    CMS\Shop\Form\ProductFormFactory: self
-    CMS\Shop\Component\Products\ProductsControl: self
+    - CMS\Shop\Model\CategoryFacade
+    - CMS\Shop\Model\CategoryRepository
+    - CMS\Shop\Form\CategoryFormFactory
+    - CMS\Shop\Model\ProductFacade
+    - CMS\Shop\Model\ProductRepository
+    - CMS\Shop\Form\ProductFormFactory
+    - CMS\Shop\Component\Products\ProductsControl
