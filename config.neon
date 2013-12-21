@@ -15,7 +15,9 @@ services:
     - CMS\Shop\Model\CategoryFacade
     - CMS\Shop\Model\CategoryRepository
     - CMS\Shop\Form\CategoryFormFactory
+
     - CMS\Shop\Model\ProductFacade
     - CMS\Shop\Model\ProductRepository
     - CMS\Shop\Form\ProductFormFactory
+
     - CMS\Shop\Component\Products\ProductsControl

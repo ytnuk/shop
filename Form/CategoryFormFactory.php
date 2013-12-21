@@ -4,7 +4,6 @@ namespace CMS\Shop\Form;
 
 use CMS\Form\FormFactory;
 use CMS\Menu\Model\NodeFacade;
-use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryFacade;
 
 final class CategoryFormFactory extends FormFactory {
@@ -43,13 +42,8 @@ final class CategoryFormFactory extends FormFactory {
     }
 
     protected function delete($category) {
-        try {
-            $this->categoryFacade->deleteCategory($category);
-            $this->presenter->redirect('Category:list');
-        } catch (CategoryNotEmptyException $e) {
-            $this->presenter->flashMessage($e->getMessage(), 'warning');
-            $this->presenter->redirect('this');
-        }
+        $this->categoryFacade->deleteCategory($category);
+        $this->presenter->redirect('Category:list');
     }
 
 }

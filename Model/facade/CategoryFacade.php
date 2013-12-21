@@ -3,11 +3,11 @@
 namespace CMS\Shop\Model;
 
 use CMS\Model\Facade;
-use CMS\Shop\Model\CategoryNotEmptyException;
 use CMS\Shop\Model\CategoryRepository;
 use CMS\Menu\Model\NodeFacade;
 use CMS\Shop\Model\ProductFacade;
 use CMS\Shop\Form\CategoryFormContainer;
+use CMS\Model\Exception\ModelException;
 
 class CategoryFacade extends Facade {
 
@@ -43,13 +43,11 @@ class CategoryFacade extends Facade {
     public function deleteCategory($category) {
         $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
         $nodes[] = $category->node_id;
-        if (count($this->productFacade->repository->getProductsInNodes($nodes))) {
-            throw new CategoryNotEmptyException('Category is not empty.');
-        } else {
-            if ($this->nodeFacade->deleteNode($category->node)) {
-                return $this->repository->remove($category);
-            }
+        if ($this->productFacade->repository->getProductsInNodes($nodes)) {
+            throw new ModelException('Category is not empty.');
         }
+        $this->nodeFacade->deleteNode($category->node);
+        return $this->repository->remove($category);
     }
 
 }
