@@ -1,6 +1,6 @@
 {block content}
-<a class="btn btn-primary" n:href="Category:add">{_shop.admin.category_add}</a>
-<table class="table table-bordered table-condensed table-striped table-hover table-responsive">
+<a class="btn btn-primary" n:href="Category:add">{_shop.admin.category.add}</a>
+<table class="table table-bordered table-striped table-hover table-responsive">
     <thead>
     <th>Title</th>
     <th>Action</th>
@@ -11,7 +11,7 @@
             {$category->node->title}
         </td>
         <td>
-            <a class="btn btn-warning" n:href="Category:edit,id=>$category->id">{_form.edit}</a>
+            <a class="btn btn-warning" n:href="Category:edit,id=>$category->id">{_form.button.edit}</a>
         </td>
     </tr>
 </tbody>

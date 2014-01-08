@@ -1,24 +1,23 @@
 <?php
 
-namespace CMS\Shop\Model;
+namespace CMS\Shop\Product\Model;
 
-use CMS\Model\Facade;
-use CMS\Shop\Model\ProductRepository;
-use CMS\Menu\Model\NodeFacade;
-use CMS\Shop\Form\ProductFormContainer;
+use CMS\Model;
+use CMS\Shop\Product;
+use CMS\Menu\Node;
 
-class ProductFacade extends Facade {
+class Facade extends Model\Facade {
 
     public $repository;
     private $categoryFacade;
 
-    public function __construct(ProductRepository $repository, NodeFacade $categoryFacade) {
+    public function __construct(Product\Model\Repository $repository, Node\Model\Facade $categoryFacade) {
         $this->repository = $repository;
         $this->categoryFacade = $categoryFacade;
     }
 
     public function getFormContainer($product = NULL) {
-        return new ProductFormContainer($product);
+        return new Product\Form\Container($product);
     }
 
     public function addProduct(array $data) {

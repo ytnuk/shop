@@ -1,12 +1,12 @@
 <?php
 
-namespace CMS\Shop\Model;
+namespace CMS\Shop\Category\Model;
 
-use CMS\Model\DatabaseRepository;
+use CMS\Database;
 
-final class CategoryRepository extends DatabaseRepository {
+final class Repository extends Database\Repository {
 
-    protected $name = 'shop_category';
+    protected $table = 'shop_category';
 
     public function getCategory($id) {
         return $this->getOne($id);

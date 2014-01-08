@@ -13,13 +13,21 @@ product:
     comments: Comments
 admin:
     overview: Overview
-    products: Products
-    categories: Categories
-    category_add: Add new category
-    category_edit: 'Edit category: %category%'
-    product_add: Add new product
-    product_edit: 'Edit product: %product%'
-form:
-    description: Description
-    content: Content
-    price: Price
+    category:
+        add: Add new category
+        edit: 'Edit category: %category%'
+        list: Categories
+        form:
+            description:
+                label: Description
+    product:
+        add: Add new product
+        edit: 'Edit product: %product%'
+        list: Products
+        form:
+            description:
+                label: Description
+            content:
+                label: Content
+            price:
+                label: Price

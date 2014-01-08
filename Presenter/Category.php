@@ -1,18 +1,16 @@
 <?php
 
-namespace CMS\Shop;
+namespace CMS\Shop\Presenter;
 
-final class CategoryPresenter extends BasePresenter {
+use CMS\Shop\Presenter\Base;
+
+final class Category extends Base {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\CategoryFacade
+     * @var \CMS\Shop\Category\Model\Facade
      */
     public $categoryFacade;
-
-    /**
-     * @var Nette\Database\Table\ActiveRow
-     */
     private $category;
 
     /**

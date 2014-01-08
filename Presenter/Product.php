@@ -1,38 +1,29 @@
 <?php
 
-namespace CMS\Shop;
+namespace CMS\Shop\Presenter;
 
-final class ProductPresenter extends BasePresenter {
+use CMS\Shop\Presenter\Base;
+
+final class Product extends Base {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\ProductFacade
+     * @var \CMS\Shop\Product\Model\Facade
      */
     public $productFacade;
-
-    /**
-     * @var Nette\Database\Table\ActiveRow
-     */
     private $product;
-    private $productTemplate;
 
-    /**
-     * @param int $id
-     */
     public function actionView($id) {
         $this->product = $this->productFacade->repository->getProduct($id);
         if (!$this->product) {
             $this->error();
         }
-        $this->productTemplate = $this->createTemplate('Nette\Templating\Template');
-        $this->productTemplate->setSource($this->product->content);
         $this->menu->setActive($this->product->node);
     }
 
     public function renderView() {
         $this->menu->breadcrumbAdd($this->product->title);
         $this->template->product = $this->product;
-        $this->template->productTemplate = $this->productTemplate;
     }
 
 }

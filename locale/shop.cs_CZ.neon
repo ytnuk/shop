@@ -13,13 +13,21 @@ product:
     comments: Komentáře
 admin:
     overview: Přehled
-    products: Produkty
-    categories: Kategorie
-    category_add: Přidat kategorii
-    category_edit: 'Upravit kategorii: %category%'
-    product_add: Přidat produkt
-    product_edit: 'Upravit produkt: %product%'
-form:
-    description: Krátký popis
-    content: Popis
-    price: Cena
+    category:
+        add: Přidat kategorii
+        edit: 'Upravit kategorii: %category%'
+        list: Kategorie
+        form:
+            description:
+                label: Krátký popis
+    product:
+        add: Přidat produkt
+        edit: 'Upravit produkt: %product%'
+        list: Produkty
+        form:
+            description:
+                label: Krátký popis
+            content:
+                label: Popis
+            price:
+                label: Cena

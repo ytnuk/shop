@@ -1,8 +1,10 @@
 <?php
 
-namespace CMS\Shop;
+namespace CMS\Shop\Presenter;
 
-final class HomePresenter extends BasePresenter {
+use CMS\Shop\Presenter\Base;
+
+final class Home extends Base {
 
     public function actionView() {
         $this->menu->setActive(':Shop:Home:view');

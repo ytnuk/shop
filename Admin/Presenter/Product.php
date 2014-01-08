@@ -1,39 +1,39 @@
 <?php
 
-namespace CMS\Admin\Shop;
+namespace CMS\Shop\Admin\Presenter;
 
-use Nette\Application\BadRequestException;
+use CMS\Shop\Admin\Presenter\Base;
 
-final class ProductPresenter extends BasePresenter {
+final class Product extends Base {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\ProductFacade
+     * @var \CMS\Shop\Product\Model\Facade
      */
     public $productFacade;
     private $product;
 
     /**
      * @inject
-     * @var \CMS\Shop\Form\ProductFormFactory
+     * @var \CMS\Shop\Product\Form\Factory
      */
     public $productFormFactory;
 
     public function renderAdd() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.product_add'), 'Product:add');
+                $this->translator->translate('shop.admin.product.add'), 'Product:add');
     }
 
     public function actionEdit($id) {
         $this->product = $this->productFacade->repository->getProduct($id);
         if (!$this->product) {
-            throw new BadRequestException;
+            $this->error();
         }
     }
 
     public function renderEdit() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.product_edit', NULL, ['product' => $this->product->title]), 'Product:edit', $this->product->id);
+                $this->translator->translate('shop.admin.product.edit', NULL, ['product' => $this->product->title]), 'Product:edit', $this->product->id);
     }
 
     protected function createComponentProductFormAdd() {

@@ -1,14 +1,14 @@
 <?php
 
-namespace CMS\Admin\Shop;
+namespace CMS\Shop\Admin\Presenter;
 
-use Nette\Application\BadRequestException;
+use CMS\Shop\Admin\Presenter\Base;
 
-final class CategoryPresenter extends BasePresenter {
+final class Category extends Base {
 
     /**
      * @inject
-     * @var \CMS\Shop\Model\CategoryFacade
+     * @var \CMS\Shop\Category\Model\Facade
      */
     public $categoryFacade;
     private $category;
@@ -16,25 +16,25 @@ final class CategoryPresenter extends BasePresenter {
 
     /**
      * @inject
-     * @var \CMS\Shop\Form\CategoryFormFactory
+     * @var \CMS\Shop\Category\Form\Factory
      */
     public $categoryFormFactory;
 
     public function renderAdd() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.category_add'), 'Category:add');
+                $this->translator->translate('shop.admin.category.add'), 'Category:add');
     }
 
     public function actionEdit($id) {
         $this->category = $this->categoryFacade->repository->getCategory($id);
         if (!$this->category) {
-            throw new BadRequestException;
+            $this->error();
         }
     }
 
     public function renderEdit() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.category_edit', NULL, ['category' => $this->category->node->title]), 'Category:edit', $this->category->id);
+                $this->translator->translate('shop.admin.category.edit', NULL, ['category' => $this->category->node->title]), 'Category:edit', $this->category->id);
         $this->template->category = $this->category;
     }
 

@@ -1,12 +1,12 @@
 <?php
 
-namespace CMS\Shop\Model;
+namespace CMS\Shop\Product\Model;
 
-use CMS\Model\DatabaseRepository;
+use CMS\Database;
 
-final class ProductRepository extends DatabaseRepository {
+final class Repository extends Database\Repository {
 
-    protected $name = "shop_product";
+    protected $table = "shop_product";
 
     public function getProduct($id) {
         return $this->getOne($id);

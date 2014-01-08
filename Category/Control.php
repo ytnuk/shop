@@ -1,30 +1,19 @@
 <?php
 
-namespace CMS\Shop\Component\Products;
+namespace CMS\Shop\Category;
 
-use CMS\Component\BaseControl;
-use CMS\Shop\Model\CategoryFacade;
-use CMS\Shop\Model\ProductFacade;
-use CMS\Menu\Model\NodeFacade;
+use CMS;
+use CMS\Shop\Category;
+use CMS\Shop\Product;
+use CMS\Menu\Node;
 
-final class ProductsControl extends BaseControl {
+final class Control extends CMS\Control {
 
-    /**
-     * @var CategoryFacade
-     */
     public $categoryFacade;
-
-    /**
-     * @var ProductFacade
-     */
     public $productFacade;
-
-    /**
-     * @var NodeFacade
-     */
     public $nodeFacade;
 
-    public function __construct(CategoryFacade $categoryFacade, ProductFacade $productFacade, NodeFacade $nodeFacade) {
+    public function __construct(Category\Model\Facade $categoryFacade, Product\Model\Facade $productFacade, Node\Model\Facade $nodeFacade) {
         $this->categoryFacade = $categoryFacade;
         $this->productFacade = $productFacade;
         $this->nodeFacade = $nodeFacade;
@@ -38,7 +27,7 @@ final class ProductsControl extends BaseControl {
         $template->render();
     }
 
-    public function renderCategory($category) {
+    public function renderProducts($category) {
         $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
         $nodes[] = $category->node_id;
         $template = $this->template;

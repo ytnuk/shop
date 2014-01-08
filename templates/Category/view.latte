@@ -2,10 +2,10 @@
 <div class="page-header">
     <h2>{$category->node->title}</h2>
 </div>
-{control products:category $category}
-{ifset $category->description}
+{control category:products $category}
+{if $category->description}
     <div class="page-header">
         <h3>{_shop.category.description} <small>{$category->node->title}</small></h3>
     </div>
     {$category->description|noescape}
-{/ifset}
+{/if}

@@ -1,34 +1,32 @@
 <?php
 
-namespace CMS\Shop\Model;
+namespace CMS\Shop\Category\Model;
 
-use CMS\Model\Facade;
-use CMS\Shop\Model\CategoryRepository;
-use CMS\Menu\Model\NodeFacade;
-use CMS\Shop\Model\ProductFacade;
-use CMS\Shop\Form\CategoryFormContainer;
-use CMS\Model\Exception\ModelException;
+use CMS\Shop\Category;
+use CMS\Menu\Node;
+use CMS\Shop\Product;
+use CMS\Model;
 
-class CategoryFacade extends Facade {
+class Facade extends Model\Facade {
 
     public $repository;
     private $nodeFacade;
     private $productFacade;
 
-    public function __construct(CategoryRepository $repository, NodeFacade $nodeFacade, ProductFacade $productFacade) {
+    public function __construct(Category\Model\Repository $repository, Node\Model\Facade $nodeFacade, Product\Model\Facade $productFacade) {
         $this->repository = $repository;
         $this->nodeFacade = $nodeFacade;
         $this->productFacade = $productFacade;
     }
 
     public function getFormContainer($category = NULL) {
-        return new CategoryFormContainer($category);
+        return new Category\Form\Container($category);
     }
 
     public function addCategory(array $data) {
         $data['node']['link'] = ':Shop:Category:view';
         $data['node']['link_admin'] = ':Admin:Shop:Category:edit';
-        $node = $this->nodeFacade->addNode($data['node'], 'shop_category');
+        $node = $this->nodeFacade->addNode($data['node']);
         $data['category']['node_id'] = $node->id;
         $category = $this->repository->insert($data['category']);
         $this->nodeFacade->editNode($node, array('link_id' => $category->id));
@@ -44,7 +42,7 @@ class CategoryFacade extends Facade {
         $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
         $nodes[] = $category->node_id;
         if ($this->productFacade->repository->getProductsInNodes($nodes)) {
-            throw new ModelException('Category is not empty.');
+            throw new Model\Exception('Category is not empty.');
         }
         $this->nodeFacade->deleteNode($category->node);
         return $this->repository->remove($category);

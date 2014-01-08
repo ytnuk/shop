@@ -1,30 +1,30 @@
 <?php
 
-namespace CMS\Shop\Form;
+namespace CMS\Shop\Product\Form;
 
-use CMS\Form\FormFactory;
-use CMS\Menu\Model\NodeFacade;
-use CMS\Shop\Model\ProductFacade;
+use CMS\Form;
+use CMS\Menu\Node;
+use CMS\Shop\Product;
 
-final class ProductFormFactory extends FormFactory {
+final class Factory extends Form\Factory {
 
     private $nodeFacade;
     private $productFacade;
 
-    public function __construct(NodeFacade $nodeFacade, ProductFacade $productFacade) {
+    public function __construct(Node\Model\Facade $nodeFacade, Product\Model\Facade $productFacade) {
         $this->nodeFacade = $nodeFacade;
         $this->productFacade = $productFacade;
     }
 
     protected function addForm() {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category', NULL, FALSE), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop-category', NULL, FALSE), 'node');
         $this->form->addComponent($this->productFacade->getFormContainer(), 'product');
         parent::addForm();
     }
 
     protected function editForm($product) {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category', NULL, FALSE), 'node');
-        $this->form['node']->setDefaults($product);
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop-category', NULL, FALSE), 'node');
+        $this->form->getComponent('node')->setDefaults($product);
         $this->form->addComponent($this->productFacade->getFormContainer($product), 'product');
         parent::editForm($product);
         $this->deleteForm($product);

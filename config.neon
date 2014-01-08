@@ -4,20 +4,16 @@ parameters:
             directory: %modules.directory%/cms-shop
             styles:
                 directory: %modules.shop.directory%/styles
-    components:
-        products:
-            directory: %modules.shop.directory%/Component/Products
     locale:
         - %modules.shop.directory%/locale
     styles:
         - %modules.shop.styles.directory%/shop-product.css
 services:
-    - CMS\Shop\Model\CategoryFacade
-    - CMS\Shop\Model\CategoryRepository
-    - CMS\Shop\Form\CategoryFormFactory
+    - CMS\Shop\Category\Model\Facade
+    - CMS\Shop\Category\Model\Repository
+    - CMS\Shop\Category\Form\Factory
+    - CMS\Shop\Category\Control
 
-    - CMS\Shop\Model\ProductFacade
-    - CMS\Shop\Model\ProductRepository
-    - CMS\Shop\Form\ProductFormFactory
-
-    - CMS\Shop\Component\Products\ProductsControl
+    - CMS\Shop\Product\Model\Facade
+    - CMS\Shop\Product\Model\Repository
+    - CMS\Shop\Product\Form\Factory

@@ -1,29 +1,29 @@
 <?php
 
-namespace CMS\Shop\Form;
+namespace CMS\Shop\Category\Form;
 
-use CMS\Form\FormFactory;
-use CMS\Menu\Model\NodeFacade;
-use CMS\Shop\Model\CategoryFacade;
+use CMS\Form;
+use CMS\Menu\Node;
+use CMS\Shop\Category;
 
-final class CategoryFormFactory extends FormFactory {
+final class Factory extends Form\Factory {
 
     private $nodeFacade;
     private $categoryFacade;
 
-    public function __construct(NodeFacade $nodeFacade, CategoryFacade $categoryFacade) {
+    public function __construct(Node\Model\Facade $nodeFacade, Category\Model\Facade $categoryFacade) {
         $this->nodeFacade = $nodeFacade;
         $this->categoryFacade = $categoryFacade;
     }
 
     protected function addForm() {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop-category'), 'node');
         $this->form->addComponent($this->categoryFacade->getFormContainer(), 'category');
         parent::addForm();
     }
 
     protected function editForm($category) {
-        $this->form->addComponent($this->nodeFacade->getFormContainer($category->node->tree, $category->node), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop-category', $category->node), 'node');
         $this->form->addComponent($this->categoryFacade->getFormContainer($category), 'category');
         parent::editForm($category);
         if ($category->node->node_id) {

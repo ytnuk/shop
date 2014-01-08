@@ -1,0 +1,29 @@
+<div class="component-products-list">
+    <div class="row" n:if="$products">
+        <ul n:inner-foreach="$products as $product" class="col-block-xs-2 col-block-sm-3">
+            <li>
+                <div class="panel panel-primary text-center">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <a href="{plink Product:view, id=>$product->id}">
+                                {$product->title}
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <a href="{plink Product:view, id=>$product->id}" class="thumbnail">
+                            <img class="img-rounded img-responsive" src="http://i.alz.cz/ImgW.ashx?fd=f3&cd=NT358f2g" alt="">
+                        </a>
+                        <p>
+                            <small>{if $product->description}{$product->description|truncate:100}{else}{_shop.product.no_description}{/if}</small>
+                        </p>
+                    </div>
+                    <div class="panel-footer">
+                        <span class="panel-title">{_shop.currency.price, [price => $template->number($product->price)]}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="alert alert-info" n:if="!$products">{_shop.category.no_product}</div>
+</div>
