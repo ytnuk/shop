@@ -1,11 +1,6 @@
 parameters:
     modules:
         shop:
-            directory: %modules.directory%/cms-shop/CMS/Shop
-            styles:
-                directory: %modules.shop.directory%/styles
+            directory: %modules.directory%/cms-shop
     locale:
         - %modules.shop.directory%/locale
-includes:
-    - CMS/Shop/Category/config.neon
-    - CMS/Shop/Product/config.neon
