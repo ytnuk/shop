@@ -1,6 +1,6 @@
 {
     "name": "vitkutny/cms-shop",
     "autoload": {
-        "psr-0": {"CMS\\Shop": ""}
+        "psr-4": {"CMS\\Shop\\": ""}
     }
 }

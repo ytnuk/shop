@@ -6,14 +6,6 @@ parameters:
                 directory: %modules.shop.directory%/styles
     locale:
         - %modules.shop.directory%/locale
-    styles:
-        - %modules.shop.styles.directory%/shop-product.css
-services:
-    - CMS\Shop\Category\Model\Facade
-    - CMS\Shop\Category\Model\Repository
-    - CMS\Shop\Category\Form\Factory
-    - CMS\Shop\Category\Control
-
-    - CMS\Shop\Product\Model\Facade
-    - CMS\Shop\Product\Model\Repository
-    - CMS\Shop\Product\Form\Factory
+includes:
+    - CMS/Shop/Category/config.neon
+    - CMS/Shop/Product/config.neon

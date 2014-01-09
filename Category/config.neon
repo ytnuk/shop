@@ -1,0 +1,5 @@
+services:
+    - CMS\Shop\Category\Model\Facade
+    - CMS\Shop\Category\Model\Repository
+    - CMS\Shop\Category\Form\Factory
+    - CMS\Shop\Category\Control
