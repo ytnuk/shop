@@ -1,14 +1,14 @@
 <?php
 
-namespace CMS\Shop\Presenter;
+namespace WebEdit\Shop\Presenter;
 
-use CMS\Shop\Presenter\Base;
+use WebEdit\Shop\Presenter\Base;
 
 final class Category extends Base {
 
     /**
      * @inject
-     * @var \CMS\Shop\Category\Model\Facade
+     * @var \WebEdit\Shop\Category\Model\Facade
      */
     public $categoryFacade;
     private $category;

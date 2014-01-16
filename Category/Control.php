@@ -1,13 +1,13 @@
 <?php
 
-namespace CMS\Shop\Category;
+namespace WebEdit\Shop\Category;
 
-use CMS;
-use CMS\Shop\Category;
-use CMS\Shop\Product;
-use CMS\Menu\Node;
+use WebEdit;
+use WebEdit\Shop\Category;
+use WebEdit\Shop\Product;
+use WebEdit\Menu\Node;
 
-final class Control extends CMS\Control {
+final class Control extends WebEdit\Control {
 
     public $categoryFacade;
     public $productFacade;

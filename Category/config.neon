@@ -1,5 +1,5 @@
 services:
-    - CMS\Shop\Category\Model\Facade
-    - CMS\Shop\Category\Model\Repository
-    - CMS\Shop\Category\Form\Factory
-    - CMS\Shop\Category\Control
+    - WebEdit\Shop\Category\Model\Facade
+    - WebEdit\Shop\Category\Model\Repository
+    - WebEdit\Shop\Category\Form\Factory
+    - WebEdit\Shop\Category\Control

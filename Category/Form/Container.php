@@ -1,8 +1,8 @@
 <?php
 
-namespace CMS\Shop\Category\Form;
+namespace WebEdit\Shop\Category\Form;
 
-use CMS\Form;
+use WebEdit\Form;
 
 class Container extends Form\Container {
 

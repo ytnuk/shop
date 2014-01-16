@@ -1,14 +1,14 @@
 <?php
 
-namespace CMS\Shop\Presenter;
+namespace WebEdit\Shop\Presenter;
 
-use CMS\Shop\Presenter\Base;
+use WebEdit\Shop\Presenter\Base;
 
 final class Product extends Base {
 
     /**
      * @inject
-     * @var \CMS\Shop\Product\Model\Facade
+     * @var \WebEdit\Shop\Product\Model\Facade
      */
     public $productFacade;
     private $product;

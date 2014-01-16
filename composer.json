@@ -1,6 +1,6 @@
 {
-    "name": "vitkutny/cms-shop",
+    "name": "webedit/shop",
     "autoload": {
-        "psr-4": {"CMS\\Shop\\": ""}
+        "psr-4": {"WebEdit\\Shop\\": ""}
     }
 }

@@ -1,6 +1,6 @@
 parameters:
     modules:
         shop:
-            directory: %modules.directory%/cms-shop
+            directory: %modules.directory%/shop
     locale:
         - %modules.shop.directory%/locale

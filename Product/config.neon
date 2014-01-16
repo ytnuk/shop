@@ -8,6 +8,6 @@ parameters:
     styles:
         - %modules.shop.product.styles.directory%/shop-product.css
 services:
-    - CMS\Shop\Product\Model\Facade
-    - CMS\Shop\Product\Model\Repository
-    - CMS\Shop\Product\Form\Factory
+    - WebEdit\Shop\Product\Model\Facade
+    - WebEdit\Shop\Product\Model\Repository
+    - WebEdit\Shop\Product\Form\Factory

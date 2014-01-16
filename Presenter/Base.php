@@ -1,14 +1,14 @@
 <?php
 
-namespace CMS\Shop\Presenter;
+namespace WebEdit\Shop\Presenter;
 
-use CMS\Front\Presenter\Base as Presenter;
+use WebEdit\Front\Presenter\Base as Presenter;
 
 abstract class Base extends Presenter {
 
     /**
      * @inject
-     * @var \CMS\Shop\Category\Control
+     * @var \WebEdit\Shop\Category\Control
      */
     public $categoryControl;
 

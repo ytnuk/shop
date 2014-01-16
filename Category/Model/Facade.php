@@ -1,11 +1,11 @@
 <?php
 
-namespace CMS\Shop\Category\Model;
+namespace WebEdit\Shop\Category\Model;
 
-use CMS\Shop\Category;
-use CMS\Menu\Node;
-use CMS\Shop\Product;
-use CMS\Model;
+use WebEdit\Shop\Category;
+use WebEdit\Menu\Node;
+use WebEdit\Shop\Product;
+use WebEdit\Model;
 
 class Facade extends Model\Facade {
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace CMS\Shop\Admin\Presenter;
+namespace WebEdit\Shop\Admin\Presenter;
 
-use CMS\Shop\Admin\Presenter\Base;
+use WebEdit\Shop\Admin\Presenter\Base;
 
 final class Home extends Base {
     

@@ -1,8 +1,8 @@
 <?php
 
-namespace CMS\Shop\Product\Model;
+namespace WebEdit\Shop\Product\Model;
 
-use CMS\Database;
+use WebEdit\Database;
 
 final class Repository extends Database\Repository {
 

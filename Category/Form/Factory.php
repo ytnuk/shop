@@ -1,10 +1,10 @@
 <?php
 
-namespace CMS\Shop\Category\Form;
+namespace WebEdit\Shop\Category\Form;
 
-use CMS\Form;
-use CMS\Menu\Node;
-use CMS\Shop\Category;
+use WebEdit\Form;
+use WebEdit\Menu\Node;
+use WebEdit\Shop\Category;
 
 final class Factory extends Form\Factory {
 
