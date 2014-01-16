@@ -19,6 +19,11 @@ final class Product extends Base {
      */
     public $productFormFactory;
 
+    protected function startup() {
+        parent::startup();
+        $this->menu->setActive(':Shop:Admin:Product:list');
+    }
+
     public function renderAdd() {
         $this->menu->breadcrumbAdd(
                 $this->translator->translate('shop.admin.product.add'), 'Product:add');

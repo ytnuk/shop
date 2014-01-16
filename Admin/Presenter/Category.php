@@ -20,6 +20,11 @@ final class Category extends Base {
      */
     public $categoryFormFactory;
 
+    protected function startup() {
+        parent::startup();
+        $this->menu->setActive(':Shop:Admin:Category:list');
+    }
+
     public function renderAdd() {
         $this->menu->breadcrumbAdd(
                 $this->translator->translate('shop.admin.category.add'), 'Category:add');
