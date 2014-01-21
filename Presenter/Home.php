@@ -2,9 +2,9 @@
 
 namespace WebEdit\Shop\Presenter;
 
-use WebEdit\Shop\Presenter\Base;
+use WebEdit\Shop;
 
-final class Home extends Base {
+final class Home extends Shop\Presenter {
 
     public function actionView() {
         $this->menu->setActive(':Shop:Home:view');

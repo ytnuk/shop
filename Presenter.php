@@ -1,10 +1,10 @@
 <?php
 
-namespace WebEdit\Shop\Presenter;
+namespace WebEdit\Shop;
 
-use WebEdit\Front\Presenter\Base as Presenter;
+use WebEdit\Front;
 
-abstract class Base extends Presenter {
+abstract class Presenter extends Front\Presenter {
 
     /**
      * @inject

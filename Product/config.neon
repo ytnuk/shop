@@ -1,12 +1,12 @@
 parameters:
-    modules:
+    webedit:
         shop:
             product:
-                directory: %modules.shop.directory%/Product
+                directory: %webedit.shop.directory%/Product
                 styles:
-                    directory: %modules.shop.product.directory%/styles
+                    directory: %webedit.shop.product.directory%/styles
     styles:
-        - %modules.shop.product.styles.directory%/shop-product.css
+        - %webedit.shop.product.styles.directory%/shop-product.css
 services:
     - WebEdit\Shop\Product\Model\Facade
     - WebEdit\Shop\Product\Model\Repository

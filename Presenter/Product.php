@@ -2,9 +2,9 @@
 
 namespace WebEdit\Shop\Presenter;
 
-use WebEdit\Shop\Presenter\Base;
+use WebEdit\Shop;
 
-final class Product extends Base {
+final class Product extends Shop\Presenter {
 
     /**
      * @inject
