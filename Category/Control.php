@@ -23,7 +23,7 @@ final class Control extends WebEdit\Control {
         $nodes = $this->categoryFacade->repository->getIdsOfParentNodes();
         $template = $this->template;
         $template->products = $this->productFacade->repository->getProductsInNodes($nodes);
-        $template->setFile(__DIR__ . "/templates/list.latte");
+        $template->setFile(__DIR__ . "/templates/Control/list.latte");
         $template->render();
     }
 
@@ -32,7 +32,7 @@ final class Control extends WebEdit\Control {
         $nodes[] = $category->node_id;
         $template = $this->template;
         $template->products = $this->productFacade->repository->getProductsInNodes($nodes);
-        $template->setFile(__DIR__ . "/templates/list.latte");
+        $template->setFile(__DIR__ . "/templates/Control/list.latte");
         $template->render();
     }
 

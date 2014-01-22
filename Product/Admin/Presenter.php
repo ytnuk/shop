@@ -1,10 +1,10 @@
 <?php
 
-namespace WebEdit\Shop\Admin\Presenter;
+namespace WebEdit\Shop\Product\Admin;
 
 use WebEdit\Shop;
 
-final class Product extends Shop\Admin\Presenter {
+final class Presenter extends Shop\Admin\Presenter {
 
     /**
      * @inject
@@ -21,12 +21,12 @@ final class Product extends Shop\Admin\Presenter {
 
     protected function startup() {
         parent::startup();
-        $this->menu->setActive(':Shop:Admin:Product:list');
+        $this->menu->setActive(':Shop:Product:Admin:Presenter:view');
     }
 
     public function renderAdd() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.product.add'), 'Product:add');
+                $this->translator->translate('shop.product.admin.add'), 'Presenter:add');
     }
 
     public function actionEdit($id) {
@@ -38,7 +38,7 @@ final class Product extends Shop\Admin\Presenter {
 
     public function renderEdit() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.product.edit', NULL, ['product' => $this->product->title]), 'Product:edit', $this->product->id);
+                $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->product->title]), 'Presenter:edit', $this->product->id);
     }
 
     protected function createComponentProductFormAdd() {

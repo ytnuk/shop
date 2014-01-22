@@ -5,13 +5,13 @@
                 <div class="panel panel-primary text-center">
                     <div class="panel-heading">
                         <h3 class="panel-title">
-                            <a href="{plink Product:view, id=>$product->id}">
+                            <a href="{plink :Shop:Product:Presenter:view, id=>$product->id}">
                                 {$product->title}
                             </a>
                         </h3>
                     </div>
                     <div class="panel-body">
-                        <a href="{plink Product:view, id=>$product->id}" class="thumbnail">
+                        <a href="{plink :Shop:Product:Presenter:view, id=>$product->id}" class="thumbnail">
                             <img class="img-rounded img-responsive" src="http://i.alz.cz/ImgW.ashx?fd=f3&cd=NT358f2g" alt="">
                         </a>
                         <p>
@@ -19,7 +19,7 @@
                         </p>
                     </div>
                     <div class="panel-footer">
-                        <span class="panel-title">{_shop.currency.price, [price => $template->number($product->price)]}</span>
+                        <span class="panel-title">{$product->price|number}</span>
                     </div>
                 </div>
             </li>

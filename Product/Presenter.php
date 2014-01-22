@@ -1,10 +1,10 @@
 <?php
 
-namespace WebEdit\Shop\Presenter;
+namespace WebEdit\Shop\Product;
 
 use WebEdit\Shop;
 
-final class Product extends Shop\Presenter {
+final class Presenter extends Shop\Presenter {
 
     /**
      * @inject

@@ -1,26 +1,15 @@
-currency: 
-    price: $%price%
 category:
-    description: Category description
-    no_product: "There's no product in this category."
-product:
-    description: Product description
-    no_description: "There's no description available."
-    parameters: Parameters
-    photos: Photos
-    videos: Videos
-    reviews: Reviews
-    comments: Comments
-admin:
-    overview: Overview
-    category:
+    admin:
         add: Add new category
         edit: 'Edit category: %category%'
         list: Categories
         form:
             description:
                 label: Description
-    product:
+    description: Category description
+    no_product: "There's no product in this category."
+product:
+    admin:
         add: Add new product
         edit: 'Edit product: %product%'
         list: Products
@@ -31,3 +20,10 @@ admin:
                 label: Content
             price:
                 label: Price
+    description: Product description
+    no_description: "There's no description available."
+    parameters: Parameters
+    photos: Photos
+    videos: Videos
+    reviews: Reviews
+    comments: Comments

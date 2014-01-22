@@ -1,10 +1,10 @@
 <?php
 
-namespace WebEdit\Shop\Admin\Presenter;
+namespace WebEdit\Shop\Category\Admin;
 
 use WebEdit\Shop;
 
-final class Category extends Shop\Admin\Presenter {
+final class Presenter extends Shop\Admin\Presenter {
 
     /**
      * @inject
@@ -22,12 +22,12 @@ final class Category extends Shop\Admin\Presenter {
 
     protected function startup() {
         parent::startup();
-        $this->menu->setActive(':Shop:Admin:Category:list');
+        $this->menu->setActive(':Shop:Category:Admin:Presenter:view');
     }
 
     public function renderAdd() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.category.add'), 'Category:add');
+                $this->translator->translate('shop.category.admin.add'), 'Presenter:add');
     }
 
     public function actionEdit($id) {
@@ -39,15 +39,15 @@ final class Category extends Shop\Admin\Presenter {
 
     public function renderEdit() {
         $this->menu->breadcrumbAdd(
-                $this->translator->translate('shop.admin.category.edit', NULL, ['category' => $this->category->node->title]), 'Category:edit', $this->category->id);
+                $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->node->title]), 'Presenter:edit', $this->category->id);
         $this->template->category = $this->category;
     }
 
-    public function actionList() {
+    public function actionView() {
         $this->categories = $this->categoryFacade->repository->getAllCategories();
     }
 
-    public function renderList() {
+    public function renderView() {
         $this->template->categories = $this->categories;
     }
 

@@ -32,7 +32,7 @@ final class Factory extends Form\Factory {
 
     protected function add($data) {
         $product = $this->productFacade->addProduct($data);
-        $this->presenter->redirect('Product:edit', array('id' => $product->id));
+        $this->presenter->redirect('Presenter:edit', array('id' => $product->id));
     }
 
     protected function edit($product, $data) {
@@ -42,7 +42,7 @@ final class Factory extends Form\Factory {
 
     protected function delete($product) {
         $this->productFacade->deleteProduct($product);
-        $this->presenter->redirect('Product:list');
+        $this->presenter->redirect('Presenter:view');
     }
 
 }

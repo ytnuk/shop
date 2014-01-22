@@ -24,8 +24,8 @@ class Facade extends Model\Facade {
     }
 
     public function addCategory(array $data) {
-        $data['node']['link'] = ':Shop:Category:view';
-        $data['node']['link_admin'] = ':Admin:Shop:Category:edit';
+        $data['node']['link'] = ':Shop:Category:Presenter:view';
+        $data['node']['link_admin'] = ':Shop:Category:Admin:Presenter:edit';
         $node = $this->nodeFacade->addNode($data['node']);
         $data['category']['node_id'] = $node->id;
         $category = $this->repository->insert($data['category']);

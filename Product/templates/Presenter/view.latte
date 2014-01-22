@@ -7,7 +7,7 @@
         <h3>{_shop.product.description}</h3>
         <p>{if $product->description}{$product->description}{else}{_shop.product.no_description}{/if}</p>
         <hr>
-        <h3>{_shop.currency.price, [price => $template->number($product->price)]}</h3>
+        <h3>{$product->price|number}</h3>
     </div>
 </div>
 <ul class="nav nav-tabs nav-justified">

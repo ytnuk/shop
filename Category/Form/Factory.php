@@ -43,7 +43,7 @@ final class Factory extends Form\Factory {
 
     protected function delete($category) {
         $this->categoryFacade->deleteCategory($category);
-        $this->presenter->redirect('Category:list');
+        $this->presenter->redirect('Presenter:view');
     }
 
 }
