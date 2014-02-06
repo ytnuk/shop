@@ -17,13 +17,13 @@ final class Factory extends Form\Factory {
     }
 
     protected function addForm() {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop-category', NULL, FALSE), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
         $this->form->addComponent($this->productFacade->getFormContainer(), 'product');
         parent::addForm();
     }
 
     protected function editForm($product) {
-        $this->form->addComponent($this->nodeFacade->getFormContainer('shop-category', NULL, FALSE), 'node');
+        $this->form->addComponent($this->nodeFacade->getFormContainer('shop_category'), 'node');
         $this->form->getComponent('node')->setDefaults($product);
         $this->form->addComponent($this->productFacade->getFormContainer($product), 'product');
         parent::editForm($product);

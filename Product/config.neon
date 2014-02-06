@@ -11,3 +11,7 @@ services:
     - WebEdit\Shop\Product\Model\Facade
     - WebEdit\Shop\Product\Model\Repository
     - WebEdit\Shop\Product\Form\Factory
+    -
+        class: WebEdit\Shop\Product\Control(%category%)
+        implement: WebEdit\Shop\Product\ControlFactory
+        parameters: [category: NULL]

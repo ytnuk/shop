@@ -2,4 +2,3 @@ services:
     - WebEdit\Shop\Category\Model\Facade
     - WebEdit\Shop\Category\Model\Repository
     - WebEdit\Shop\Category\Form\Factory
-    - WebEdit\Shop\Category\Control

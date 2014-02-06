@@ -9,11 +9,11 @@ final class Repository extends Database\Repository {
     protected $table = "shop_product";
 
     public function getProduct($id) {
-        return $this->getOne($id);
+        return $this->table()->get($id);
     }
 
     public function getProductsInNodes($nodes) {
-        return $this->getAll(array('node_id' => $nodes));
+        return $this->table()->where('node_id', $nodes);
     }
 
 }

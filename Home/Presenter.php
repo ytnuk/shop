@@ -6,12 +6,18 @@ use WebEdit\Shop;
 
 final class Presenter extends Shop\Presenter {
 
+    /**
+     * @inject
+     * @var \WebEdit\Shop\Product\ControlFactory
+     */
+    public $productControlFactory;
+
     public function actionView() {
         $this->menu->setActive(':Shop:Home:Presenter:view');
     }
 
-    public function renderView() {
-        
+    protected function createComponentProduct() {
+        return $this->productControlFactory->create();
     }
 
 }
