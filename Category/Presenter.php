@@ -15,7 +15,7 @@ final class Presenter extends Shop\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Product\ControlFactory
+     * @var \WebEdit\Shop\Product\Control\Factory
      */
     public $productControlFactory;
 
@@ -24,7 +24,7 @@ final class Presenter extends Shop\Presenter {
         if (!$this->category) {
             $this->error();
         }
-        $this->menu->setActive($this->category->node);
+        $this->menu->breadcrumb->fromNode($this->category->node);
     }
 
     public function renderView() {

@@ -22,18 +22,18 @@ final class Control extends WebEdit\Control {
     }
 
     public function renderFeatured() {
-        $nodes = $this->nodeFacade->repository->getChildNodes(NULL, 'shop_category');
+        $nodes = $this->nodeFacade->repository->getNodesInTable('shop_category');
         $template = $this->template;
         $template->products = $this->productFacade->repository->getProductsInNodes($nodes);
-        $template->setFile(__DIR__ . "/templates/Control/list.latte");
+        $template->setFile(__DIR__ . "/Control/list.latte");
         $template->render();
     }
 
     public function renderCategory() {
-        $nodes = $this->nodeFacade->repository->getChildNodes($this->category->node, 'shop_category', TRUE);
+        $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($this->category->node, TRUE);
         $template = $this->template;
         $template->products = $this->productFacade->repository->getProductsInNodes($nodes);
-        $template->setFile(__DIR__ . "/templates/Control/list.latte");
+        $template->setFile(__DIR__ . "/Control/list.latte");
         $template->render();
     }
 

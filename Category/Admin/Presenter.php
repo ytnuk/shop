@@ -22,11 +22,11 @@ final class Presenter extends Shop\Admin\Presenter {
 
     protected function startup() {
         parent::startup();
-        $this->menu->setActive(':Shop:Category:Admin:Presenter:view');
+        $this->menu->breadcrumb->fromLink(':Shop:Category:Admin:Presenter:view');
     }
 
     public function renderAdd() {
-        $this->menu->breadcrumbAdd(
+        $this->menu->breadcrumb->append(
                 $this->translator->translate('shop.category.admin.add'), 'Presenter:add');
     }
 
@@ -38,7 +38,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumbAdd(
+        $this->menu->breadcrumb->append(
                 $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->node->title]), 'Presenter:edit', $this->category->id);
         $this->template->category = $this->category;
     }

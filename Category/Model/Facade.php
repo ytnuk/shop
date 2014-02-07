@@ -25,8 +25,6 @@ class Facade extends Model\Facade {
 
     public function addCategory(array $data) {
         $data['node']['link'] = ':Shop:Category:Presenter:view';
-        $data['node']['link_admin'] = ':Shop:Category:Admin:Presenter:edit';
-        $data['node']['type'] = 'shop_category';
         $node = $this->nodeFacade->addNode($data['node']);
         $data['category']['node_id'] = $node->id;
         $category = $this->repository->insert($data['category']);
@@ -40,9 +38,8 @@ class Facade extends Model\Facade {
     }
 
     public function deleteCategory($category) {
-        $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node);
-        $nodes[] = $category->node_id;
-        if ($this->productFacade->repository->getProductsInNodes($nodes)) {
+        $nodes = $this->nodeFacade->repository->getIdsOfChildNodes($category->node, TRUE);
+        if ($this->productFacade->repository->countProductsInNodes($nodes)) {
             throw new Model\Exception('Category is not empty.');
         }
         $this->nodeFacade->deleteNode($category->node);

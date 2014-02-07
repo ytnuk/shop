@@ -3,15 +3,13 @@ parameters:
         shop:
             product:
                 directory: %webedit.shop.directory%/Product
-                styles:
-                    directory: %webedit.shop.product.directory%/styles
     styles:
-        - %webedit.shop.product.styles.directory%/shop-product.css
+        - %webedit.shop.product.directory%/Presenter/style.css
 services:
     - WebEdit\Shop\Product\Model\Facade
     - WebEdit\Shop\Product\Model\Repository
     - WebEdit\Shop\Product\Form\Factory
     -
         class: WebEdit\Shop\Product\Control(%category%)
-        implement: WebEdit\Shop\Product\ControlFactory
+        implement: WebEdit\Shop\Product\Control\Factory
         parameters: [category: NULL]

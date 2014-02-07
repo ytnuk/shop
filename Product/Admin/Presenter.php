@@ -11,21 +11,21 @@ final class Presenter extends Shop\Admin\Presenter {
      * @var \WebEdit\Shop\Product\Model\Facade
      */
     public $productFacade;
-    private $product;
 
     /**
      * @inject
      * @var \WebEdit\Shop\Product\Form\Factory
      */
     public $productFormFactory;
+    private $product;
 
     protected function startup() {
         parent::startup();
-        $this->menu->setActive(':Shop:Product:Admin:Presenter:view');
+        $this->menu->breadcrumb->fromLink(':Shop:Product:Admin:Presenter:view');
     }
 
     public function renderAdd() {
-        $this->menu->breadcrumbAdd(
+        $this->menu->breadcrumb->append(
                 $this->translator->translate('shop.product.admin.add'), 'Presenter:add');
     }
 
@@ -37,7 +37,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumbAdd(
+        $this->menu->breadcrumb->append(
                 $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->product->title]), 'Presenter:edit', $this->product->id);
     }
 

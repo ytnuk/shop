@@ -16,4 +16,8 @@ final class Repository extends Database\Repository {
         return $this->table()->where('node_id', $nodes);
     }
 
+    public function countProductsInNodes($nodes) {
+        return $this->getProductsInNodes($nodes)->count('*');
+    }
+
 }

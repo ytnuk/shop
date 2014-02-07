@@ -18,11 +18,11 @@ final class Presenter extends Shop\Presenter {
         if (!$this->product) {
             $this->error();
         }
-        $this->menu->setActive($this->product->node);
+        $this->menu->breadcrumb->fromNode($this->product->node);
     }
 
     public function renderView() {
-        $this->menu->breadcrumbAdd($this->product->title);
+        $this->menu->breadcrumb->append($this->product->title);
         $this->template->product = $this->product;
     }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace WebEdit\Shop\Product;
+namespace WebEdit\Shop\Product\Control;
 
 use WebEdit\Shop\Product\Control;
 
-interface ControlFactory {
+interface Factory {
 
     /**
      * @return Control
