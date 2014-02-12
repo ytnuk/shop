@@ -10,6 +10,6 @@ services:
     - WebEdit\Shop\Product\Model\Repository
     - WebEdit\Shop\Product\Form\Factory
     -
-        class: WebEdit\Shop\Product\Control(%category%)
+        create: WebEdit\Shop\Product\Control(%category%)
         implement: WebEdit\Shop\Product\Control\Factory
         parameters: [category: NULL]

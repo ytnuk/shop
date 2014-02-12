@@ -3,37 +3,37 @@
 namespace WebEdit\Shop\Category\Form;
 
 use WebEdit\Form;
-use WebEdit\Menu\Node;
+use WebEdit\Menu;
 use WebEdit\Shop\Category;
 
 final class Factory extends Form\Factory {
 
-    private $nodeFacade;
+    private $menuFacade;
     private $categoryFacade;
 
-    public function __construct(Node\Model\Facade $nodeFacade, Category\Model\Facade $categoryFacade) {
-        $this->nodeFacade = $nodeFacade;
+    public function __construct(Menu\Model\Facade $menuFacade, Category\Model\Facade $categoryFacade) {
+        $this->menuFacade = $menuFacade;
         $this->categoryFacade = $categoryFacade;
     }
 
     protected function addForm() {
-        $this->form->addComponent($this->nodeFacade->getFormContainer(), 'node');
+        $this->form->addComponent($this->menuFacade->getFormContainer(), 'menu');
         $this->form->addComponent($this->categoryFacade->getFormContainer(), 'category');
         parent::addForm();
     }
 
     protected function editForm($category) {
-        $this->form->addComponent($this->nodeFacade->getFormContainer($category->node), 'node');
+        $this->form->addComponent($this->menuFacade->getFormContainer($category->menu), 'menu');
         $this->form->addComponent($this->categoryFacade->getFormContainer($category), 'category');
         parent::editForm($category);
-        if ($category->node->node_id) {
+        if ($category->menu->menu_id) {
             $this->deleteForm($category);
         }
     }
 
     protected function add($data) {
         $category = $this->categoryFacade->addCategory($data);
-        $this->presenter->redirect('Presenter:edit', array('id' => $category->node->link_id));
+        $this->presenter->redirect('Presenter:edit', array('id' => $category->menu->link_id));
     }
 
     protected function edit($category, $data) {

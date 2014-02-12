@@ -19,11 +19,6 @@ final class Presenter extends Shop\Admin\Presenter {
     public $productFormFactory;
     private $product;
 
-    protected function startup() {
-        parent::startup();
-        $this->menu->breadcrumb->fromLink(':Shop:Product:Admin:Presenter:view');
-    }
-
     public function renderAdd() {
         $this->menu->breadcrumb->append(
                 $this->translator->translate('shop.product.admin.add'), 'Presenter:add');

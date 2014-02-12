@@ -7,7 +7,7 @@
 <tbody n:inner-foreach="$categories as $category">
     <tr>
         <td>
-            {$category->node->title}
+            {$category->menu->title}
         </td>
         <td>
             <a class="btn btn-warning" n:href="Presenter:edit,id=>$category->id">{_form.button.edit}</a>

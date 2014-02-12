@@ -3,28 +3,28 @@
 namespace WebEdit\Shop\Product\Form;
 
 use WebEdit\Form;
-use WebEdit\Menu\Node;
+use WebEdit\Menu;
 use WebEdit\Shop\Product;
 
 final class Factory extends Form\Factory {
 
-    private $nodeFacade;
+    private $menuFacade;
     private $productFacade;
 
-    public function __construct(Node\Model\Facade $nodeFacade, Product\Model\Facade $productFacade) {
-        $this->nodeFacade = $nodeFacade;
+    public function __construct(Menu\Model\Facade $menuFacade, Product\Model\Facade $productFacade) {
+        $this->menuFacade = $menuFacade;
         $this->productFacade = $productFacade;
     }
 
     protected function addForm() {
-        $this->form->addComponent($this->nodeFacade->getFormContainer(NULL, 'shop_category'), 'node');
+        $this->form->addComponent($this->menuFacade->getFormContainer(NULL, 'shop_category'), 'menu');
         $this->form->addComponent($this->productFacade->getFormContainer(), 'product');
         parent::addForm();
     }
 
     protected function editForm($product) {
-        $this->form->addComponent($this->nodeFacade->getFormContainer(NULL, 'shop_category'), 'node');
-        $this->form->getComponent('node')->setDefaults($product);
+        $this->form->addComponent($this->menuFacade->getFormContainer(NULL, 'shop_category'), 'menu');
+        $this->form->getComponent('menu')->setDefaults($product);
         $this->form->addComponent($this->productFacade->getFormContainer($product), 'product');
         parent::editForm($product);
         $this->deleteForm($product);

@@ -24,7 +24,7 @@ final class Presenter extends Shop\Presenter {
         if (!$this->category) {
             $this->error();
         }
-        $this->menu->breadcrumb->fromNode($this->category->node);
+        $this->menu->breadcrumb->fromMenu($this->category->menu);
     }
 
     public function renderView() {

@@ -20,11 +20,6 @@ final class Presenter extends Shop\Admin\Presenter {
      */
     public $categoryFormFactory;
 
-    protected function startup() {
-        parent::startup();
-        $this->menu->breadcrumb->fromLink(':Shop:Category:Admin:Presenter:view');
-    }
-
     public function renderAdd() {
         $this->menu->breadcrumb->append(
                 $this->translator->translate('shop.category.admin.add'), 'Presenter:add');
@@ -39,7 +34,7 @@ final class Presenter extends Shop\Admin\Presenter {
 
     public function renderEdit() {
         $this->menu->breadcrumb->append(
-                $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->node->title]), 'Presenter:edit', $this->category->id);
+                $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]), 'Presenter:edit', $this->category->id);
         $this->template->category = $this->category;
     }
 
