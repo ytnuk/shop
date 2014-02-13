@@ -20,8 +20,8 @@ final class Presenter extends Shop\Admin\Presenter {
     private $product;
 
     public function renderAdd() {
-        $this->menu->breadcrumb->append(
-                $this->translator->translate('shop.product.admin.add'), 'Presenter:add');
+        $title = $this->translator->translate('shop.product.admin.add');
+        $this->menu->breadcrumb->append($title);
     }
 
     public function actionEdit($id) {
@@ -32,8 +32,8 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumb->append(
-                $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->product->title]), 'Presenter:edit', $this->product->id);
+        $title = $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->product->title]);
+        $this->menu->breadcrumb->append($title);
     }
 
     protected function createComponentProductFormAdd() {

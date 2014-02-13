@@ -21,8 +21,8 @@ final class Presenter extends Shop\Admin\Presenter {
     public $categoryFormFactory;
 
     public function renderAdd() {
-        $this->menu->breadcrumb->append(
-                $this->translator->translate('shop.category.admin.add'), 'Presenter:add');
+        $title = $this->translator->translate('shop.category.admin.add');
+        $this->menu->breadcrumb->append($title);
     }
 
     public function actionEdit($id) {
@@ -33,8 +33,8 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderEdit() {
-        $this->menu->breadcrumb->append(
-                $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]), 'Presenter:edit', $this->category->id);
+        $title = $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]);
+        $this->menu->breadcrumb->append($title);
         $this->template->category = $this->category;
     }
 
