@@ -8,21 +8,21 @@ final class Presenter extends Shop\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Product\Model\Facade
+     * @var \WebEdit\Shop\Product\Repository
      */
-    public $productFacade;
+    public $repository;
     private $product;
 
     public function actionView($id) {
-        $this->product = $this->productFacade->repository->getProduct($id);
+        $this->product = $this->repository->getProduct($id);
         if (!$this->product) {
             $this->error();
         }
-        $this->menu->breadcrumb->fromMenu($this->product->menu);
+        $this['menu']['breadcrumb'][] = $this->product->menu;
     }
 
     public function renderView() {
-        $this->menu->breadcrumb->append($this->product->title);
+        $this['menu']['breadcrumb'][] = $this->product->title;
         $this->template->product = $this->product;
     }
 

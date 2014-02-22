@@ -1,19 +1,16 @@
 <?php
 
-namespace WebEdit\Shop\Product\Model;
+namespace WebEdit\Shop\Product;
 
-use WebEdit\Model;
+use WebEdit;
 use WebEdit\Shop\Product;
-use WebEdit\Menu;
 
-class Facade extends Model\Facade {
+class Facade extends WebEdit\Facade {
 
     public $repository;
-    private $categoryFacade;
 
-    public function __construct(Product\Model\Repository $repository, Menu\Model\Facade $categoryFacade) {
+    public function __construct(Product\Repository $repository) {
         $this->repository = $repository;
-        $this->categoryFacade = $categoryFacade;
     }
 
     public function getFormContainer($product = NULL) {

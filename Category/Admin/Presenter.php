@@ -8,9 +8,9 @@ final class Presenter extends Shop\Admin\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Category\Model\Facade
+     * @var \WebEdit\Shop\Category\Repository
      */
-    public $categoryFacade;
+    public $repository;
     private $category;
     private $categories;
 
@@ -18,28 +18,26 @@ final class Presenter extends Shop\Admin\Presenter {
      * @inject
      * @var \WebEdit\Shop\Category\Form\Factory
      */
-    public $categoryFormFactory;
+    public $formFactory;
 
     public function renderAdd() {
-        $title = $this->translator->translate('shop.category.admin.add');
-        $this->menu->breadcrumb->append($title);
+        $this['menu']['breadcrumb'][] = $this->translator->translate('shop.category.admin.add');
     }
 
     public function actionEdit($id) {
-        $this->category = $this->categoryFacade->repository->getCategory($id);
+        $this->category = $this->repository->getCategory($id);
         if (!$this->category) {
             $this->error();
         }
     }
 
     public function renderEdit() {
-        $title = $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]);
-        $this->menu->breadcrumb->append($title);
+        $this['menu']['breadcrumb'][] = $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]);
         $this->template->category = $this->category;
     }
 
     public function actionView() {
-        $this->categories = $this->categoryFacade->repository->getAllCategories();
+        $this->categories = $this->repository->getAllCategories();
     }
 
     public function renderView() {
@@ -47,11 +45,11 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     protected function createComponentCategoryFormAdd() {
-        return $this->categoryFormFactory->create();
+        return $this->formFactory->create();
     }
 
     protected function createComponentCategoryFormEdit() {
-        return $this->categoryFormFactory->create($this->category);
+        return $this->formFactory->create($this->category);
     }
 
 }

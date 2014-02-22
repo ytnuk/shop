@@ -1,0 +1,3 @@
+services:
+    - WebEdit\Shop\Cart\Item\Repository
+    - WebEdit\Shop\Cart\Control\Factory

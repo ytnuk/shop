@@ -1,22 +1,23 @@
 <?php
 
-namespace WebEdit\Shop\Category\Model;
+namespace WebEdit\Shop\Category;
 
+use WebEdit;
 use WebEdit\Shop\Category;
 use WebEdit\Menu;
 use WebEdit\Shop\Product;
 use WebEdit\Model;
 
-class Facade extends Model\Facade {
+class Facade extends WebEdit\Facade {
 
     public $repository;
     private $menuFacade;
-    private $productFacade;
+    private $productRepository;
 
-    public function __construct(Category\Model\Repository $repository, Menu\Model\Facade $menuFacade, Product\Model\Facade $productFacade) {
+    public function __construct(Category\Repository $repository, Menu\Facade $menuFacade, Product\Repository $productRepository) {
         $this->repository = $repository;
         $this->menuFacade = $menuFacade;
-        $this->productFacade = $productFacade;
+        $this->productRepository = $productRepository;
     }
 
     public function getFormContainer($category = NULL) {
@@ -38,7 +39,7 @@ class Facade extends Model\Facade {
     }
 
     public function deleteCategory($category) {
-        if ($this->productFacade->repository->countProductsInMenu($category->menu)) {
+        if ($this->productRepository->countProductsInMenu($category->menu)) {
             throw new Model\Exception('This category can\'t be removed because there\'s at least one product in this category.');
         }
         $this->menuFacade->deleteMenu($category->menu);

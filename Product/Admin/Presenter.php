@@ -8,40 +8,38 @@ final class Presenter extends Shop\Admin\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Product\Model\Facade
+     * @var \WebEdit\Shop\Product\Repository
      */
-    public $productFacade;
+    public $repository;
 
     /**
      * @inject
      * @var \WebEdit\Shop\Product\Form\Factory
      */
-    public $productFormFactory;
+    public $formFactory;
     private $product;
 
     public function renderAdd() {
-        $title = $this->translator->translate('shop.product.admin.add');
-        $this->menu->breadcrumb->append($title);
+        $this['menu']['breadcrumb'][] = $title = $this->translator->translate('shop.product.admin.add');
     }
 
     public function actionEdit($id) {
-        $this->product = $this->productFacade->repository->getProduct($id);
+        $this->product = $this->repository->getProduct($id);
         if (!$this->product) {
             $this->error();
         }
     }
 
     public function renderEdit() {
-        $title = $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->product->title]);
-        $this->menu->breadcrumb->append($title);
+        $this['menu']['breadcrumb'][] = $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->product->title]);
     }
 
     protected function createComponentProductFormAdd() {
-        return $this->productFormFactory->create();
+        return $this->formFactory->create();
     }
 
     protected function createComponentProductFormEdit() {
-        return $this->productFormFactory->create($this->product);
+        return $this->formFactory->create($this->product);
     }
 
 }

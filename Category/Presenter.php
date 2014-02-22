@@ -8,9 +8,9 @@ final class Presenter extends Shop\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Category\Model\Facade
+     * @var \WebEdit\Shop\Category\Repository
      */
-    public $categoryFacade;
+    public $repository;
     private $category;
 
     /**
@@ -20,11 +20,11 @@ final class Presenter extends Shop\Presenter {
     public $productControlFactory;
 
     public function actionView($id) {
-        $this->category = $this->categoryFacade->repository->getCategory($id);
+        $this->category = $this->repository->getCategory($id);
         if (!$this->category) {
             $this->error();
         }
-        $this->menu->breadcrumb->fromMenu($this->category->menu);
+        $this['menu']['breadcrumb'][] = $this->category->menu;
     }
 
     public function renderView() {

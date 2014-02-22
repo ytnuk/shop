@@ -11,7 +11,7 @@ final class Factory extends Form\Factory {
     private $menuFacade;
     private $productFacade;
 
-    public function __construct(Menu\Model\Facade $menuFacade, Product\Model\Facade $productFacade) {
+    public function __construct(Menu\Facade $menuFacade, Product\Facade $productFacade) {
         $this->menuFacade = $menuFacade;
         $this->productFacade = $productFacade;
     }
