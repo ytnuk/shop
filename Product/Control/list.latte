@@ -5,7 +5,7 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">
                         <a href="{plink :Shop:Product:Presenter:view, id=>$product->id}">
-                            {$product->title}
+                            {_$product->title}
                         </a>
                     </h3>
                 </div>
@@ -24,4 +24,4 @@
         </li>
     </ul>
 </div>
-<div class="alert alert-info" n:if="!$products->count()">{_shop.category.no_product}</div>
+<div class="alert alert-info" n:if="!$products->count()">{_shop.category.empty}</div>

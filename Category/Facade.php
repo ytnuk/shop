@@ -6,7 +6,6 @@ use WebEdit;
 use WebEdit\Shop\Category;
 use WebEdit\Menu;
 use WebEdit\Shop\Product;
-use WebEdit\Model;
 
 class Facade extends WebEdit\Facade {
 
@@ -20,30 +19,27 @@ class Facade extends WebEdit\Facade {
         $this->productRepository = $productRepository;
     }
 
-    public function getFormContainer($category = NULL) {
-        return new Category\Form\Container($category);
-    }
-
     public function addCategory(array $data) {
-        $data['menu']['link'] = ':Shop:Category:Presenter:view';
-        $menu = $this->menuFacade->addMenu($data['menu']);
+        $menu = $this->menuFacade->addMenu($data);
         $data['category']['menu_id'] = $menu->id;
         $category = $this->repository->insert($data['category']);
-        $this->menuFacade->editMenu($menu, array('link_id' => $category->id));
+        $data['menu']['link'] = ':Shop:Category:Presenter:view';
+        $data['menu']['link_id'] = $category->id;
+        $this->menuFacade->editMenu($menu, $data);
         return $category;
     }
 
     public function editCategory($category, array $data) {
-        $this->menuFacade->editMenu($category->menu, $data['menu']);
-        return $this->repository->update($category, $data['category']);
+        $this->menuFacade->editMenu($category->menu, $data);
+        $this->repository->update($category, $data['category']);
     }
 
     public function deleteCategory($category) {
         if ($this->productRepository->countProductsInMenu($category->menu)) {
-            throw new Model\Exception('This category can\'t be removed because there\'s at least one product in this category.');
+            throw new Category\NotEmptyException('shop.category.not_empty');
         }
         $this->menuFacade->deleteMenu($category->menu);
-        return $this->repository->remove($category);
+        $this->repository->remove($category);
     }
 
 }

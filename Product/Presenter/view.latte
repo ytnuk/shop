@@ -1,5 +1,4 @@
 {block content}
-{control cart}
 <div class="row">
     <div class="col-sm-6 text-center">
         <img class="img-thumbnail img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
@@ -9,6 +8,7 @@
         <p>{if $product->description}{$product->description}{else}{_shop.product.no_description}{/if}</p>
         <hr>
         <h3>{$product->price|number}</h3>
+        {control cart:insert $product}
     </div>
 </div>
 <ul class="nav nav-tabs nav-justified">

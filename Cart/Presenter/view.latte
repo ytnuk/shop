@@ -1,0 +1,24 @@
+{block content}
+<div class="thumbnail">
+    <ul class="nav nav-pills nav-justified">
+        <li class="active">
+            <a href="#">
+                <strong>{_shop.cart.step,[step=>1]}</strong><br>
+                <small>{_shop.cart.title}</small>
+            </a>
+        </li>
+        <li class="disabled">
+            <a href="#">
+                <strong>{_shop.cart.step,[step=>2]}</strong><br>
+                <small>{_shop.cart.customer_information}</small>
+            </a>
+        </li>
+        <li class="disabled">
+            <a href="#">
+                <strong>{_shop.cart.step,[step=>3]}</strong><br>
+                <small>{_shop.cart.overview}</small>
+            </a>
+        </li>
+    </ul>
+</div>
+{control cart}

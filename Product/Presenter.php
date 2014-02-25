@@ -18,10 +18,10 @@ final class Presenter extends Shop\Presenter {
         if (!$this->product) {
             $this->error();
         }
-        $this['menu']['breadcrumb'][] = $this->product->menu;
     }
 
     public function renderView() {
+        $this['menu']['breadcrumb'][] = $this->product->menu;
         $this['menu']['breadcrumb'][] = $this->product->title;
         $this->template->product = $this->product;
     }

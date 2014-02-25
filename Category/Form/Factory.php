@@ -2,46 +2,23 @@
 
 namespace WebEdit\Shop\Category\Form;
 
-use WebEdit\Form;
 use WebEdit\Menu;
-use WebEdit\Shop\Category;
 
-final class Factory extends Form\Factory {
+class Factory {
 
-    private $menuFacade;
-    private $categoryFacade;
+    private $menuFormFactory;
 
-    public function __construct(Menu\Facade $menuFacade, Category\Facade $categoryFacade) {
-        $this->menuFacade = $menuFacade;
-        $this->categoryFacade = $categoryFacade;
+    public function __construct(Menu\Form\Factory $menuFormFactory) {
+        $this->menuFormFactory = $menuFormFactory;
     }
 
-    protected function addForm() {
-        $this->form->addComponent($this->menuFacade->getFormContainer(), 'menu');
-        $this->form->addComponent($this->categoryFacade->getFormContainer(), 'category');
-        parent::addForm();
-    }
-
-    protected function editForm($category) {
-        $this->form->addComponent($this->menuFacade->getFormContainer($category->menu), 'menu');
-        $this->form->addComponent($this->categoryFacade->getFormContainer($category), 'category');
-        parent::editForm($category);
-        $this->deleteForm($category);
-    }
-
-    protected function add($data) {
-        $category = $this->categoryFacade->addCategory($data);
-        $this->presenter->redirect('Presenter:edit', array('id' => $category->id));
-    }
-
-    protected function edit($category, $data) {
-        $this->categoryFacade->editCategory($category, $data);
-        $this->presenter->redirect('this');
-    }
-
-    protected function delete($category) {
-        $this->categoryFacade->deleteCategory($category);
-        $this->presenter->redirect('Presenter:view');
+    public function create($category = NULL) {
+        $menu = $category ? $category->menu : NULL;
+        $form = $this->menuFormFactory->create($menu);
+        $form->addGroup('shop.category.form.group');
+        $container = $form->addContainer('category');
+        $container->addTextArea('description', 'shop.category.form.description.label');
+        return $form;
     }
 
 }

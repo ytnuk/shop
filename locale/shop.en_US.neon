@@ -3,23 +3,26 @@ category:
         add: Add new category
         edit: 'Edit category: %category%'
         list: Categories
-        form:
-            description:
-                label: Description
+    form:
+        group: Category
+        description:
+            label: Description
     description: Category description
-    no_product: "There's no product in this category."
+    empty: "There's no product in this category."
+    not_empty: "This category is not empty."
 product:
     admin:
         add: Add new product
         edit: 'Edit product: %product%'
         list: Products
-        form:
-            description:
-                label: Description
-            content:
-                label: Content
-            price:
-                label: Price
+    form:
+        group: Product
+        description:
+            label: Description
+        content:
+            label: Content
+        price:
+            label: Price
     description: Product description
     no_description: "There's no description available."
     parameters: Parameters
@@ -27,3 +30,17 @@ product:
     videos: Videos
     reviews: Reviews
     comments: Comments
+cart:
+    form:
+        group: Shopping cart
+        quantity:
+            label: Quantity
+    title: Shopping cart
+    customer_information: Customer information
+    overview: Overview
+    item: Item
+    price: Price
+    total: Total
+    checkout: Checkout
+    empty: "There's no item in your shopping cart."
+    step: Step %step%

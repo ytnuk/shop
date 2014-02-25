@@ -3,6 +3,7 @@
 namespace WebEdit\Shop\Category\Admin;
 
 use WebEdit\Shop;
+use WebEdit\Shop\Category;
 
 final class Presenter extends Shop\Admin\Presenter {
 
@@ -11,6 +12,12 @@ final class Presenter extends Shop\Admin\Presenter {
      * @var \WebEdit\Shop\Category\Repository
      */
     public $repository;
+
+    /**
+     * @inject
+     * @var \WebEdit\Shop\Category\Facade
+     */
+    public $facade;
     private $category;
     private $categories;
 
@@ -19,6 +26,15 @@ final class Presenter extends Shop\Admin\Presenter {
      * @var \WebEdit\Shop\Category\Form\Factory
      */
     public $formFactory;
+
+    public function actionAdd() {
+        $this['form']->onSuccess[] = [$this, 'handleAdd'];
+    }
+
+    public function handleAdd($form) {
+        $category = $this->facade->addCategory($form->getValues(TRUE));
+        $this->redirect('Presenter:edit', ['id' => $category->id]);
+    }
 
     public function renderAdd() {
         $this['menu']['breadcrumb'][] = $this->translator->translate('shop.category.admin.add');
@@ -29,11 +45,28 @@ final class Presenter extends Shop\Admin\Presenter {
         if (!$this->category) {
             $this->error();
         }
+        $this['form']['category']->setDefaults($this->category);
+        $this['form']['menu']->setDefaults($this->category->menu);
+        $this['form']->onSuccess[] = [$this, 'handleEdit'];
+    }
+
+    public function handleEdit($form) {
+        if ($form->submitted->name == 'delete') {
+            try {
+                $this->facade->deleteCategory($this->category);
+            } catch (Category\NotEmptyException $ex) {
+                $this->flashMessage($ex->getMessage(), 'warning');
+                $this->redirect('this');
+            }
+            $this->redirect('Presenter:view');
+        } else {
+            $this->facade->editCategory($this->category, $form->getValues(TRUE));
+            $this->redirect('this');
+        }
     }
 
     public function renderEdit() {
         $this['menu']['breadcrumb'][] = $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]);
-        $this->template->category = $this->category;
     }
 
     public function actionView() {
@@ -44,11 +77,7 @@ final class Presenter extends Shop\Admin\Presenter {
         $this->template->categories = $this->categories;
     }
 
-    protected function createComponentCategoryFormAdd() {
-        return $this->formFactory->create();
-    }
-
-    protected function createComponentCategoryFormEdit() {
+    protected function createComponentForm() {
         return $this->formFactory->create($this->category);
     }
 

@@ -13,10 +13,6 @@ class Facade extends WebEdit\Facade {
         $this->repository = $repository;
     }
 
-    public function getFormContainer($product = NULL) {
-        return new Product\Form\Container($product);
-    }
-
     public function addProduct(array $data) {
         $data = array_merge($data['product'], $data['menu']);
         return $this->repository->insert($data);
@@ -24,11 +20,11 @@ class Facade extends WebEdit\Facade {
 
     public function editProduct($product, array $data) {
         $data = array_merge($data['product'], $data['menu']);
-        return $this->repository->update($product, $data);
+        $this->repository->update($product, $data);
     }
 
     public function deleteProduct($product) {
-        return $this->repository->remove($product);
+        $this->repository->remove($product);
     }
 
 }
