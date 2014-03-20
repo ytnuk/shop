@@ -2,10 +2,9 @@
 
 namespace WebEdit\Shop\Product;
 
-use WebEdit;
 use WebEdit\Shop\Product;
 
-class Facade extends WebEdit\Facade {
+final class Facade {
 
     public $repository;
 

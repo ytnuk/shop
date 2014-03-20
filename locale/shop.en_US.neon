@@ -36,8 +36,8 @@ cart:
         quantity:
             label: Quantity
     title: Shopping cart
-    customer_information: Customer information
-    overview: Overview
+    shipping: Shipping
+    payment: Payment
     item: Item
     price: Price
     total: Total

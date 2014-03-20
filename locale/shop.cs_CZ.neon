@@ -36,8 +36,8 @@ cart:
         quantity:
             label: Počet
     title: Nákupní košík
-    customer_information: Zákaznické údaje
-    overview: Přehled
+    shipping: Doprava
+    payment: Platba
     item: Položka
     price: Cena
     total: Celkem

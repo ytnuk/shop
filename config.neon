@@ -1,6 +1,5 @@
 parameters:
-    webedit:
-        shop:
-            directory: %vendor.webedit.directory%/shop
+    shop:
+        directory: %vendor.webedit.directory%/shop
     locale:
-        - %webedit.shop.directory%/locale
+        - %shop.directory%/locale

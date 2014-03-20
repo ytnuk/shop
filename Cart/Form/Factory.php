@@ -1,10 +1,10 @@
 <?php
 
-namespace WebEdit\Shop\Cart\Item\Form;
+namespace WebEdit\Shop\Cart\Form;
 
 use WebEdit\Form;
 
-class Factory {
+final class Factory {
 
     private $formFactory;
 

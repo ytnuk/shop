@@ -30,7 +30,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function handleAdd($form) {
-        $product = $this->facade->addProduct($form->getValues(TRUE));
+        $product = $this->facade->addProduct($form->getValues());
         $this->redirect('Presenter:edit', ['id' => $product->id]);
     }
 
@@ -53,7 +53,7 @@ final class Presenter extends Shop\Admin\Presenter {
             $this->facade->deleteProduct($this->product);
             $this->redirect('Presenter:view');
         } else {
-            $this->facade->editProduct($this->product, $form->getValues(TRUE));
+            $this->facade->editProduct($this->product, $form->getValues());
             $this->redirect('this');
         }
     }

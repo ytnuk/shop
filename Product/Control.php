@@ -18,18 +18,14 @@ final class Control extends WebEdit\Control {
         $this->menuRepository = $menuRepository;
     }
 
-    public function renderFeatured() {
-        $menus = $this->menuRepository->getMenuFromTable('shop_category');
+    public function renderList() {
+        if ($this->category) {
+            $menu = $this->menuRepository->getChildren($this->category->menu);
+        } else {
+            $menu = $this->menuRepository->getMenuFromTable('shop_category');
+        }
         $template = $this->template;
-        $template->products = $this->productRepository->getProductsInMenu($menus);
-        $template->setFile(__DIR__ . "/Control/list.latte");
-        $template->render();
-    }
-
-    public function renderCategory() {
-        $menus = $this->menuRepository->getChildren($this->category->menu);
-        $template = $this->template;
-        $template->products = $this->productRepository->getProductsInMenu($menus);
+        $template->products = $this->productRepository->getProductsInMenu($menu);
         $template->setFile(__DIR__ . "/Control/list.latte");
         $template->render();
     }

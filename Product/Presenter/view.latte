@@ -1,16 +1,17 @@
 {block content}
 <div class="row">
     <div class="col-sm-6 text-center">
-        <img class="img-thumbnail img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+        <img class="img-thumbnail img-rounded img-responsive" src="http://placehold.it/440" alt="">
     </div>
     <div class="col-sm-6">
         <h3>{_shop.product.description}</h3>
         <p>{if $product->description}{$product->description}{else}{_shop.product.no_description}{/if}</p>
         <hr>
         <h3>{$product->price|number}</h3>
-        {control cart:insert $product}
+        {control cart-form-$product->id}
     </div>
 </div>
+<hr>
 <ul class="nav nav-tabs nav-justified">
     <li class="active">
         <a href="#description" data-toggle="tab">
@@ -34,7 +35,7 @@
         <a href="#comments" data-toggle="tab">{_shop.product.comments} <span class="badge">4</span></a>
     </li>
 </ul>
-
+<hr>
 <div class="tab-content">
     <div class="tab-pane active" id="description">
         {if $product->content}
@@ -51,42 +52,42 @@
             <ul class="col-block-xs-2 col-block-md-2">
                 <li>
                     <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://i.alz.cz/ImgW.ashx?fd=f3&cd=NT358f2g" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440x440" alt="">
                     </a>
                 </li>
                 <li class="text-center">
                     <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="thumbnail img-thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
                 <li>
                     <a href="#" class="thumbnail img-thumbnail">
-                        <img class="img-rounded img-responsive" src="http://placehold.it/400x400" alt="">
+                        <img class="img-rounded img-responsive" src="http://placehold.it/440" alt="">
                     </a>
                 </li>
             </ul>
@@ -98,28 +99,28 @@
                 <li>
                     <div class="thumbnail">
                         <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/aSdXzWs3gkI"></iframe>
+                            <iframe src="http://www.youtube.com/embed/ScMzIvxBSi4"></iframe>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="thumbnail">
                         <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/mSTpVmlbu2Q"></iframe>
+                            <iframe src="http://www.youtube.com/embed/ScMzIvxBSi4"></iframe>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="thumbnail">
                         <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/TKzwmB6uzAY"></iframe>
+                            <iframe src="http://www.youtube.com/embed/ScMzIvxBSi4"></iframe>
                         </div>
                     </div>
                 </li>
                 <li>
                     <div class="thumbnail">
                         <div class="ratio-16-9">
-                            <iframe src="http://www.youtube.com/embed/P4DvPpW0PRk"></iframe>
+                            <iframe src="http://www.youtube.com/embed/ScMzIvxBSi4"></iframe>
                         </div>
                     </div>
                 </li>

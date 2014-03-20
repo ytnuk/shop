@@ -4,7 +4,7 @@ namespace WebEdit\Shop\Category\Form;
 
 use WebEdit\Menu;
 
-class Factory {
+final class Factory {
 
     private $menuFormFactory;
 

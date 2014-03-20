@@ -32,7 +32,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function handleAdd($form) {
-        $category = $this->facade->addCategory($form->getValues(TRUE));
+        $category = $this->facade->addCategory($form->getValues());
         $this->redirect('Presenter:edit', ['id' => $category->id]);
     }
 
@@ -60,7 +60,7 @@ final class Presenter extends Shop\Admin\Presenter {
             }
             $this->redirect('Presenter:view');
         } else {
-            $this->facade->editCategory($this->category, $form->getValues(TRUE));
+            $this->facade->editCategory($this->category, $form->getValues());
             $this->redirect('this');
         }
     }

@@ -2,12 +2,11 @@
 
 namespace WebEdit\Shop\Category;
 
-use WebEdit;
 use WebEdit\Shop\Category;
 use WebEdit\Menu;
 use WebEdit\Shop\Product;
 
-class Facade extends WebEdit\Facade {
+final class Facade {
 
     public $repository;
     private $menuFacade;
