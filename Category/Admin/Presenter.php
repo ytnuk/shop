@@ -54,7 +54,7 @@ final class Presenter extends Shop\Admin\Presenter {
         if ($form->submitted->name == 'delete') {
             try {
                 $this->facade->deleteCategory($this->category);
-            } catch (Category\NotEmptyException $ex) {
+            } catch (Category\Exception $ex) {
                 $this->flashMessage($ex->getMessage(), 'warning');
                 $this->redirect('this');
             }

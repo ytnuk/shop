@@ -4,6 +4,6 @@ namespace WebEdit\Shop\Category;
 
 use WebEdit;
 
-final class NotEmptyException extends WebEdit\Exception {
+final class Exception extends WebEdit\Exception {
     
 }

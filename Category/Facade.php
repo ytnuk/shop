@@ -35,7 +35,7 @@ final class Facade {
 
     public function deleteCategory($category) {
         if ($this->productRepository->countProductsInMenu($category->menu)) {
-            throw new Category\NotEmptyException('shop.category.not_empty');
+            throw new Category\Exception('shop.category.not_empty');
         }
         $this->menuFacade->deleteMenu($category->menu);
         $this->repository->remove($category);

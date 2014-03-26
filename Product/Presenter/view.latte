@@ -12,42 +12,44 @@
     </div>
 </div>
 <hr>
-<ul class="nav nav-tabs nav-justified">
-    <li class="active">
-        <a href="#description" data-toggle="tab">
-            <span class="glyphicon glyphicon-home"></span>
-            <span class="visible-xs">{_shop.product.description}</span>
-        </a>
-    </li>
-    <li>
-        <a href="#parameters" data-toggle="tab">{_shop.product.parameters}</a>
-    </li>
-    <li>
-        <a href="#photos" data-toggle="tab">{_shop.product.photos} <span class="badge">4</span></a>
-    </li>
-    <li>
-        <a href="#videos" data-toggle="tab">{_shop.product.videos} <span class="badge">4</span></a>
-    </li>
-    <li>
-        <a href="#reviews" data-toggle="tab">{_shop.product.reviews} <span class="badge">4</span></a>
-    </li>
-    <li>
-        <a href="#comments" data-toggle="tab">{_shop.product.comments} <span class="badge">4</span></a>
-    </li>
-</ul>
+<nav>
+    <ul class="nav nav-tabs nav-justified">
+        <li class="active">
+            <a href="#description" data-toggle="tab">
+                <span class="glyphicon glyphicon-home"></span>
+                <span class="visible-xs">{_shop.product.description}</span>
+            </a>
+        </li>
+        <li>
+            <a href="#parameters" data-toggle="tab">{_shop.product.parameters}</a>
+        </li>
+        <li>
+            <a href="#photos" data-toggle="tab">{_shop.product.photos} <span class="badge">4</span></a>
+        </li>
+        <li>
+            <a href="#videos" data-toggle="tab">{_shop.product.videos} <span class="badge">4</span></a>
+        </li>
+        <li>
+            <a href="#reviews" data-toggle="tab">{_shop.product.reviews} <span class="badge">4</span></a>
+        </li>
+        <li>
+            <a href="#comments" data-toggle="tab">{_shop.product.comments} <span class="badge">4</span></a>
+        </li>
+    </ul>
+</nav>
 <hr>
 <div class="tab-content">
-    <div class="tab-pane active" id="description">
+    <section class="tab-pane active" id="description">
         {if $product->content}
             {$product->content|noescape}
         {else}
             <p>{_shop.product.no_description}</p>
         {/if}
-    </div>
-    <div class="tab-pane" id="parameters">
+    </section>
+    <section class="tab-pane" id="parameters">
         parameters
-    </div>
-    <div class="tab-pane" id="photos">
+    </section>
+    <section class="tab-pane" id="photos">
         <div class="row">
             <ul class="col-block-xs-2 col-block-md-2">
                 <li>
@@ -92,8 +94,8 @@
                 </li>
             </ul>
         </div>
-    </div>
-    <div class="tab-pane" id="videos">
+    </section>
+    <section class="tab-pane" id="videos">
         <div class="row">
             <ul class="col-block-xs-1 col-block-sm-2">
                 <li>
@@ -126,10 +128,10 @@
                 </li>
             </ul>
         </div>
-    </div>
-    <div class="tab-pane" id="reviews">
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
+    </section>
+    <section class="tab-pane" id="reviews">
+        <article class="panel panel-default">
+            <header class="panel-heading clearfix">
                 <span class="panel-title">
                     <i class="icon-user"></i> Zákazník, Plze�?
                 </span>
@@ -143,7 +145,7 @@
                 <span class="pull-right">
                     <i class="icon-calendar"></i> <small>28.7.2013</small>
                 </span>
-            </div>
+            </header>
             <div class="panel-body">
                 <p>
                     bezva dobré ale trochu se mi seká ale to se vypiluje
@@ -166,9 +168,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading clearfix">
+        </article>
+        <article class="panel panel-default">
+            <header class="panel-heading clearfix">
                 <span class="panel-title">
                     <i class="icon-user"></i> Zákazník, Plze�?
                 </span>
@@ -182,7 +184,7 @@
                 <span class="pull-right">
                     <i class="icon-calendar"></i> <small>28.7.2013</small>
                 </span>
-            </div>
+            </header>
             <div class="panel-body">
                 <p>
                     bezva dobré ale trochu se mi seká ale to se vypiluje
@@ -205,9 +207,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="tab-pane" id="comments">
+        </article>
+    </section>
+    <section class="tab-pane" id="comments">
         <p>comments</p>
-    </div>
+    </section>
 </div>

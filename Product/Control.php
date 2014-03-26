@@ -26,7 +26,7 @@ final class Control extends WebEdit\Control {
         }
         $template = $this->template;
         $template->products = $this->productRepository->getProductsInMenu($menu);
-        $template->setFile(__DIR__ . "/Control/list.latte");
+        $template->setFile($this->getTemplateFiles('list'));
         $template->render();
     }
 

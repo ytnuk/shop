@@ -1,27 +1,27 @@
-<div class="row" n:if="$products->count()">
+<nav class="row" n:if="$products->count()">
     <ul n:inner-foreach="$products as $product" class="col-block-xs-2 col-block-sm-3">
         <li>
-            <div class="panel panel-default text-center">
-                <div class="panel-heading">
+            <article class="panel panel-default text-center">
+                <header class="panel-heading">
                     <h3 class="panel-title">
                         <a href="{plink :Shop:Product:Presenter:view, id=>$product->id}">
                             {_$product->title}
                         </a>
                     </h3>
-                </div>
-                <div class="panel-body">
+                </header>
+                <section class="panel-body">
                     <a href="{plink :Shop:Product:Presenter:view, id=>$product->id}" class="thumbnail">
                         <img class="img-rounded img-responsive" src="http://placehold.it/260" alt="">
                     </a>
                     <p>
                         <small>{if $product->description}{$product->description|truncate:100}{else}{_shop.product.no_description}{/if}</small>
                     </p>
-                </div>
-                <div class="panel-footer">
+                </section>
+                <footer class="panel-footer">
                     <span class="panel-title">{$product->price|number}</span>
-                </div>
-            </div>
+                </footer>
+            </article>
         </li>
     </ul>
-</div>
-<div class="alert alert-info" n:if="!$products->count()">{_shop.category.empty}</div>
+</nav>
+<aside class="alert alert-info" n:if="!$products->count()">{_shop.category.empty}</aside>
