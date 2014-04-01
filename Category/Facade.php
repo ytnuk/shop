@@ -18,8 +18,8 @@ final class Facade {
         $this->productRepository = $productRepository;
     }
 
-    public function addCategory(array $data) {
-        $menu = $this->menuFacade->addMenu($data);
+    public function add(array $data) {
+        $menu = $this->menuFacade->add($data);
         $data['category']['menu_id'] = $menu->id;
         $category = $this->repository->insert($data['category']);
         $data['menu']['link'] = ':Shop:Category:Presenter:view';
@@ -28,12 +28,12 @@ final class Facade {
         return $category;
     }
 
-    public function editCategory($category, array $data) {
+    public function edit($category, array $data) {
         $this->menuFacade->editMenu($category->menu, $data);
         $this->repository->update($category, $data['category']);
     }
 
-    public function deleteCategory($category) {
+    public function delete($category) {
         if ($this->productRepository->countProductsInMenu($category->menu)) {
             throw new Category\Exception('shop.category.not_empty');
         }

@@ -3,6 +3,7 @@
 namespace WebEdit\Shop\Category\Admin;
 
 use WebEdit\Shop;
+use WebEdit\Menu;
 use WebEdit\Shop\Category;
 
 final class Presenter extends Shop\Admin\Presenter {
@@ -18,22 +19,17 @@ final class Presenter extends Shop\Admin\Presenter {
      * @var \WebEdit\Shop\Category\Facade
      */
     public $facade;
-    private $category;
+    protected $entity;
     private $categories;
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Category\Form\Factory
+     * @var \WebEdit\Menu\Facade
      */
-    public $formFactory;
+    public $menuFacade;
 
     public function actionAdd() {
-        $this['form']->onSuccess[] = [$this, 'handleAdd'];
-    }
-
-    public function handleAdd($form) {
-        $category = $this->facade->addCategory($form->getValues());
-        $this->redirect('Presenter:edit', ['id' => $category->id]);
+        $this['form']['menu']['menu_id']->setItems($this->menuFacade->getChildren());
     }
 
     public function renderAdd() {
@@ -41,32 +37,26 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function actionEdit($id) {
-        $this->category = $this->repository->getCategory($id);
-        if (!$this->category) {
+        $this->entity = $this->repository->getCategory($id);
+        if (!$this->entity) {
             $this->error();
         }
-        $this['form']['category']->setDefaults($this->category);
-        $this['form']['menu']->setDefaults($this->category->menu);
-        $this['form']->onSuccess[] = [$this, 'handleEdit'];
+        $this['form']['category']->setDefaults($this->entity);
+        $this['form']['menu']['menu_id']->setItems($this->menuFacade->getChildren($this->entity->menu));
+        $this['form']['menu']->setDefaults($this->entity->menu);
     }
 
     public function handleEdit($form) {
-        if ($form->submitted->name == 'delete') {
-            try {
-                $this->facade->deleteCategory($this->category);
-            } catch (Category\Exception $ex) {
-                $this->flashMessage($ex->getMessage(), 'warning');
-                $this->redirect('this');
-            }
-            $this->redirect('Presenter:view');
-        } else {
-            $this->facade->editCategory($this->category, $form->getValues());
+        try {
+            parent::handleEdit($form);
+        } catch (Category\Exception $ex) {
+            $this->flashMessage($ex->getMessage(), 'warning');
             $this->redirect('this');
         }
     }
 
     public function renderEdit() {
-        $this['menu']['breadcrumb'][] = $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->category->menu->title]);
+        $this['menu']['breadcrumb'][] = $this->translator->translate('shop.category.admin.edit', NULL, ['category' => $this->entity->menu->title]);
     }
 
     public function actionView() {
@@ -78,7 +68,10 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     protected function createComponentForm() {
-        return $this->formFactory->create($this->category);
+        $form = $this->formFactory->create($this->entity);
+        $form['menu'] = new Menu\Form\Container;
+        $form['category'] = new Category\Form\Container;
+        return $form;
     }
 
 }

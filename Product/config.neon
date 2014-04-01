@@ -1,7 +1,6 @@
 services:
     - WebEdit\Shop\Product\Facade
     - WebEdit\Shop\Product\Repository
-    - WebEdit\Shop\Product\Form\Factory
     -
         implement: WebEdit\Shop\Product\Control\Factory
         parameters: [category: NULL]

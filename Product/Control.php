@@ -22,7 +22,7 @@ final class Control extends WebEdit\Control {
         if ($this->category) {
             $menu = $this->menuRepository->getChildren($this->category->menu);
         } else {
-            $menu = $this->menuRepository->getMenuFromTable('shop_category');
+            $menu = $this->menuRepository->getMenuByType('shop_category');
         }
         $template = $this->template;
         $template->products = $this->productRepository->getProductsInMenu($menu);
