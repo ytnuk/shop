@@ -17,20 +17,7 @@
         </tr>
         <tr>
             <td>
-                {form form-$product->id}
-                    <div class="input-group">
-                        {label item-quantity, class=>[input-group-addon, hidden-xs] /}
-                        {input item-quantity, class=>[form-control]}
-                        <div class="input-group-btn">
-                            <button type="submit" name="edit" class="btn btn-warning">
-                                <span class="glyphicon glyphicon-edit"></span>
-                            </button>
-                            <button type="submit" name="delete" class="btn btn-danger">
-                                <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                        </div>
-                    </div>
-                {/form}
+                {control form-$product->id}
             </td>
             <th class="text-center">
     <h4>
@@ -39,7 +26,7 @@
 </th>
 <th class="text-center">
 <h4>
-    {$product->price*$items[$product->id]|number}
+    {$product->price*$items[$product->id]['quantity']|number}
 </h4>
 </th>
 </tr>

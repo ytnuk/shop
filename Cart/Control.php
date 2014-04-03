@@ -3,16 +3,20 @@
 namespace WebEdit\Shop\Cart;
 
 use WebEdit;
+use WebEdit\Form;
 use WebEdit\Shop\Cart;
 use WebEdit\Shop\Product;
 
 final class Control extends WebEdit\Control {
 
+    protected $entity;
+    protected $facade;
     private $repository;
     private $formFactory;
     private $productRepository;
 
-    public function __construct(Cart\Repository $repository, Cart\Form\Factory $formFactory, Product\Repository $productRepository) {
+    public function __construct(Cart\Facade $facade, Cart\Repository $repository, Form\Factory $formFactory, Product\Repository $productRepository) {
+        $this->facade = $facade;
         $this->repository = $repository;
         $this->formFactory = $formFactory;
         $this->productRepository = $productRepository;
@@ -20,31 +24,25 @@ final class Control extends WebEdit\Control {
 
     public function render() {
         $template = $this->template;
-        $template->items = $this->repository->getItems();
-        $template->products = $this->productRepository->getProducts($this->repository->getItemKeys());
-        $template->setFile(__DIR__ . '/Control/view.latte');
+        $template->items = $this->repository->getAll();
+        $template->products = $this->productRepository->getProducts($this->repository->getIdsOfItems());
+        $template->setFile($this->getTemplateFiles('view'));
         $template->render();
     }
 
-    public function formSuccess($form) {
-        $key = $form->getName();
-        if ($form->submitted->name == 'delete') {
-            $this->repository->removeItem($key);
-        } else {
-            $values = $form->getValues();
-            $this->repository->insertItem($key, $values['item']['quantity']);
-        }
-        $this->presenter->redirect('this');
+    public function handleEdit($form) {
+        $this->entity = $form->getName();
+        parent::handleEdit($form);
     }
 
     protected function createComponentForm() {
         return new WebEdit\Control\Multiplier(function($key) {
-            $quantity = $this->repository->getItem($key);
-            $form = $this->formFactory->create($quantity);
-            if ($quantity) {
-                $form['item']['quantity']->setDefaultValue($quantity);
+            $item = $this->repository->get($key);
+            $form = $this->formFactory->create($item);
+            $form['item'] = new Cart\Form\Container;
+            if ($item) {
+                $form['item']->setDefaults($item);
             }
-            $form->onSuccess[] = array($this, 'formSuccess');
             return $form;
         });
     }

@@ -1,4 +1,4 @@
 services:
     - WebEdit\Shop\Cart\Repository
-    - WebEdit\Shop\Cart\Form\Factory
+    - WebEdit\Shop\Cart\Facade
     - WebEdit\Shop\Cart\Control\Factory
