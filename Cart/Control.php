@@ -32,6 +32,10 @@ final class Control extends WebEdit\Control {
 
     public function handleEdit($form) {
         $this->entity = $form->getName();
+        $values = $form->getValues();
+        if ($values['item']['quantity'] < 1) {
+            $this->handleDelete($form);
+        }
         parent::handleEdit($form);
     }
 

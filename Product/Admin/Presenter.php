@@ -4,6 +4,7 @@ namespace WebEdit\Shop\Product\Admin;
 
 use WebEdit\Shop;
 use WebEdit\Menu;
+use WebEdit\Gallery;
 use WebEdit\Shop\Product;
 
 final class Presenter extends Shop\Admin\Presenter {
@@ -52,6 +53,7 @@ final class Presenter extends Shop\Admin\Presenter {
     protected function createComponentForm() {
         $form = $this->formFactory->create($this->entity);
         $form['menu'] = new Menu\Form\Container;
+        $form['gallery'] = new Gallery\Form\Container;
         $form['product'] = new Product\Form\Container;
         return $form;
     }
