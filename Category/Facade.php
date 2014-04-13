@@ -20,8 +20,8 @@ final class Facade {
 
     public function add(array $data) {
         $menu = $this->menuFacade->add($data);
-        $data['category']['menu_id'] = $menu->id;
-        $category = $this->repository->insert($data['category']);
+        $data['shop_category']['menu_id'] = $menu->id;
+        $category = $this->repository->insert($data['shop_category']);
         $data['menu']['link'] = ':Shop:Category:Presenter:view';
         $data['menu']['link_id'] = $category->id;
         $this->menuFacade->editMenu($menu, $data);
@@ -30,7 +30,7 @@ final class Facade {
 
     public function edit($category, array $data) {
         $this->menuFacade->editMenu($category->menu, $data);
-        $this->repository->update($category, $data['category']);
+        $this->repository->update($category, $data['shop_category']);
     }
 
     public function delete($category) {

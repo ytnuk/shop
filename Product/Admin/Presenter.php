@@ -41,7 +41,7 @@ final class Presenter extends Shop\Admin\Presenter {
         if (!$this->entity) {
             $this->error();
         }
-        $this['form']['product']->setDefaults($this->entity);
+        $this['form']['shop_product']->setDefaults($this->entity);
         $this['form']['menu']['menu_id']->setItems($this->menuFacade->getMenuByType('shop_category'));
         $this['form']['menu']->setDefaults($this->entity);
     }
@@ -54,7 +54,7 @@ final class Presenter extends Shop\Admin\Presenter {
         $form = $this->formFactory->create($this->entity);
         $form['menu'] = new Menu\Form\Container;
         $form['gallery'] = new Gallery\Form\Container;
-        $form['product'] = new Product\Form\Container;
+        $form['shop_product'] = new Product\Form\Container;
         return $form;
     }
 
