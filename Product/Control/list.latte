@@ -11,7 +11,7 @@
                 </header>
                 <section class="panel-body">
                     <a href="{plink :Shop:Product:Presenter:view, id=>$product->id}">
-                        <img class="img-thumbnail img-rounded img-responsive" src="{plink :Gallery:Photo:Presenter:view, id=>$product->gallery->gallery_photo_id}" alt="">
+                        {control gallery-$product-photo}
                     </a>
                     <p>
                         <small>{if $product->description}{$product->description|truncate:100}{else}{_shop.product.no_description}{/if}</small>

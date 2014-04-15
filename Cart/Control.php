@@ -6,6 +6,7 @@ use WebEdit;
 use WebEdit\Form;
 use WebEdit\Shop\Cart;
 use WebEdit\Shop\Product;
+use WebEdit\Control\Multiplier;
 
 final class Control extends WebEdit\Control {
 
@@ -40,7 +41,7 @@ final class Control extends WebEdit\Control {
     }
 
     protected function createComponentForm() {
-        return new WebEdit\Control\Multiplier(function($key) {
+        return new Multiplier(function($key) {
             $item = $this->repository->get($key);
             $form = $this->formFactory->create($item);
             $form['item'] = new Cart\Form\Container;

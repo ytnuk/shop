@@ -5,17 +5,21 @@ namespace WebEdit\Shop\Product;
 use WebEdit;
 use WebEdit\Shop\Product;
 use WebEdit\Menu;
+use WebEdit\Gallery;
+use WebEdit\Control\Multiplier;
 
 final class Control extends WebEdit\Control {
 
     private $productRepository;
     private $menuRepository;
     private $category;
+    private $galleryControlFactory;
 
-    public function __construct($category, Product\Repository $productRepository, Menu\Repository $menuRepository) {
+    public function __construct($category, Product\Repository $productRepository, Menu\Repository $menuRepository, Gallery\Control\Factory $galleryControlFactory) {
         $this->category = $category;
         $this->productRepository = $productRepository;
         $this->menuRepository = $menuRepository;
+        $this->galleryControlFactory = $galleryControlFactory;
     }
 
     public function renderList() {
@@ -28,6 +32,13 @@ final class Control extends WebEdit\Control {
         $template->products = $this->productRepository->getProductsInMenu($menu);
         $template->setFile($this->getTemplateFiles('list'));
         $template->render();
+    }
+
+    protected function createComponentGallery() {
+        return new Multiplier(function($id) {
+            $product = $this->productRepository->getProduct($id);
+            return $this->galleryControlFactory->create($product->gallery);
+        });
     }
 
 }

@@ -13,6 +13,12 @@ final class Presenter extends Shop\Presenter {
     public $repository;
     private $product;
 
+    /**
+     * @inject
+     * @var \WebEdit\Gallery\Control\Factory
+     */
+    public $galleryControlFactory;
+
     public function actionView($id) {
         $this->product = $this->repository->getProduct($id);
         if (!$this->product) {
@@ -24,6 +30,10 @@ final class Presenter extends Shop\Presenter {
         $this['menu']['breadcrumb'][] = $this->product->menu;
         $this['menu']['breadcrumb'][] = $this->product->title;
         $this->template->product = $this->product;
+    }
+
+    protected function createComponentGallery() {
+        return $this->galleryControlFactory->create($this->product->gallery);
     }
 
 }
