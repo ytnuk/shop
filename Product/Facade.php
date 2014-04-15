@@ -23,11 +23,13 @@ final class Facade {
     }
 
     public function edit($product, array $data) {
+        $this->galleryFacade->edit($product->gallery, $data);
         $data = array_merge($data['shop_product'], $data['menu']);
         $this->repository->update($product, $data);
     }
 
     public function delete($product) {
+        $this->galleryFacade->delete($product->gallery);
         $this->repository->remove($product);
     }
 
