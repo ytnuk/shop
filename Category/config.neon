@@ -1,3 +1,0 @@
-services:
-    - WebEdit\Shop\Category\Facade
-    - WebEdit\Shop\Category\Repository

@@ -1,5 +1,14 @@
-parameters:
-    shop:
-        directory: %vendor.webedit.directory%/shop
-    locale:
-        - %shop.directory%/locale
+services:
+    - WebEdit\Shop\Cart\Repository
+    - WebEdit\Shop\Cart\Facade
+    - WebEdit\Shop\Cart\Control\Factory
+
+    - WebEdit\Shop\Category\Facade
+    - WebEdit\Shop\Category\Repository
+
+    - WebEdit\Shop\Product\Facade
+    - WebEdit\Shop\Product\Repository
+    -
+        implement: WebEdit\Shop\Product\Control\Factory
+        parameters: [category: NULL]
+        arguments: [%category%]
