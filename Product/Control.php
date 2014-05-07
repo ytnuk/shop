@@ -6,7 +6,6 @@ use WebEdit;
 use WebEdit\Shop\Product;
 use WebEdit\Menu;
 use WebEdit\Gallery;
-use WebEdit\Control\Multiplier;
 
 final class Control extends WebEdit\Control {
 
@@ -35,7 +34,7 @@ final class Control extends WebEdit\Control {
     }
 
     protected function createComponentGallery() {
-        return new Multiplier(function($id) {
+        return new WebEdit\Control\Multiplier(function($id) {
             $product = $this->productRepository->getProduct($id);
             return $this->galleryControlFactory->create($product->gallery);
         });

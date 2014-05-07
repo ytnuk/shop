@@ -2,12 +2,12 @@
 
 namespace WebEdit\Shop\Product\Control;
 
-use WebEdit\Shop\Product\Control;
+use WebEdit\Shop\Product;
 
 interface Factory {
 
     /**
-     * @return Control
+     * @return Product\Control
      */
     public function create($category = NULL);
 }

@@ -3,19 +3,21 @@
 namespace WebEdit\Shop\Product;
 
 use WebEdit\Shop;
+use WebEdit\Shop\Product;
+use WebEdit\Gallery;
 
 final class Presenter extends Shop\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Product\Repository
+     * @var Product\Repository
      */
     public $repository;
     private $product;
 
     /**
      * @inject
-     * @var \WebEdit\Gallery\Control\Factory
+     * @var Gallery\Control\Factory
      */
     public $galleryControlFactory;
 

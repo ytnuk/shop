@@ -3,12 +3,13 @@
 namespace WebEdit\Shop;
 
 use WebEdit\Front;
+use WebEdit\Shop\Cart;
 
 abstract class Presenter extends Front\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Cart\Control\Factory
+     * @var Cart\Control\Factory
      */
     public $cartControlFactory;
 

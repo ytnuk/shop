@@ -2,12 +2,12 @@
 
 namespace WebEdit\Shop\Cart\Control;
 
-use WebEdit\Shop\Cart\Control;
+use WebEdit\Shop\Cart;
 
 interface Factory {
 
     /**
-     * @return Control
+     * @return Cart\Control
      */
     public function create();
 }

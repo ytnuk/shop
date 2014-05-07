@@ -11,20 +11,20 @@ final class Presenter extends Shop\Admin\Presenter {
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Product\Repository
+     * @var Product\Repository
      */
     public $repository;
 
     /**
      * @inject
-     * @var \WebEdit\Shop\Product\Facade
+     * @var Product\Facade
      */
     public $facade;
     protected $entity;
 
     /**
      * @inject
-     * @var \WebEdit\Menu\Facade
+     * @var Menu\Facade
      */
     public $menuFacade;
 
