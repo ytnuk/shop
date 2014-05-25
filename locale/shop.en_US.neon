@@ -1,19 +1,19 @@
 category:
     admin:
         add: Add new category
-        edit: 'Edit category: %category%'
+        edit: Edit category
         list: Categories
     form:
         group: Category
         description:
             label: Description
     description: Category description
-    empty: "There's no product in this category."
-    not_empty: "This category is not empty."
+    empty: There is no product in this category
+    not_empty: This category is not empty.
 product:
     admin:
         add: Add new product
-        edit: 'Edit product: %product%'
+        edit: Edit product
         list: Products
     form:
         group: Product
@@ -24,7 +24,7 @@ product:
         price:
             label: Price
     description: Product description
-    no_description: "There's no description available."
+    no_description: There is no description available.
     parameters: Parameters
     photos: Photos
     videos: Videos
@@ -42,5 +42,5 @@ cart:
     price: Price
     total: Total
     checkout: Checkout
-    empty: "There's no item in your shopping cart."
+    empty: There is no item in your shopping cart.
     step: Step %step%

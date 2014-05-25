@@ -9,5 +9,5 @@ interface Factory {
     /**
      * @return Product\Control
      */
-    public function create($category = NULL);
+    public function create();
 }

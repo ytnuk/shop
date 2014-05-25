@@ -1,7 +1,7 @@
 category:
     admin:
         add: Přidat kategorii
-        edit: 'Upravit kategorii: %category%'
+        edit: Upravit kategorii
         list: Kategorie
     form:
         group: Kategorie
@@ -13,7 +13,7 @@ category:
 product:
     admin:
         add: Přidat produkt
-        edit: 'Upravit produkt: %product%'
+        edit: Upravit produkt
         list: Produkty
     form:
         group: Produkt

@@ -33,7 +33,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderAdd() {
-        $this['menu']['breadcrumb'][] = $title = $this->translator->translate('shop.product.admin.add');
+        $this['menu']['breadcrumb'][] = 'shop.product.admin.add';
     }
 
     public function actionEdit($id) {
@@ -47,7 +47,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderEdit() {
-        $this['menu']['breadcrumb'][] = $this->translator->translate('shop.product.admin.edit', NULL, ['product' => $this->entity->title]);
+        $this['menu']['breadcrumb'][] = 'shop.product.admin.edit';
     }
 
     protected function createComponentForm() {
