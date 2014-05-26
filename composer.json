@@ -3,7 +3,8 @@
     "require": {
         "webedit/core": "dev-master",
         "webedit/form": "dev-master",
-        "webedit/menu": "dev-master"
+        "webedit/menu": "dev-master",
+        "webedit/gallery": "dev-master"
     },
     "autoload": {
         "psr-4": {
