@@ -2,7 +2,7 @@
     "name": "webedit/shop",
     "autoload": {
         "psr-4": {
-            "WebEdit\\Shop\\": ""
+            "WebEdit\\": "src/"
         }
     }
 }
