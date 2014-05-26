@@ -1,5 +1,10 @@
 {
     "name": "webedit/shop",
+    "require": {
+        "webedit/core": "dev-master",
+        "webedit/form": "dev-master",
+        "webedit/menu": "dev-master"
+    },
     "autoload": {
         "psr-4": {
             "WebEdit\\": "src/"
