@@ -1,7 +1,7 @@
 services:
     - WebEdit\Shop\Cart\Repository
     - WebEdit\Shop\Cart\Facade
-    - WebEdit\Shop\Cart\Control\Factory
+    #- WebEdit\Shop\Cart\Control\Factory
 
     - WebEdit\Shop\Category\Facade
     - WebEdit\Shop\Category\Repository
