@@ -6,13 +6,10 @@ use WebEdit;
 
 final class Extension extends WebEdit\Extension {
 
-    public function loadConfiguration() { //TODO
-        $builder = $this->getContainerBuilder();
-        $extension = new WebEdit\Reflection($this);
-        $file = dirname(dirname($extension->getFileName())) . '/config.neon';
-        if (file_exists($file)) {
-            $config = $this->loadFromFile($file);
-            $this->compiler->parseServices($builder, $config);
+    public function loadConfiguration() { //TODO: remove config file
+        $config = dirname(dirname($this->reflection->getFileName())) . '/config.neon';
+        if (file_exists($config)) {
+            $this->compiler->parseServices($this->getContainerBuilder(), $this->loadFromFile($config));
         }
     }
 
