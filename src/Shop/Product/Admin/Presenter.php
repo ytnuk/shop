@@ -33,7 +33,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderAdd() {
-        $this['menu']['breadcrumb'][] = 'shop.product.admin.add';
+        $this['menu'][] = 'shop.product.admin.add';
     }
 
     public function actionEdit($id) {
@@ -47,7 +47,7 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function renderEdit() {
-        $this['menu']['breadcrumb'][] = 'shop.product.admin.edit';
+        $this['menu'][] = 'shop.product.admin.edit';
     }
 
     protected function createComponentForm() {

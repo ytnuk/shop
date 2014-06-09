@@ -29,8 +29,8 @@ final class Presenter extends Shop\Presenter {
     }
 
     public function renderView() {
-        $this['menu']['breadcrumb'][] = $this->product->menu;
-        $this['menu']['breadcrumb'][] = $this->product->title;
+        $this['menu']->setEntity($this->product->menu);
+        $this['menu'][] = $this->product->title;
     }
 
     protected function createComponentProduct() {
