@@ -8,7 +8,7 @@ use WebEdit\Shop\Product;
 
 final class Facade {
 
-    public $repository;
+    private $repository;
     private $menuFacade;
     private $productRepository;
 
