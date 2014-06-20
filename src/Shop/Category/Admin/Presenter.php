@@ -3,33 +3,17 @@
 namespace WebEdit\Shop\Category\Admin;
 
 use WebEdit\Shop;
-use WebEdit\Menu;
 use WebEdit\Shop\Category;
 
 final class Presenter extends Shop\Admin\Presenter {
 
-    /**
-     * @inject
-     * @var Category\Repository
-     */
-    public $repository;
+    private $repository;
+    private $control;
+    private $category;
 
-    /**
-     * @inject
-     * @var Category\Facade
-     */
-    public $facade;
-    protected $entity;
-    private $categories;
-
-    /**
-     * @inject
-     * @var Menu\Facade
-     */
-    public $menuFacade;
-
-    public function actionAdd() {
-        $this['form']['menu']['menu_id']->setItems($this->menuFacade->getChildren());
+    public function __construct(Category\Repository $repostory, Category\Control\Factory $control) {
+        $this->repository = $repostory;
+        $this->control = $control;
     }
 
     public function renderAdd() {
@@ -37,41 +21,19 @@ final class Presenter extends Shop\Admin\Presenter {
     }
 
     public function actionEdit($id) {
-        $this->entity = $this->repository->getCategory($id);
-        if (!$this->entity) {
+        $this->category = $this->repository->getCategory($id);
+        if (!$this->category) {
             $this->error();
         }
-        $this['form']['shop_category']->setDefaults($this->entity);
-        $this['form']['menu']['menu_id']->setItems($this->menuFacade->getChildren($this->entity->menu));
-        $this['form']['menu']->setDefaults($this->entity->menu);
-    }
-
-    public function handleEdit($form) {
-        try {
-            parent::handleEdit($form);
-        } catch (Category\Exception $ex) {
-            $this->flashMessage($ex->getMessage(), 'warning');
-            $this->redirect('this');
-        }
+        $this['category']->setEntity($this->category);
     }
 
     public function renderEdit() {
         $this['menu'][] = 'shop.category.admin.edit';
     }
 
-    public function actionView() {
-        $this->categories = $this->repository->getAllCategories();
-    }
-
-    public function renderView() {
-        $this->template->categories = $this->categories;
-    }
-
-    protected function createComponentForm() {
-        $form = $this->formFactory->create($this->entity);
-        $form['menu'] = new Menu\Form\Container;
-        $form['shop_category'] = new Category\Form\Container;
-        return $form;
+    protected function createComponentCategory() {
+        return $this->control->create();
     }
 
 }

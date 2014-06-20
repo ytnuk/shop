@@ -14,8 +14,7 @@ final class Control extends WebEdit\Control {
     private $category;
     private $galleryControlFactory;
 
-    public function __construct($category, Product\Repository $productRepository, Menu\Repository $menuRepository, Gallery\Control\Factory $galleryControlFactory) {
-        $this->category = $category;
+    public function __construct(Product\Repository $productRepository, Menu\Repository $menuRepository, Gallery\Control\Factory $galleryControlFactory) {
         $this->productRepository = $productRepository;
         $this->menuRepository = $menuRepository;
         $this->galleryControlFactory = $galleryControlFactory;

@@ -4,37 +4,32 @@ namespace WebEdit\Shop\Category;
 
 use WebEdit\Shop;
 use WebEdit\Shop\Category;
-use WebEdit\Shop\Product;
 
 final class Presenter extends Shop\Presenter {
 
-    /**
-     * @inject
-     * @var Category\Repository
-     */
-    public $repository;
+    private $repository;
+    private $control;
     private $category;
 
-    /**
-     * @inject
-     * @var Product\Control\Factory
-     */
-    public $productControlFactory;
+    public function __construct(Category\Repository $repository, Category\Control\Factory $control) {
+        $this->repository = $repository;
+        $this->control = $control;
+    }
 
     public function actionView($id) {
         $this->category = $this->repository->getCategory($id);
         if (!$this->category) {
             $this->error();
         }
+        $this['category']->setEntity($this->category);
     }
 
     public function renderView() {
         $this['menu']->setEntity($this->category->menu);
-        $this->template->category = $this->category;
     }
 
-    protected function createComponentProduct() {
-        return $this->productControlFactory->create($this->category);
+    protected function createComponentCategory() {
+        return $this->control->create();
     }
 
 }

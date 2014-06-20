@@ -2,8 +2,8 @@
 
 namespace WebEdit\Shop\Category;
 
-use WebEdit;
+use WebEdit\Entity;
 
-final class Exception extends WebEdit\Exception {
+final class Exception extends Entity\Exception {
     
 }

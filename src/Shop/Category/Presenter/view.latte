@@ -1,8 +1,2 @@
 {block content}
-{control product:list}
-<section n:if="$category->description">
-    <header class="page-header">
-        <h3>{_shop.category.description} <small>{_$category->menu->title}</small></h3>
-    </header>
-    {$category->description|noescape}
-</section>
+{control category}

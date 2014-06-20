@@ -24,12 +24,12 @@ final class Facade {
         $category = $this->repository->insert($data['shop_category']);
         $data['menu']['link'] = ':Shop:Category:Presenter:view';
         $data['menu']['link_id'] = $category->id;
-        $this->menuFacade->editMenu($menu, $data);
+        $this->menuFacade->edit($menu, $data);
         return $category;
     }
 
     public function edit($category, array $data) {
-        $this->menuFacade->editMenu($category->menu, $data);
+        $this->menuFacade->edit($category->menu, $data);
         $this->repository->update($category, $data['shop_category']);
     }
 
@@ -37,7 +37,7 @@ final class Facade {
         if ($this->productRepository->countProductsInMenu($category->menu)) {
             throw new Category\Exception('shop.category.not_empty');
         }
-        $this->menuFacade->deleteMenu($category->menu);
+        $this->menuFacade->delete($category->menu);
         $this->repository->remove($category);
     }
 

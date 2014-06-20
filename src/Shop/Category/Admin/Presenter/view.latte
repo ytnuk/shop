@@ -1,19 +1,2 @@
 {block content}
-<table class="table table-bordered table-striped table-hover table-responsive">
-    <thead>
-        <tr>
-            <th>...</th>
-            <th>...</th>
-        </tr>
-    </thead>
-    <tbody n:inner-foreach="$categories as $category">
-        <tr>
-            <td>
-                {_$category->menu->title}
-            </td>
-            <td>
-                <a class="btn btn-warning" n:href="Presenter:edit,id=>$category->id">{_form.button.edit}</a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+category list

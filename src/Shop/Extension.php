@@ -6,11 +6,23 @@ use WebEdit;
 
 final class Extension extends WebEdit\Extension {
 
-    public function loadConfiguration() { //TODO: remove config file
-        $config = dirname(dirname($this->reflection->getFileName())) . '/config.neon';
-        if (file_exists($config)) {
-            $this->compiler->parseServices($this->getContainerBuilder(), $this->loadFromFile($config));
-        }
+    public function loadConfiguration() {
+        $builder = $this->getContainerBuilder();
+        $builder->addDefinition($this->prefix('category.repository'))
+                ->setClass('WebEdit\Shop\Category\Repository');
+        $builder->addDefinition($this->prefix('category.facade'))
+                ->setClass('WebEdit\Shop\Category\Facade');
+        $builder->addDefinition($this->prefix('category.control'))
+                ->setImplement('WebEdit\Shop\Category\Control\Factory');
+        $builder->addDefinition($this->prefix('category.form.control'))
+                ->setImplement('WebEdit\Shop\Category\Form\Control\Factory');
+        $builder->addDefinition($this->prefix('product.repository'))
+                ->setClass('WebEdit\Shop\Product\Repository');
+        $builder->addDefinition($this->prefix('product.facade'))
+                ->setClass('WebEdit\Shop\Product\Facade');
+        $builder->addDefinition($this->prefix('product.control'))
+                ->setImplement('WebEdit\Shop\Product\Control\Factory');
+        #TODO: Cart
     }
 
 }
