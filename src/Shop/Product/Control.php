@@ -2,12 +2,12 @@
 
 namespace WebEdit\Shop\Product;
 
-use WebEdit;
+use WebEdit\Application;
 use WebEdit\Shop\Product;
 use WebEdit\Menu;
 use WebEdit\Gallery;
 
-final class Control extends WebEdit\Control {
+final class Control extends Application\Control {
 
     private $productRepository;
     private $menuRepository;
@@ -33,7 +33,7 @@ final class Control extends WebEdit\Control {
     }
 
     protected function createComponentGallery() {
-        return new WebEdit\Control\Multiplier(function($id) {
+        return new Application\Control\Multiplier(function($id) {
             $product = $this->productRepository->getProduct($id);
             return $this->galleryControlFactory->create($product->gallery);
         });

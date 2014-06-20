@@ -2,12 +2,12 @@
 
 namespace WebEdit\Shop\Cart;
 
-use WebEdit;
+use WebEdit\Application;
 use WebEdit\Form;
 use WebEdit\Shop\Cart;
 use WebEdit\Shop\Product;
 
-final class Control extends WebEdit\Control {
+final class Control extends Application\Control {
 
     protected $entity;
     protected $facade;

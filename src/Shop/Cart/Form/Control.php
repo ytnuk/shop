@@ -5,6 +5,7 @@ namespace WebEdit\Shop\Cart\Form;
 use WebEdit\Form;
 use WebEdit\Cart;
 use WebEdit\Menu;
+use WebEdit\Application;
 
 final class Control extends Form\Control {
 
@@ -26,7 +27,7 @@ final class Control extends Form\Control {
     }
 
     protected function createComponentForm() {
-        return new WebEdit\Control\Multiplier(function($key) {
+        return new Application\Control\Multiplier(function($key) {
             $item = $this->repository->get($key);
             $form = $this->formFactory->create($item);
             $form['item'] = new Cart\Form\Container;

@@ -2,12 +2,12 @@
 
 namespace WebEdit\Shop\Product\Admin;
 
-use WebEdit\Shop;
+use WebEdit\Application;
 use WebEdit\Menu;
 use WebEdit\Gallery;
 use WebEdit\Shop\Product;
 
-final class Presenter extends Shop\Admin\Presenter {
+final class Presenter extends Application\Admin\Presenter {
 
     /**
      * @inject

@@ -2,8 +2,8 @@
 
 namespace WebEdit\Shop\Cart;
 
-use WebEdit\Shop;
+use WebEdit\Application;
 
-final class Presenter extends Shop\Presenter {
+final class Presenter extends Application\Front\Presenter {
     
 }

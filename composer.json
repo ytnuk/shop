@@ -1,7 +1,7 @@
 {
     "name": "webedit/shop",
     "require": {
-        "webedit/core": "dev-master",
+        "webedit/application": "dev-master",
         "webedit/form": "dev-master",
         "webedit/menu": "dev-master",
         "webedit/gallery": "dev-master"

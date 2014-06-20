@@ -2,10 +2,10 @@
 
 namespace WebEdit\Shop\Category;
 
-use WebEdit\Shop;
+use WebEdit\Application;
 use WebEdit\Shop\Category;
 
-final class Presenter extends Shop\Presenter {
+final class Presenter extends Application\Front\Presenter {
 
     private $repository;
     private $control;
