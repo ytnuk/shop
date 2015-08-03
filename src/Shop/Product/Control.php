@@ -1,42 +1,93 @@
 <?php
+namespace Ytnuk\Shop\Product;
 
-namespace WebEdit\Shop\Product;
+use Ytnuk;
 
-use WebEdit\Application;
-use WebEdit\Shop\Product;
-use WebEdit\Menu;
-use WebEdit\Gallery;
+/**
+ * Class Control
+ *
+ * @package Ytnuk\Shop
+ */
+final class Control
+	extends Ytnuk\Orm\Control
+{
 
-final class Control extends Application\Control {
+	/**
+	 * @var Entity
+	 */
+	private $product;
 
-    private $productRepository;
-    private $menuRepository;
-    private $category;
-    private $galleryControlFactory;
+	/**
+	 * @var Form\Control\Factory
+	 */
+	private $formControl;
 
-    public function __construct(Product\Repository $productRepository, Menu\Repository $menuRepository, Gallery\Control\Factory $galleryControlFactory) {
-        $this->productRepository = $productRepository;
-        $this->menuRepository = $menuRepository;
-        $this->galleryControlFactory = $galleryControlFactory;
-    }
+	/**
+	 * @var Ytnuk\Orm\Grid\Control\Factory
+	 */
+	private $gridControl;
 
-    public function renderList() {
-        if ($this->category) {
-            $menu = $this->menuRepository->getChildren($this->category->menu);
-        } else {
-            $menu = $this->menuRepository->getMenuByType('shop_category');
-        }
-        $template = $this->template;
-        $template->products = $this->productRepository->getProductsInMenu($menu);
-        $template->setFile($this->getTemplateFiles('list'));
-        $template->render();
-    }
+	/**
+	 * @var Repository
+	 */
+	private $repository;
 
-    protected function createComponentGallery() {
-        return new Application\Control\Multiplier(function($id) {
-            $product = $this->productRepository->getProduct($id);
-            return $this->galleryControlFactory->create($product->gallery);
-        });
-    }
+	/**
+	 * @param Entity $product
+	 * @param Form\Control\Factory $formControl
+	 * @param Ytnuk\Orm\Grid\Control\Factory $gridControl
+	 * @param Repository $repository
+	 */
+	public function __construct(
+		Entity $product,
+		Form\Control\Factory $formControl,
+		Ytnuk\Orm\Grid\Control\Factory $gridControl,
+		Repository $repository
+	) {
+		parent::__construct($product);
+		$this->product = $product;
+		$this->formControl = $formControl;
+		$this->gridControl = $gridControl;
+		$this->repository = $repository;
+	}
 
+	/**
+	 * @return array
+	 */
+	protected function startup()
+	{
+		return [
+			'product' => $this->product,
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	protected function getViews()
+	{
+		return [
+			'view' => function () {
+				return [
+					$this->product,
+				];
+			},
+		] + parent::getViews();
+	}
+
+	/**
+	 * @return Form\Control
+	 */
+	protected function createComponentYtnukOrmFormControl()
+	{
+		return $this->formControl->create($this->product);
+	}
+
+	/**
+	 * @return Ytnuk\Orm\Grid\Control
+	 */
+	protected function createComponentYtnukGridControl()
+	{
+		return $this->gridControl->create($this->repository);
+	}
 }

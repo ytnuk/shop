@@ -1,15 +1,19 @@
 {
-    "name": "webedit/shop",
+    "name": "ytnuk/shop",
     "require": {
-        "webedit/application": "dev-master",
-        "webedit/form": "dev-master",
-        "webedit/menu": "dev-master",
-        "webedit/gallery": "dev-master",
-        "webedit/translation": "dev-master"
+		"ytnuk/web": "dev-master",
+		"kdyby/translation": "dev-master",
+		"nette/di": "dev-master",
+		"ytnuk/config": "dev-master",
+		"ytnuk/orm": "dev-master",
+		"ytnuk/form": "dev-master",
+		"ytnuk/link": "dev-master",
+		"ytnuk/translation": "dev-master",
+		"ytnuk/menu": "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "WebEdit\\": "src/"
+            "Ytnuk\\": "src/"
         }
     }
 }

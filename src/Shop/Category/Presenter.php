@@ -1,35 +1,96 @@
 <?php
+namespace Ytnuk\Shop\Category;
 
-namespace WebEdit\Shop\Category;
+use Nette;
+use Ytnuk;
 
-use WebEdit\Application;
-use WebEdit\Shop\Category;
+/**
+ * Class Presenter
+ *
+ * @package Ytnuk\Shop
+ */
+final class Presenter
+	extends Ytnuk\Shop\Presenter
+{
 
-final class Presenter extends Application\Front\Presenter {
+	/**
+	 * @var Repository
+	 */
+	private $repository;
 
-    private $repository;
-    private $control;
-    private $category;
+	/**
+	 * @var Control\Factory
+	 */
+	private $control;
 
-    public function __construct(Category\Repository $repository, Category\Control\Factory $control) {
-        $this->repository = $repository;
-        $this->control = $control;
-    }
+	/**
+	 * @var Entity
+	 */
+	private $category;
 
-    public function actionView($id) {
-        $this->category = $this->repository->getCategory($id);
-        if (!$this->category) {
-            $this->error();
-        }
-        $this['category']->setEntity($this->category);
-    }
+	/**
+	 * @param Repository $repository
+	 * @param Control\Factory $control
+	 */
+	public function __construct(
+		Repository $repository,
+		Control\Factory $control
+	) {
+		parent::__construct();
+		$this->repository = $repository;
+		$this->control = $control;
+	}
 
-    public function renderView() {
-        $this['menu']->setEntity($this->category->menu);
-    }
+	/**
+	 * @param int $id
+	 *
+	 * @throws \Nette\Application\BadRequestException
+	 */
+	public function actionView($id)
+	{
+		if ( ! $this->category = $this->repository->getById($id)) {
+			$this->error();
+		}
+	}
 
-    protected function createComponentCategory() {
-        return $this->control->create();
-    }
+	/**
+	 * @param $id
+	 *
+	 * @throws Nette\Application\BadRequestException
+	 */
+	public function actionEdit($id)
+	{
+		if ( ! $this->category = $this->repository->getById($id)) {
+			$this->error();
+		}
+	}
 
+	public function renderEdit()
+	{
+		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = 'shop.category.presenter.action.edit';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function redrawControl(
+		$snippet = NULL,
+		$redraw = TRUE
+	) {
+		parent::redrawControl(
+			$snippet,
+			$redraw
+		);
+		if ($this->category) {
+			$this[Control::class]->redrawControl();
+		}
+	}
+
+	/**
+	 * @return Control
+	 */
+	protected function createComponentYtnukShopCategoryControl()
+	{
+		return $this->control->create($this->category ? : new Entity);
+	}
 }

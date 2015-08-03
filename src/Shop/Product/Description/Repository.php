@@ -1,5 +1,5 @@
 <?php
-namespace Ytnuk\Shop\Category;
+namespace Ytnuk\Shop\Product\Description;
 
 use Ytnuk;
 

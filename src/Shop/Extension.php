@@ -1,29 +1,47 @@
 <?php
+namespace Ytnuk\Shop;
 
-namespace WebEdit\Shop;
+use Kdyby;
+use Nette;
+use Ytnuk;
 
-use WebEdit\DI;
-use WebEdit\Translation;
+/**
+ * Class Extension
+ *
+ * @package Ytnuk\Shop
+ */
+final class Extension
+	extends Nette\DI\CompilerExtension
+	implements Ytnuk\Config\Provider
+{
 
-final class Extension extends DI\Extension implements Translation\Provider {
-
-    public function loadConfiguration() {
-        $builder = $this->getContainerBuilder();
-        $builder->addDefinition($this->prefix('category.repository'))
-                ->setClass('WebEdit\Shop\Category\Repository');
-        $builder->addDefinition($this->prefix('category.facade'))
-                ->setClass('WebEdit\Shop\Category\Facade');
-        $builder->addDefinition($this->prefix('category.control'))
-                ->setImplement('WebEdit\Shop\Category\Control\Factory');
-        $builder->addDefinition($this->prefix('category.form.control'))
-                ->setImplement('WebEdit\Shop\Category\Form\Control\Factory');
-        $builder->addDefinition($this->prefix('product.repository'))
-                ->setClass('WebEdit\Shop\Product\Repository');
-        $builder->addDefinition($this->prefix('product.facade'))
-                ->setClass('WebEdit\Shop\Product\Facade');
-        $builder->addDefinition($this->prefix('product.control'))
-                ->setImplement('WebEdit\Shop\Product\Control\Factory');
-        #TODO: Cart
-    }
-
+	/**
+	 * @inheritdoc
+	 */
+	public function getConfigResources()
+	{
+		return [
+			Ytnuk\Orm\Extension::class => [
+				'repositories' => [
+					$this->prefix('categoryRepository') => Category\Repository::class,
+					$this->prefix('categoryDescriptionRepository') => Category\Description\Repository::class,
+					$this->prefix('productRepository') => Product\Repository::class,
+					$this->prefix('productDescriptionRepository') => Product\Description\Repository::class,
+					$this->prefix('productContentRepository') => Product\Content\Repository::class,
+					$this->prefix('productCategoryRepository') => Product\Category\Repository::class,
+				],
+			],
+			Kdyby\Translation\DI\TranslationExtension::class => [
+				'dirs' => [
+					__DIR__ . '/../../locale',
+				],
+			],
+			'services' => [
+				Category\Control\Factory::class,
+				Category\Form\Control\Factory::class,
+				Product\Control\Factory::class,
+				Product\Form\Control\Factory::class,
+			],
+		];
+	}
 }

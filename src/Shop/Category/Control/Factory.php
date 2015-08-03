@@ -1,13 +1,20 @@
 <?php
+namespace Ytnuk\Shop\Category\Control;
 
-namespace WebEdit\Shop\Category\Control;
+use Ytnuk;
 
-use WebEdit\Shop\Category;
+/**
+ * Interface Factory
+ *
+ * @package Ytnuk\Shop
+ */
+interface Factory
+{
 
-interface Factory {
-
-    /**
-     * @return Category\Control
-     */
-    public function create();
+	/**
+	 * @param Ytnuk\Shop\Category\Entity $category
+	 *
+	 * @return Ytnuk\Shop\Category\Control
+	 */
+	public function create(Ytnuk\Shop\Category\Entity $category);
 }

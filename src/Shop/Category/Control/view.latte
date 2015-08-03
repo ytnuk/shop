@@ -1,3 +1,17 @@
-<blockquote n:if="$entity->description">
-    <p>{$entity->description|noescape}</p>
-</blockquote>
+<p class="lead" n:if="$category->description">
+	{$category->description}
+</p>
+<ul class="media-list">
+  <li class="media" n:foreach="$products as $product">
+    <div class="media-left">
+      <a n:href="$product->link">
+        <img class="media-object" src="http://placehold.it/64x64">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{$product->title}</h4>
+      {$product->description}
+    </div>
+  </li>
+</ul>
+{control Ytnuk\Orm\Pagination\Control-products}

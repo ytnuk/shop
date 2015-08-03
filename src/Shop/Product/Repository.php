@@ -1,25 +1,26 @@
 <?php
+namespace Ytnuk\Shop\Product;
 
-namespace WebEdit\Shop\Product;
+use Nextras;
+use Ytnuk;
 
-use WebEdit\Database;
+/**
+ * Class Repository
+ *
+ * @package Ytnuk\Shop
+ */
+final class Repository
+	extends Ytnuk\Orm\Repository
+{
 
-final class Repository extends Database\Repository {
-
-    public function getProduct($id) {
-        return $this->storage()->get($id);
-    }
-
-    public function getProducts($ids) {
-        return $this->storage()->where('id', $ids);
-    }
-
-    public function getProductsInMenu($menu) {
-        return $this->storage()->where('menu_id', $menu);
-    }
-
-    public function countProductsInMenu($menu) {
-        return $this->getProductsInMenu($menu)->count('*');
-    }
-
+	/**
+	 * @inheritdoc
+	 */
+	public function findAll()
+	{
+		return parent::findAll()->orderBy(
+			current($this->getEntityMetadata()->getPrimaryKey()),
+			Nextras\Orm\Collection\ICollection::DESC
+		);
+	}
 }

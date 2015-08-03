@@ -1,0 +1,61 @@
+category:
+	presenter:
+		action:
+			edit: Edit category
+	form:
+		container:
+			property:
+				productNodes:
+					group: Products
+					action:
+						add: Add product
+						delete: Delete product
+	description:
+		form:
+			container:
+				property:
+					value:
+						label: Description
+						placeholder: Fill description
+product:
+	presenter:
+		action:
+			edit: Edit product
+	form:
+		container:
+			property:
+				title:
+					label: Title
+					placeholder: Fill title
+				categoryNodes:
+					group: Categories
+					action:
+						add: Add category
+						delete: Delete category
+	category:
+		form:
+			container:
+				group: Category
+				property:
+					product:
+						label: Product
+						placeholder: Select product
+					category:
+						label: Category
+						placeholder: Select category
+					primary:
+						label: Primary category
+	description:
+		form:
+			container:
+				property:
+					value:
+						label: Description
+						placeholder: Fill description
+	content:
+		form:
+			container:
+				property:
+					value:
+						label: Content
+						placeholder: Fill content

@@ -1,40 +1,99 @@
 <?php
+namespace Ytnuk\Shop\Product;
 
-namespace WebEdit\Shop\Product;
+use Nette;
+use Ytnuk;
 
-use WebEdit\Application;
-use WebEdit\Shop\Product;
+/**
+ * Class Presenter
+ *
+ * @package Ytnuk\Shop
+ */
+final class Presenter
+	extends Ytnuk\Shop\Presenter
+{
 
-final class Presenter extends Application\Front\Presenter {
+	/**
+	 * @var Repository
+	 */
+	private $repository;
 
-    /**
-     * @inject
-     * @var Product\Repository
-     */
-    public $repository;
-    private $product;
+	/**
+	 * @var Control\Factory
+	 */
+	private $control;
 
-    /**
-     * @inject
-     * @var Product\Control\Factory
-     */
-    public $control;
+	/**
+	 * @var Entity
+	 */
+	private $product;
 
-    public function actionView($id) {
-        $this->product = $this->repository->getProduct($id);
-        if (!$this->product) {
-            $this->error();
-        }
-        $this['product']->setEntity($this->product);
-    }
+	/**
+	 * @param Repository $repository
+	 * @param Control\Factory $control
+	 */
+	public function __construct(
+		Repository $repository,
+		Control\Factory $control
+	) {
+		parent::__construct();
+		$this->repository = $repository;
+		$this->control = $control;
+	}
 
-    public function renderView() {
-        $this['menu']->setEntity($this->product->menu);
-        $this['menu'][] = $this->product->title;
-    }
+	/**
+	 * @param int $id
+	 *
+	 * @throws \Nette\Application\BadRequestException
+	 */
+	public function actionView($id)
+	{
+		if ( ! $this->product = $this->repository->getById($id)) {
+			$this->error();
+		} elseif ($category = $this->product->category) {
+			$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = $category->menu;
+		}
+		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = $this->product->title;
+	}
 
-    protected function createComponentProduct() {
-        return $this->control->create();
-    }
+	/**
+	 * @param $id
+	 *
+	 * @throws Nette\Application\BadRequestException
+	 */
+	public function actionEdit($id)
+	{
+		if ( ! $this->product = $this->repository->getById($id)) {
+			$this->error();
+		}
+	}
 
+	public function renderEdit()
+	{
+		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = 'shop.product.presenter.action.edit';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function redrawControl(
+		$snippet = NULL,
+		$redraw = TRUE
+	) {
+		parent::redrawControl(
+			$snippet,
+			$redraw
+		);
+		if ($this->product) {
+			$this[Control::class]->redrawControl();
+		}
+	}
+
+	/**
+	 * @return Control
+	 */
+	protected function createComponentYtnukShopProductControl()
+	{
+		return $this->control->create($this->product ? : new Entity);
+	}
 }

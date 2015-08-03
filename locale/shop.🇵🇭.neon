@@ -1,0 +1,61 @@
+category:
+	presenter:
+		action:
+			edit: Upravit kategorii
+	form:
+		container:
+			property:
+				productNodes:
+					group: Produkty
+					action:
+						add: Přidat produkt
+						delete: Odebrat produkt
+	description:
+		form:
+			container:
+				property:
+					value:
+						label: Popis
+						placeholder: Vyplňte popis
+product:
+	presenter:
+		action:
+			edit: Upravit produkt
+	form:
+		container:
+			property:
+				title:
+					label: Název
+					placeholder: Vyplňte název
+				categoryNodes:
+					group: Kategorie
+					action:
+						add: Přidat kategorii
+						delete: Odebrat kategorii
+	category:
+		form:
+			container:
+				group: Kategorie
+				property:
+					product:
+						label: Produkt
+						placeholder: Vyberte produkt
+					category:
+						label: Kategorie
+						placeholder: Vyberte kategorii
+					primary:
+						label: Hlavní kategorie
+	description:
+		form:
+			container:
+				property:
+					value:
+						label: Popis
+						placeholder: Vyplňte popis
+	content:
+		form:
+			container:
+				property:
+					value:
+						label: Obsah
+						placeholder: Vyplňte obsah

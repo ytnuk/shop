@@ -4,12 +4,12 @@ namespace Ytnuk\Shop\Category;
 use Ytnuk;
 
 /**
- * Class Repository
+ * Class Mapper
  *
  * @package Ytnuk\Shop
  */
-final class Repository
-	extends Ytnuk\Orm\Repository
+final class Mapper
+	extends Ytnuk\Orm\Mapper
 {
 
 }
