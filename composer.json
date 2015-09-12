@@ -1,6 +1,6 @@
 {
-    "name": "ytnuk/shop",
-    "require": {
+	"name": "ytnuk/shop",
+	"require": {
 		"ytnuk/web": "dev-master",
 		"kdyby/translation": "dev-master",
 		"nette/di": "dev-master",
@@ -10,10 +10,10 @@
 		"ytnuk/link": "dev-master",
 		"ytnuk/translation": "dev-master",
 		"ytnuk/menu": "dev-master"
-    },
-    "autoload": {
-        "psr-4": {
-            "Ytnuk\\": "src/"
-        }
-    }
+	},
+	"autoload": {
+		"psr-4": {
+			"Ytnuk\\": "src/"
+		}
+	}
 }

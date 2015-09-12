@@ -4,11 +4,6 @@ namespace Ytnuk\Shop\Category;
 use Nette;
 use Ytnuk;
 
-/**
- * Class Presenter
- *
- * @package Ytnuk\Shop
- */
 final class Presenter
 	extends Ytnuk\Shop\Presenter
 {
@@ -28,10 +23,6 @@ final class Presenter
 	 */
 	private $category;
 
-	/**
-	 * @param Repository $repository
-	 * @param Control\Factory $control
-	 */
 	public function __construct(
 		Repository $repository,
 		Control\Factory $control
@@ -41,24 +32,14 @@ final class Presenter
 		$this->control = $control;
 	}
 
-	/**
-	 * @param int $id
-	 *
-	 * @throws \Nette\Application\BadRequestException
-	 */
-	public function actionView($id)
+	public function actionView(int $id)
 	{
 		if ( ! $this->category = $this->repository->getById($id)) {
 			$this->error();
 		}
 	}
 
-	/**
-	 * @param $id
-	 *
-	 * @throws Nette\Application\BadRequestException
-	 */
-	public function actionEdit($id)
+	public function actionEdit(int $id)
 	{
 		if ( ! $this->category = $this->repository->getById($id)) {
 			$this->error();
@@ -70,12 +51,9 @@ final class Presenter
 		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = 'shop.category.presenter.action.edit';
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	public function redrawControl(
-		$snippet = NULL,
-		$redraw = TRUE
+		string $snippet = NULL,
+		bool $redraw = TRUE
 	) {
 		parent::redrawControl(
 			$snippet,
@@ -86,10 +64,7 @@ final class Presenter
 		}
 	}
 
-	/**
-	 * @return Control
-	 */
-	protected function createComponentYtnukShopCategoryControl()
+	protected function createComponentYtnukShopCategoryControl() : Control
 	{
 		return $this->control->create($this->category ? : new Entity);
 	}

@@ -5,11 +5,6 @@ use Nette;
 use Nextras;
 use Ytnuk;
 
-/**
- * Class Container
- *
- * @package Ytnuk\Shop
- */
 final class Container
 	extends Ytnuk\Orm\Form\Container
 {
@@ -24,9 +19,6 @@ final class Container
 	 */
 	private $repository;
 
-	/**
-	 * @inheritDoc
-	 */
 	public function __construct(
 		Ytnuk\Shop\Product\Entity $entity,
 		Ytnuk\Shop\Product\Repository $repository
@@ -39,13 +31,11 @@ final class Container
 		$this->repository = $repository;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	public function setValues(
 		$values,
 		$erase = FALSE
-	) {
+	) : Ytnuk\Orm\Form\Container
+	{
 		$link = $this->entity->link;
 		$link->module = 'Shop:Product';
 		$container = parent::setValues(
@@ -64,20 +54,12 @@ final class Container
 		return $container;
 	}
 
-	/**
-	 * @inheritdoc
-	 */
 	protected function attached($form)
 	{
 		parent::attached($form);
 		unset($this['link']);
 	}
 
-	/**
-	 * @param Nextras\Orm\Entity\Reflection\PropertyMetadata $metadata
-	 *
-	 * @return Nette\Forms\Container
-	 */
 	protected function addPropertyDescription(Nextras\Orm\Entity\Reflection\PropertyMetadata $metadata)
 	{
 		return $this->addPropertyOneHasOneDirected(

@@ -3,24 +3,15 @@ namespace Ytnuk\Shop\Product\Content\Form;
 
 use Ytnuk;
 
-/**
- * Class Container
- *
- * @package Ytnuk\Shop
- */
 final class Container
 	extends Ytnuk\Orm\Form\Container
 {
 
-	/**
-	 * @inheritdoc
-	 *
-	 * @param Ytnuk\Shop\Product\Content\Entity $values
-	 */
 	public function setValues(
 		$values,
 		$erase = FALSE
-	) {
+	) : Ytnuk\Orm\Form\Container
+	{
 		if ((array) $values->value->translates) {
 			return parent::setValues(
 				(array) $values,

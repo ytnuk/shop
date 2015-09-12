@@ -24,17 +24,11 @@ final class Entity
 	 */
 	private $categoryRepository;
 
-	/**
-	 * @return Nextras\Orm\Collection\ICollection|Ytnuk\Shop\Category\Entity[]
-	 */
-	public function getterCategories()
+	public function getterCategories() : Nextras\Orm\Collection\ICollection
 	{
 		return $this->categoryRepository->findBy(['this->productNodes->product' => $this->id]);
 	}
 
-	/**
-	 * @return Ytnuk\Shop\Category\Entity|NULL
-	 */
 	public function getterCategory()
 	{
 		$node = $this->categoryNodes->get()->findBy(['primary' => TRUE])->fetch();
@@ -42,9 +36,6 @@ final class Entity
 		return $node instanceof Category\Entity ? $node->category : NULL;
 	}
 
-	/**
-	 * @param Ytnuk\Shop\Category\Repository $repository
-	 */
 	public function injectCategoryRepository(Ytnuk\Shop\Category\Repository $repository)
 	{
 		$this->categoryRepository = $repository;

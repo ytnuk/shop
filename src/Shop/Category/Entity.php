@@ -21,17 +21,11 @@ final class Entity
 	 */
 	private $productRepository;
 
-	/**
-	 * @return Nextras\Orm\Collection\ICollection|Ytnuk\Shop\Product\Entity[]
-	 */
-	public function getterProducts()
+	public function getterProducts() : Nextras\Orm\Collection\ICollection
 	{
 		return $this->productRepository->findBy(['this->categoryNodes->category' => $this->id]);
 	}
 
-	/**
-	 * @param Ytnuk\Shop\Product\Repository $repository
-	 */
 	public function injectProductRepository(Ytnuk\Shop\Product\Repository $repository)
 	{
 		$this->productRepository = $repository;

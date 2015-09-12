@@ -3,11 +3,6 @@ namespace Ytnuk\Shop\Product;
 
 use Ytnuk;
 
-/**
- * Class Control
- *
- * @package Ytnuk\Shop
- */
 final class Control
 	extends Ytnuk\Orm\Control
 {
@@ -32,12 +27,6 @@ final class Control
 	 */
 	private $repository;
 
-	/**
-	 * @param Entity $product
-	 * @param Form\Control\Factory $formControl
-	 * @param Ytnuk\Orm\Grid\Control\Factory $gridControl
-	 * @param Repository $repository
-	 */
 	public function __construct(
 		Entity $product,
 		Form\Control\Factory $formControl,
@@ -51,20 +40,14 @@ final class Control
 		$this->repository = $repository;
 	}
 
-	/**
-	 * @return array
-	 */
-	protected function startup()
+	protected function startup() : array
 	{
 		return [
 			'product' => $this->product,
 		];
 	}
 
-	/**
-	 * @inheritdoc
-	 */
-	protected function getViews()
+	protected function getViews() : array
 	{
 		return [
 			'view' => function () {
@@ -75,18 +58,12 @@ final class Control
 		] + parent::getViews();
 	}
 
-	/**
-	 * @return Form\Control
-	 */
-	protected function createComponentYtnukOrmFormControl()
+	protected function createComponentYtnukOrmFormControl() : Form\Control
 	{
 		return $this->formControl->create($this->product);
 	}
 
-	/**
-	 * @return Ytnuk\Orm\Grid\Control
-	 */
-	protected function createComponentYtnukGridControl()
+	protected function createComponentYtnukGridControl() : Ytnuk\Orm\Grid\Control
 	{
 		return $this->gridControl->create($this->repository);
 	}
