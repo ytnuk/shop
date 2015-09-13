@@ -8,6 +8,13 @@ final class Repository
 	extends Ytnuk\Orm\Repository
 {
 
+	public static function getEntityClassNames() : array
+	{
+		return [
+			Entity::class,
+		];
+	}
+
 	public function findAll() : Nextras\Orm\Collection\ICollection
 	{
 		return parent::findAll()->orderBy(
