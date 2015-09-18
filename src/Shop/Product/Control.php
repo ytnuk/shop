@@ -55,6 +55,11 @@ final class Control
 					$this->product,
 				];
 			},
+			'media' => function () {
+				return [
+					$this->product,
+				];
+			},
 		] + parent::getViews();
 	}
 

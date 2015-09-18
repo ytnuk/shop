@@ -42,9 +42,9 @@ final class Container
 		);
 		$link = $this->entity->menu->link;
 		$link->module = 'Shop:Category';
-		if ( ! $link->parameters->get()->getBy(['key' => 'id'])) {
+		if ( ! $link->parameters->get()->getBy(['key' => $key = current($this->repository->getEntityMetadata()->getPrimaryKey())])) {
 			$linkParameter = new Ytnuk\Link\Parameter\Entity;
-			$linkParameter->key = 'id';
+			$linkParameter->key = $key;
 			$linkParameter->value = $this->entity->getPersistedId() ? : $this->repository->persist(
 				$this->entity
 			)->getPersistedId();

@@ -1,6 +1,7 @@
 <?php
 namespace Ytnuk\Shop\Category;
 
+use Nette;
 use Ytnuk;
 
 final class Control
@@ -23,21 +24,35 @@ final class Control
 	private $gridControl;
 
 	/**
+	 * @var Ytnuk\Shop\Product\Control\Factory
+	 */
+	private $productControl;
+
+	/**
+	 * @var Ytnuk\Shop\Product\Repository
+	 */
+	private $productRepository;
+
+	/**
 	 * @var Repository
 	 */
 	private $repository;
 
 	public function __construct(
 		Entity $category,
+		Repository $repository,
 		Form\Control\Factory $formControl,
 		Ytnuk\Orm\Grid\Control\Factory $gridControl,
-		Repository $repository
+		Ytnuk\Shop\Product\Control\Factory $productControl,
+		Ytnuk\Shop\Product\Repository $productRepository
 	) {
 		parent::__construct($category);
 		$this->category = $category;
+		$this->repository = $repository;
 		$this->formControl = $formControl;
 		$this->gridControl = $gridControl;
-		$this->repository = $repository;
+		$this->productControl = $productControl;
+		$this->productRepository = $productRepository;
 	}
 
 	protected function startup() : array
@@ -50,7 +65,7 @@ final class Control
 	protected function renderView() : array
 	{
 		return [
-			'products' => $this[Ytnuk\Orm\Pagination\Control::class]['products']->getCollection(),
+			'products' => $this[Ytnuk\Orm\Pagination\Control::class]['products'],
 		];
 	}
 
@@ -74,5 +89,19 @@ final class Control
 	protected function createComponentYtnukGridControl() : Ytnuk\Orm\Grid\Control
 	{
 		return $this->gridControl->create($this->repository);
+	}
+
+	protected function createComponentYtnukShopProductControl() : Nette\Application\UI\Multiplier
+	{
+		return new Nette\Application\UI\Multiplier(
+			function ($id) : Ytnuk\Shop\Product\Control {
+				$product = $this->productRepository->getById($id);
+				if ($product instanceof Ytnuk\Shop\Product\Entity) {
+					return $this->productControl->create($product);
+				}
+
+				return NULL;
+			}
+		);
 	}
 }
