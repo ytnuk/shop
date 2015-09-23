@@ -37,9 +37,9 @@ final class Presenter
 		if ( ! $this->product = $this->repository->getById($id)) {
 			$this->error();
 		} elseif ($category = $this->product->category) {
-			$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = $category->menu;
+			$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $category->menu;
 		}
-		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = $this->product->title;
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->product->title;
 	}
 
 	public function actionEdit(int $id)
@@ -51,7 +51,17 @@ final class Presenter
 
 	public function renderEdit()
 	{
-		$this[Ytnuk\Web\Control::class][Ytnuk\Menu\Control::class][] = 'shop.product.presenter.action.edit';
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = 'shop.product.presenter.action.edit';
+	}
+
+	protected function createComponentShop() : Ytnuk\Shop\Control
+	{
+		$shop = parent::createComponentShop();
+		if ($this->product) {
+			$shop->setProduct($this->product);
+		}
+
+		return $shop;
 	}
 
 	public function redrawControl(
@@ -63,12 +73,7 @@ final class Presenter
 			$redraw
 		);
 		if ($this->product) {
-			$this[Control::class]->redrawControl();
+			$this[Ytnuk\Shop\Control::NAME][Control::NAME]->redrawControl();
 		}
-	}
-
-	protected function createComponentYtnukShopProductControl() : Control
-	{
-		return $this->control->create($this->product ? : new Entity);
 	}
 }

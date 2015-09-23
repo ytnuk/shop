@@ -7,6 +7,8 @@ final class Control
 	extends Ytnuk\Orm\Control
 {
 
+	const NAME = 'product';
+
 	/**
 	 * @var Entity
 	 */
@@ -63,12 +65,12 @@ final class Control
 		] + parent::getViews();
 	}
 
-	protected function createComponentYtnukOrmFormControl() : Form\Control
+	protected function createComponentForm() : Form\Control
 	{
 		return $this->formControl->create($this->product);
 	}
 
-	protected function createComponentYtnukGridControl() : Ytnuk\Orm\Grid\Control
+	protected function createComponentGrid() : Ytnuk\Orm\Grid\Control
 	{
 		return $this->gridControl->create($this->repository);
 	}

@@ -3,7 +3,7 @@
 </p>
 <ul class="media-list">
 	<li n:foreach="$products as $product">
-		{control Ytnuk\Shop\Product\Control-$product->id:media}
+		{control product-$product->id:media}
 	</li>
 </ul>
-{control Ytnuk\Orm\Pagination\Control-products}
+{control pagination-products}

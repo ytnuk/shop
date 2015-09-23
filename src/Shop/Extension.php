@@ -29,6 +29,7 @@ final class Extension
 				],
 			],
 			'services' => [
+				Control\Factory::class,
 				Category\Control\Factory::class,
 				Category\Form\Control\Factory::class,
 				Product\Control\Factory::class,
