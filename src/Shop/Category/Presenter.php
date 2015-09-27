@@ -21,7 +21,7 @@ final class Presenter
 	/**
 	 * @var Entity
 	 */
-	private $category;
+	private $entity;
 
 	public function __construct(
 		Repository $repository,
@@ -34,14 +34,14 @@ final class Presenter
 
 	public function actionView(int $id)
 	{
-		if ( ! $this->category = $this->repository->getById($id)) {
+		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
 		}
 	}
 
 	public function actionEdit(int $id)
 	{
-		if ( ! $this->category = $this->repository->getById($id)) {
+		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
 		}
 	}
@@ -54,8 +54,8 @@ final class Presenter
 	protected function createComponentShop() : Ytnuk\Shop\Control
 	{
 		$shop = parent::createComponentShop();
-		if ($this->category) {
-			$shop->setCategory($this->category);
+		if ($this->entity) {
+			$shop->setCategory($this->entity);
 		}
 
 		return $shop;
@@ -69,7 +69,7 @@ final class Presenter
 			$snippet,
 			$redraw
 		);
-		if ($this->category) {
+		if ($this->entity) {
 			$this[Ytnuk\Shop\Control::NAME][Control::NAME]->redrawControl();
 		}
 	}

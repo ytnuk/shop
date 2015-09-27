@@ -97,9 +97,9 @@ final class Control
 	{
 		return new Nette\Application\UI\Multiplier(
 			function ($id) : Ytnuk\Shop\Product\Control {
-				$product = $this->productRepository->getById($id);
-				if ($product instanceof Ytnuk\Shop\Product\Entity) {
-					return $this->productControl->create($product);
+				$entity = $this->productRepository->getById($id);
+				if ($entity instanceof Ytnuk\Shop\Product\Entity) {
+					return $this->productControl->create($entity);
 				}
 
 				return NULL;

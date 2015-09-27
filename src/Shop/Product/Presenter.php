@@ -21,7 +21,7 @@ final class Presenter
 	/**
 	 * @var Entity
 	 */
-	private $product;
+	private $entity;
 
 	public function __construct(
 		Repository $repository,
@@ -34,17 +34,17 @@ final class Presenter
 
 	public function actionView(int $id)
 	{
-		if ( ! $this->product = $this->repository->getById($id)) {
+		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
-		} elseif ($category = $this->product->category) {
+		} elseif ($category = $this->entity->category) {
 			$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $category->menu;
 		}
-		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->product->title;
+		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->entity->title;
 	}
 
 	public function actionEdit(int $id)
 	{
-		if ( ! $this->product = $this->repository->getById($id)) {
+		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
 		}
 	}
@@ -57,8 +57,8 @@ final class Presenter
 	protected function createComponentShop() : Ytnuk\Shop\Control
 	{
 		$shop = parent::createComponentShop();
-		if ($this->product) {
-			$shop->setProduct($this->product);
+		if ($this->entity) {
+			$shop->setProduct($this->entity);
 		}
 
 		return $shop;
@@ -72,7 +72,7 @@ final class Presenter
 			$snippet,
 			$redraw
 		);
-		if ($this->product) {
+		if ($this->entity) {
 			$this[Ytnuk\Shop\Control::NAME][Control::NAME]->redrawControl();
 		}
 	}
