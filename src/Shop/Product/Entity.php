@@ -5,6 +5,7 @@ use Nextras;
 use Ytnuk;
 
 /**
+ * @property int $id {primary}
  * @property Nextras\Orm\Relationships\OneHasOneDirected|Ytnuk\Translation\Entity $title {1:1d Ytnuk\Translation\Entity::$product, primary=true}
  * @property Nextras\Orm\Relationships\OneHasOneDirected|Description\Entity|NULL $description {1:1d Description\Entity::$product}
  * @property Nextras\Orm\Relationships\OneHasOneDirected|Content\Entity|NULL $content {1:1d Content\Entity::$product}
