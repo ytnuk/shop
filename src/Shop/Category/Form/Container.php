@@ -31,6 +31,12 @@ final class Container
 		$this->repository = $repository;
 	}
 
+	protected function attached($form)
+	{
+		parent::attached($form);
+		unset($this['menu']['link']);
+	}
+
 	public function setValues(
 		$values,
 		$erase = FALSE
@@ -54,15 +60,9 @@ final class Container
 		return $container;
 	}
 
-	protected function attached($form)
-	{
-		parent::attached($form);
-		unset($this['menu']['link']);
-	}
-
 	protected function addPropertyDescription(Nextras\Orm\Entity\Reflection\PropertyMetadata $metadata)
 	{
-		return $this->addPropertyOneHasOneDirected(
+		return $this->addPropertyOneHasOne(
 			$metadata,
 			TRUE
 		);
