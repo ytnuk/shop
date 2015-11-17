@@ -12,7 +12,7 @@ final class Container
 		$erase = FALSE
 	) : Ytnuk\Orm\Form\Container
 	{
-		if ((array) $values->value->translates) {
+		if (isset($values['value'], $values['value']['translates']) && (array) $values['value']['translates']) {
 			return parent::setValues(
 				(array) $values,
 				$erase
