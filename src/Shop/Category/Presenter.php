@@ -51,12 +51,6 @@ final class Presenter
 		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = 'shop.category.presenter.action.edit';
 	}
 
-	protected function beforeRender()
-	{
-		parent::beforeRender();
-		$this[Ytnuk\Shop\Control::NAME][Control::NAME]->redrawControl();
-	}
-
 	protected function createComponentShop() : Ytnuk\Shop\Control
 	{
 		$shop = parent::createComponentShop();
