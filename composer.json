@@ -2,7 +2,7 @@
 	"name": "ytnuk/shop",
 	"extra": {
 		"extensions": {
-			"ytnuk/shop": "Ytnuk\\Shop\\Extension"
+			"ytnuk_shop": "Ytnuk\\Shop\\Extension"
 		}
 	},
 	"require": {
