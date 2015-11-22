@@ -1,8 +1,6 @@
 {
 	"name": "ytnuk/shop",
-	"type": "ytnuk-module",
 	"require": {
-		"ytnuk/module": "dev-master",
 		"ytnuk/web": "dev-master",
 		"kdyby/translation": "dev-master",
 		"nette/di": "dev-master",
