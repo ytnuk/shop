@@ -37,18 +37,6 @@ final class Control
 		$this->productControl = $productControl;
 	}
 
-	public function setCategory(Category\Entity $entity)
-	{
-		$this->category = $entity;
-		unset($this['category']);
-	}
-
-	public function setProduct(Product\Entity $entity)
-	{
-		$this->product = $entity;
-		unset($this['product']);
-	}
-
 	protected function createComponentCategory() : Category\Control
 	{
 		return $this->categoryControl->create($this->category ? : new Category\Entity);
