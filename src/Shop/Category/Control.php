@@ -8,8 +8,6 @@ final class Control
 	extends Ytnuk\Orm\Control
 {
 
-	const NAME = 'category';
-
 	/**
 	 * @var Entity
 	 */
@@ -67,7 +65,7 @@ final class Control
 	protected function renderView() : array
 	{
 		return [
-			'products' => $this[Ytnuk\Orm\Pagination\Control::NAME]['products'],
+			'products' => $this['pagination-products'],
 		];
 	}
 
@@ -77,7 +75,7 @@ final class Control
 			'view' => function () {
 				return [
 					$this->category,
-					$this[Ytnuk\Orm\Pagination\Control::NAME]['products'],
+					$this['pagination-products'],
 				];
 			},
 		] + parent::getViews();

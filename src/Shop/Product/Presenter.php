@@ -37,9 +37,9 @@ final class Presenter
 		if ( ! $this->entity = $this->repository->getById($id)) {
 			$this->error();
 		} elseif ($category = $this->entity->category) {
-			$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $category->menu;
+			$this['web-menu'][] = $category->menu;
 		}
-		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = $this->entity->title;
+		$this['web-menu'][] = $this->entity->title;
 	}
 
 	public function actionEdit(int $id)
@@ -51,7 +51,7 @@ final class Presenter
 
 	public function renderEdit()
 	{
-		$this[Ytnuk\Web\Control::NAME][Ytnuk\Menu\Control::NAME][] = 'shop.product.presenter.action.edit';
+		$this['web-menu'][] = 'shop.product.presenter.action.edit';
 	}
 
 	protected function createComponentShop() : Ytnuk\Shop\Control

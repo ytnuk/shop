@@ -8,8 +8,6 @@ final class Control
 	extends Ytnuk\Application\Control
 {
 
-	const NAME = 'shop';
-
 	/**
 	 * @var Category\Control\Factory
 	 */
@@ -42,13 +40,13 @@ final class Control
 	public function setCategory(Category\Entity $entity)
 	{
 		$this->category = $entity;
-		unset($this[Category\Control::NAME]);
+		unset($this['category']);
 	}
 
 	public function setProduct(Product\Entity $entity)
 	{
 		$this->product = $entity;
-		unset($this[Product\Control::NAME]);
+		unset($this['product']);
 	}
 
 	protected function createComponentCategory() : Category\Control

@@ -7,8 +7,6 @@ final class Control
 	extends Ytnuk\Orm\Control
 {
 
-	const NAME = 'product';
-
 	/**
 	 * @var Entity
 	 */
