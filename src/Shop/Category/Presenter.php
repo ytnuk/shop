@@ -48,7 +48,7 @@ final class Presenter
 
 	public function renderEdit()
 	{
-		$this['web-menu'][] = 'shop.category.presenter.action.edit';
+		$this['web']['menu'][] = 'shop.category.presenter.action.edit';
 	}
 
 	protected function createComponentShop() : Ytnuk\Shop\Control

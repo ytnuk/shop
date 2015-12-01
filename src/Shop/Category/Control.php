@@ -65,7 +65,7 @@ final class Control
 	protected function renderView() : array
 	{
 		return [
-			'products' => $this['pagination-products'],
+			'products' => $this['pagination']['products'],
 		];
 	}
 
@@ -75,7 +75,7 @@ final class Control
 			'view' => function () {
 				return [
 					$this->category,
-					$this['pagination-products'],
+					$this['pagination']['products'],
 				];
 			},
 		] + parent::getViews();

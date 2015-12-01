@@ -34,7 +34,7 @@ final class Container
 	protected function attached($form)
 	{
 		parent::attached($form);
-		unset($this['menu-link']);
+		unset($this['menu']['link']);
 	}
 
 	public function setValues(
