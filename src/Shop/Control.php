@@ -37,6 +37,18 @@ final class Control
 		$this->productControl = $productControl;
 	}
 
+	public function setCategory(Ytnuk\Shop\Category\Entity $category)
+	{
+		$this->category = $category;
+		unset($this['category']);
+	}
+
+	public function setProduct(Ytnuk\Shop\Product\Entity $product)
+	{
+		$this->product = $product;
+		unset($this['product']);
+	}
+
 	protected function createComponentCategory() : Category\Control
 	{
 		return $this->categoryControl->create($this->category ? : new Category\Entity);

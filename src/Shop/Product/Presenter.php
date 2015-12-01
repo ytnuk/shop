@@ -58,7 +58,7 @@ final class Presenter
 	{
 		$shop = parent::createComponentShop();
 		if ($this->entity) {
-			$shop['product']->setEntity($this->entity);
+			$shop->setProduct($this->entity);
 		}
 
 		return $shop;
