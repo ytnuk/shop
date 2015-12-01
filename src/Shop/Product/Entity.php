@@ -6,7 +6,7 @@ use Ytnuk;
 
 /**
  * @property int $id {primary}
- * @property Nextras\Orm\Relationships\OneHasOne|Ytnuk\Translation\Entity $title {1:1 Ytnuk\Translation\Entity::$product, primary=true}
+ * @property Nextras\Orm\Relationships\OneHasOne|Ytnuk\Translation\Entity $title {1:1 Ytnuk\Translation\Entity::$product, primary=true, cascade=[persist, remove]}
  * @property Nextras\Orm\Relationships\OneHasOne|Description\Entity|NULL $description {1:1 Description\Entity::$product}
  * @property Nextras\Orm\Relationships\OneHasOne|Content\Entity|NULL $content {1:1 Content\Entity::$product}
  * @property Nextras\Orm\Relationships\OneHasOne|Ytnuk\Link\Entity $link {1:1 Ytnuk\Link\Entity::$product, primary=true}
