@@ -60,9 +60,9 @@ final class Container
 		return $container;
 	}
 
-	protected function addPropertyDescription(Nextras\Orm\Entity\Reflection\PropertyMetadata $metadata)
+	protected function createComponentDescription(Nextras\Orm\Entity\Reflection\PropertyMetadata $metadata)
 	{
-		return $this->addPropertyOneHasOne(
+		return $this->createComponentOneHasOne(
 			$metadata,
 			TRUE
 		);
