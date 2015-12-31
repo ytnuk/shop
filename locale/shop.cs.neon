@@ -2,14 +2,6 @@ category:
 	presenter:
 		action:
 			edit: Upravit kategorii
-	form:
-		container:
-			property:
-				productNodes:
-					group: Produkty
-					action:
-						add: Přidat produkt
-						delete: Odebrat produkt
 	description:
 		form:
 			container:

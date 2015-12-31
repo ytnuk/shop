@@ -2,14 +2,6 @@ category:
 	presenter:
 		action:
 			edit: Edit category
-	form:
-		container:
-			property:
-				productNodes:
-					group: Products
-					action:
-						add: Add product
-						delete: Delete product
 	description:
 		form:
 			container:
