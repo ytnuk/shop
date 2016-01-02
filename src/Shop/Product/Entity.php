@@ -25,5 +25,4 @@ final class Entity
 
 		return $node instanceof Category\Entity ? $node->category : NULL;
 	}
-
 }

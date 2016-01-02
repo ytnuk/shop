@@ -13,12 +13,6 @@ final class Mapper
 		Nextras\Orm\Entity\IEntity $parent
 	) : Nextras\Orm\Mapper\Dbal\DbalCollection
 	{
-		return parent::createCollectionOneHasMany(
-			$metadata,
-			$parent
-		)->orderBy(
-			'primary',
-			Nextras\Orm\Collection\ICollection::DESC
-		);
+		return parent::createCollectionOneHasMany($metadata, $parent)->orderBy('primary', Nextras\Orm\Collection\ICollection::DESC);
 	}
 }

@@ -16,16 +16,10 @@ final class Container
 			switch ($metadata->name) {
 				case 'product':
 				case 'category':
-					$component->setOption(
-						'unique',
-						TRUE
-					);
+					$component->setOption('unique', TRUE);
 					break;
 				case 'primary':
-					$component->setOption(
-						'unique',
-						'product'
-					);
+					$component->setOption('unique', 'product');
 					break;
 			}
 		}

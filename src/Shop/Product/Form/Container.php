@@ -23,10 +23,7 @@ final class Container
 		Ytnuk\Shop\Product\Entity $entity,
 		Ytnuk\Shop\Product\Repository $repository
 	) {
-		parent::__construct(
-			$entity,
-			$repository
-		);
+		parent::__construct($entity, $repository);
 		$this->entity = $entity;
 		$this->repository = $repository;
 	}
@@ -44,16 +41,11 @@ final class Container
 	{
 		$link = $this->entity->link;
 		$link->module = 'Shop:Product';
-		$container = parent::setValues(
-			$values,
-			$erase
-		);
+		$container = parent::setValues($values, $erase);
 		if ( ! $link->parameters->get()->getBy(['key' => $key = current($this->repository->getEntityMetadata()->getPrimaryKey())])) {
 			$linkParameter = new Ytnuk\Link\Parameter\Entity;
 			$linkParameter->key = $key;
-			$linkParameter->value = $this->entity->getPersistedId() ? : $this->repository->persist(
-				$this->entity
-			)->getPersistedId();
+			$linkParameter->value = $this->entity->getPersistedId() ? : $this->repository->persist($this->entity)->getPersistedId();
 			$link->parameters->add($linkParameter);
 		}
 
@@ -62,9 +54,6 @@ final class Container
 
 	protected function createComponentDescription(Nextras\Orm\Entity\Reflection\PropertyMetadata $metadata)
 	{
-		return $this->createComponentOneHasOne(
-			$metadata,
-			TRUE
-		);
+		return $this->createComponentOneHasOne($metadata, TRUE);
 	}
 }

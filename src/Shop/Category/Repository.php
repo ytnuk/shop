@@ -24,12 +24,9 @@ final class Repository
 		if ($params['presenter'] === 'Shop:Category:Presenter' && $id = $params['id'] ?? NULL) {
 			if ($entity = $this->getById($id)) {
 				if ($entity instanceof Ytnuk\Cache\Provider) {
-					$dependencies = array_merge_recursive(
-						$dependencies,
-						[
-							Nette\Caching\Cache::TAGS => $entity->getCacheTags(),
-						]
-					);
+					$dependencies = array_merge_recursive($dependencies, [
+						Nette\Caching\Cache::TAGS => $entity->getCacheTags(),
+					]);
 				}
 				$params['slug'] = Nette\Utils\Strings::webalize($entity);
 			}
