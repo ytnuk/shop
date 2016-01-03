@@ -39,9 +39,9 @@ final class Container
 		$erase = FALSE
 	) : Ytnuk\Orm\Form\Container
 	{
+		$container = parent::setValues($values, $erase);
 		$link = $this->entity->link;
 		$link->module = 'Shop:Product';
-		$container = parent::setValues($values, $erase);
 		if ( ! $link->parameters->get()->getBy(['key' => $key = current($this->repository->getEntityMetadata()->getPrimaryKey())])) {
 			$linkParameter = new Ytnuk\Link\Parameter\Entity;
 			$linkParameter->key = $key;
